@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("calender")
+@RequestMapping("demo")
 public class CalenderController {
 	
 	@GetMapping
 	public String showList() {
-	return "calender";
+	return "/calender";
 	}
 }
