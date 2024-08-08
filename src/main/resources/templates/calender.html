@@ -1,293 +1,340 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイページ/カレンダー</title>
-    <style>
-        /* ページ全体の中央寄せ設定 */
-        .calendar-container {
-            text-align: center;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>マイページ/カレンダー</title>
+	<style>
+		/* ページ全体の中央寄せ設定 */
+		.calendar-container {
+			text-align: center;
+		}
 
-        /* カレンダーの全体のスタイル設定 */
-        table {
-            width: 90%; /* カレンダーの幅を90%に設定 */
-            margin: 0 auto; /* カレンダー自体を中央寄せ */
-            border-collapse: collapse;
-        }
+		/* カレンダーの全体のスタイル設定 */
+		table {
+			width: 90%;
+			/* カレンダーの幅を90%に設定 */
+			margin: 0 auto;
+			/* カレンダー自体を中央寄せ */
+			border-collapse: collapse;
+		}
 
-        /* セルのスタイル設定 */
-        th {
-            background-color: #f2f2f2;
-            height: 50px; /* 曜日の高さを指定 */
-            border: 1px solid #ccc;
-            text-align: center; /* 水平方向の中央寄せ */
-            vertical-align: middle; /* 垂直方向の中央寄せ */
-            padding: 10px;
-            width: 14.28%; /* 7列で均等になるように幅を設定 */
-        }
+		/* セルのスタイル設定 */
+		th {
+			background-color: #f2f2f2;
+			height: 50px;
+			/* 曜日の高さを指定 */
+			border: 1px solid #ccc;
+			text-align: center;
+			/* 水平方向の中央寄せ */
+			vertical-align: middle;
+			/* 垂直方向の中央寄せ */
+			padding: 10px;
+			width: 14.28%;
+			/* 7列で均等になるように幅を設定 */
+		}
 
-        td {
-            height: 100px; /* カレンダーの日付セルの高さを指定 */
-            border: 1px solid #ccc;
-            text-align: center; /* セル内のテキストを中央寄せ */
-            padding: 10px;
-            vertical-align: top;
-            width: 14.28%; /* 7列で均等になるように幅を設定 */
-            position: relative; /* 擬似要素の位置を相対的に設定 */
-        }
+		td {
+			height: 100px;
+			/* カレンダーの日付セルの高さを指定 */
+			border: 1px solid #ccc;
+			text-align: center;
+			/* セル内のテキストを中央寄せ */
+			padding: 10px;
+			vertical-align: top;
+			width: 14.28%;
+			/* 7列で均等になるように幅を設定 */
+			position: relative;
+			/* 擬似要素の位置を相対的に設定 */
+		}
 
-        /* 今日の日付を目立たせるスタイル */
-        .today {
-            background-color: #ffeb3b; /* 背景色を黄色に設定 */
-            font-weight: bold; /* 文字を太字に設定 */
-            color: #d32f2f; /* 文字色を赤に設定 */
-            position: relative; /* 擬似要素の位置を相対的に設定 */
-        }
-        .today::after {
-            content: "今日"; /* 今日という文字を追加 */
-            position: absolute; /* 絶対位置に設定 */
-            top: 30%; /* 垂直位置を30%に設定 */
-            left: 50%; /* 水平中央に配置 */
-            transform: translate(-50%, -30%); /* 垂直中央寄せを30%に設定 */
-            font-size: 15px; /* 文字サイズを15pxに設定 */
-            color: #d32f2f; /* 文字色 */
-        }
+		/* 今日の日付を目立たせるスタイル */
+		.today {
+			background-color: #ffeb3b;
+			/* 背景色を黄色に設定 */
+			font-weight: bold;
+			/* 文字を太字に設定 */
+			color: #d32f2f;
+			/* 文字色を赤に設定 */
+			position: relative;
+			/* 擬似要素の位置を相対的に設定 */
+		}
 
-        /* 日曜日のテキスト色を赤に設定 */
-        .sunday {
-            color: red;
-        }
+		.today::after {
+			content: "今日";
+			/* 今日という文字を追加 */
+			position: absolute;
+			/* 絶対位置に設定 */
+			top: 30%;
+			/* 垂直位置を30%に設定 */
+			left: 50%;
+			/* 水平中央に配置 */
+			transform: translate(-50%, -30%);
+			/* 垂直中央寄せを30%に設定 */
+			font-size: 15px;
+			/* 文字サイズを15pxに設定 */
+			color: #d32f2f;
+			/* 文字色 */
+		}
 
-        /* 土曜日のテキスト色を青に設定 */
-        .saturday {
-            color: blue;
-        }
+		/* 日曜日のテキスト色を赤に設定 */
+		.sunday {
+			color: red;
+		}
 
-        /* ナビゲーションボタンのスタイル設定 */
-        .navigation {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .navigation button {
-            padding: 10px;
-            font-size: 16px;
-        }
+		/* 土曜日のテキスト色を青に設定 */
+		.saturday {
+			color: blue;
+		}
 
-        /* イベント表示部分のスタイル設定 */
-        .event {
-            background-color: #90ee90; /* 背景色を黄緑色に設定 */
-            margin-top: 5px;
-            padding: 2px;
-            font-size: 12px;
-            width: 80%; /* イベントの幅を指定 */
-            margin: 5px auto; /* 上下に余白を持たせ、中央寄せ */
-            text-align: center; /* イベントのテキストを中央寄せ */
-        }
+		/* ナビゲーションボタンのスタイル設定 */
+		.navigation {
+			text-align: center;
+			margin: 20px 0;
+		}
 
-        /* タイトルを中央寄せ */
-        h1 {
-            text-align: center;
-        }
+		.navigation button {
+			padding: 10px;
+			font-size: 16px;
+		}
 
-        /* 日時選択部分のスタイル設定 */
-        .datetime-container {
-            margin: 20px;
-        }
-        .datetime-container label {
-            margin-right: 10px;
-        }
-        .datetime-container select {
-            padding: 5px;
-            font-size: 14px;
-        }
-    </style>
+		/* イベント表示部分のスタイル設定 */
+		.event {
+			background-color: #90ee90;
+			/* 背景色を黄緑色に設定 */
+			margin-top: 5px;
+			padding: 2px;
+			font-size: 12px;
+			width: 80%;
+			/* イベントの幅を指定 */
+			margin: 5px auto;
+			/* 上下に余白を持たせ、中央寄せ */
+			text-align: center;
+			/* イベントのテキストを中央寄せ */
+		}
+
+		/* タイトルを中央寄せ */
+		h1 {
+			text-align: center;
+		}
+
+		/* 日時選択部分のスタイル設定 */
+		.datetime-container {
+			margin: 20px;
+			display: flex;
+			/* 要素を横に並べるためにフレックスボックスを使用 */
+			justify-content: center;
+			/* 水平方向に中央揃え */
+			align-items: center;
+			/* 垂直方向の中央揃え */
+		}
+
+		.datetime-container label {
+			margin-right: 10px;
+
+		}
+
+		.datetime-container select {
+			padding: 5px;
+			font-size: 14px;
+			margin-right: 50px;
+			/* ボタンとの間にスペースを追加 */
+		}
+
+		/* 決定ボタンのスタイル設定 */
+		.datetime-container button {
+			padding: 10px;
+			font-size: 16px;
+			/* 文字サイズを指定 */
+		}
+	</style>
 </head>
+
 <body>
 
-<!-- カレンダー全体を囲むコンテナ -->
-<div class="calendar-container">
+	<!-- カレンダー全体を囲むコンテナ -->
+	<div class="calendar-container">
 
-    <!-- カレンダーのタイトル -->
-    <h1>マイページ/カレンダー</h1>
+		<!-- カレンダーのタイトル -->
+		<h1>マイページ/カレンダー</h1>
 
-    <!-- ナビゲーションボタン（先月・来月に切り替え） -->
-    <div class="navigation">
-        <button onclick="changeMonth(-1)">先月</button>
-        <span id="month-year"></span>
-        <button onclick="changeMonth(1)">来月</button>
-    </div>
+		<!-- ナビゲーションボタン（先月・来月に切り替え） -->
+		<div class="navigation">
+			<button onclick="changeMonth(-1)">先月</button>
+			<span id="month-year"></span>
+			<button onclick="changeMonth(1)">来月</button>
+		</div>
 
-    <!-- カレンダーのテーブル -->
-    <table id="calendar-table">
-        <thead>
-            <tr>
-                <th>月</th>
-                <th>火</th>
-                <th>水</th>
-                <th>木</th>
-                <th>金</th>
-                <th class="saturday">土</th>
-                <th class="sunday">日</th>
-            </tr>
-        </thead>
-        <tbody id="calendar-body">
-            <!-- JavaScriptで生成されるカレンダーの日付がここに表示されます -->
-        </tbody>
-    </table>
+		<!-- カレンダーのテーブル -->
+		<table id="calendar-table">
+			<thead>
+				<tr>
+					<th>月</th>
+					<th>火</th>
+					<th>水</th>
+					<th>木</th>
+					<th>金</th>
+					<th class="saturday">土</th>
+					<th class="sunday">日</th>
+				</tr>
+			</thead>
+			<tbody id="calendar-body">
+				<!-- JavaScriptで生成されるカレンダーの日付がここに表示されます -->
+			</tbody>
+		</table>
 
-    <!-- 日時選択部分 -->
-    <div class="datetime-container">
-        <label for="date-select">日付:</label>
-        <select id="date-select">
-            <!-- JavaScriptで生成される日付の選択肢がここに表示されます -->
-        </select>
+		<!-- 日時選択部分 -->
+		<div class="datetime-container">
+			<label for="date-select">日付:</label>
+			<select id="date-select">
+				<!-- JavaScriptで生成される日付の選択肢がここに表示されます -->
+			</select>
 
-        <label for="time-select">時間:</label>
-        <select id="time-select">
-            <!-- JavaScriptで生成される時間の選択肢がここに表示されます -->
-        </select>
+			<label for="time-select">時間:</label>
+			<select id="time-select">
+				<!-- JavaScriptで生成される時間の選択肢がここに表示されます -->
+			</select>
 
-        <br><br>
-        <button onclick="selectDateTime()">決定</button>
-    </div>
-</div>
+			<br><br>
+			<button onclick="selectDateTime()">決定</button>
+		</div>
+	</div>
 
-<script>
-    // 現在表示されている日付を保持する変数
-    let currentDate = new Date();
+	<script>
+		// 現在表示されている日付を保持する変数
+		let currentDate = new Date();
 
-    // 今日の日付を取得
-    const today = new Date().toDateString();
+		// 今日の日付を取得
+		const today = new Date().toDateString();
 
-    // イベントデータを日付ごとに定義 (例: 日付とイベント名の配列)
-    const events = {
-        "2024-08-04": ["イベントA"],
-        "2024-08-10": ["イベントB"],
-        "2024-08-15": ["イベントC"],
-        "2024-08-25": ["イベントD", "イベントE"],
-    };
+		// イベントデータを日付ごとに定義 (例: 日付とイベント名の配列)
+		const events = {
+			"2024-08-04": ["イベントA"],
+			"2024-08-10": ["イベントB"],
+			"2024-08-15": ["イベントC"],
+			"2024-08-25": ["イベントD", "イベントE"],
+		};
 
-    // カレンダーを更新する関数
-    function updateCalendar() {
-        const calendarBody = document.getElementById('calendar-body');
-        const monthYear = document.getElementById('month-year');
-        const dateSelect = document.getElementById('date-select');
-        const timeSelect = document.getElementById('time-select');
-        calendarBody.innerHTML = ''; // カレンダーの中身をクリア
-        dateSelect.innerHTML = ''; // 日付の選択肢をクリア
-        timeSelect.innerHTML = ''; // 時間の選択肢をクリア
+		// カレンダーを更新する関数
+		function updateCalendar() {
+			const calendarBody = document.getElementById('calendar-body');
+			const monthYear = document.getElementById('month-year');
+			const dateSelect = document.getElementById('date-select');
+			const timeSelect = document.getElementById('time-select');
+			calendarBody.innerHTML = ''; // カレンダーの中身をクリア
+			dateSelect.innerHTML = ''; // 日付の選択肢をクリア
+			timeSelect.innerHTML = ''; // 時間の選択肢をクリア
 
-        const year = currentDate.getFullYear(); // 現在の年を取得
-        const month = currentDate.getMonth(); // 現在の月を取得
-        
-        // カレンダーのタイトル（年と月）を更新
-        monthYear.textContent = `${year}年 ${month + 1}月`;
+			const year = currentDate.getFullYear(); // 現在の年を取得
+			const month = currentDate.getMonth(); // 現在の月を取得
 
-        // その月の最初の日の曜日を取得（ここで日曜始まり→月曜始まりに調整）
-        const firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
-        // その月の最後の日付を取得
-        const lastDate = new Date(year, month + 1, 0).getDate();
+			// カレンダーのタイトル（年と月）を更新
+			monthYear.textContent = `${year}年 ${month + 1}月`;
 
-        let date = 1;
-        // 最大6行のカレンダー行を作成
-        for (let i = 0; i < 6; i++) {
-            let row = document.createElement('tr');
+			// その月の最初の日の曜日を取得（ここで日曜始まり→月曜始まりに調整）
+			const firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
+			// その月の最後の日付を取得
+			const lastDate = new Date(year, month + 1, 0).getDate();
 
-            // 1週間（7日）のセルを作成
-            for (let j = 0; j < 7; j++) {
-                let cell = document.createElement('td');
+			let date = 1;
+			// 最大6行のカレンダー行を作成
+			for (let i = 0; i < 6; i++) {
+				let row = document.createElement('tr');
 
-                // 最初の行で前月の空白部分を埋める処理
-                if (i === 0 && j < firstDay) {
-                    cell.textContent = '';
-                } 
-                // その月の最後の日付を超えたら終了
-                else if (date > lastDate) {
-                    break;
-                } 
-                // 日付をセルに設定
-                else {
-                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-                    cell.innerHTML = `${date}`; // HTMLとして日付のみを設定
+				// 1週間（7日）のセルを作成
+				for (let j = 0; j < 7; j++) {
+					let cell = document.createElement('td');
 
-                    // 今日の日付かどうかをチェック
-                    if (new Date(year, month, date).toDateString() === today) {
-                        cell.classList.add('today'); // 今日の日付にスタイルを追加
-                    }
+					// 最初の行で前月の空白部分を埋める処理
+					if (i === 0 && j < firstDay) {
+						cell.textContent = '';
+					}
+					// その月の最後の日付を超えたら終了
+					else if (date > lastDate) {
+						break;
+					}
+					// 日付をセルに設定
+					else {
+						const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
+						cell.innerHTML = `${date}`; // HTMLとして日付のみを設定
 
-                    // 日曜日と土曜日のスタイルを適用
-                    if (j === 6) {
-                        cell.classList.add('sunday');
-                    } else if (j === 5) {
-                        cell.classList.add('saturday');
-                    }
+						// 今日の日付かどうかをチェック
+						if (new Date(year, month, date).toDateString() === today) {
+							cell.classList.add('today'); // 今日の日付にスタイルを追加
+						}
 
-                    // イベントがある場合、イベントをセルに追加
-                    if (events[dateStr]) {
-                        events[dateStr].forEach(event => {
-                            let eventDiv = document.createElement('div');
-                            eventDiv.classList.add('event');
-                            eventDiv.textContent = event;
-                            cell.appendChild(eventDiv);
-                        });
-                    }
+						// 日曜日と土曜日のスタイルを適用
+						if (j === 6) {
+							cell.classList.add('sunday');
+						} else if (j === 5) {
+							cell.classList.add('saturday');
+						}
 
-                    // 日付の選択肢を追加
-                    let option = document.createElement('option');
-                    option.value = dateStr;
-                    option.textContent = `${year}/${String(month + 1).padStart(2, '0')}/${String(date).padStart(2, '0')}`;
-                    dateSelect.appendChild(option);
+						// イベントがある場合、イベントをセルに追加
+						if (events[dateStr]) {
+							events[dateStr].forEach(event => {
+								let eventDiv = document.createElement('div');
+								eventDiv.classList.add('event');
+								eventDiv.textContent = event;
+								cell.appendChild(eventDiv);
+							});
+						}
 
-                    date++;
-                }
+						// 日付の選択肢を追加
+						let option = document.createElement('option');
+						option.value = dateStr;
+						option.textContent = `${year}/${String(month + 1).padStart(2, '0')}/${String(date).padStart(2, '0')}`;
+						dateSelect.appendChild(option);
 
-                row.appendChild(cell); // 行にセルを追加
-            }
+						date++;
+					}
 
-            calendarBody.appendChild(row); // テーブル本体に行を追加
+					row.appendChild(cell); // 行にセルを追加
+				}
 
-            // 日付がその月の最後の日付を超えたらループを終了
-            if (date > lastDate) {
-                break;
-            }
-        }
+				calendarBody.appendChild(row); // テーブル本体に行を追加
 
-        // 時間の選択肢を追加（8:00から21:00まで）
-        for (let h = 8; h <= 20; h++) {
-            for (let m = 0; m < 60; m += 30) {
-                let option = document.createElement('option');
-                let hour = String(h).padStart(2, '0');
-                let minute = String(m).padStart(2, '0');
-                option.value = `${hour}:${minute}`;
-                option.textContent = `${hour}:${minute}`;
-                timeSelect.appendChild(option);
-            }
-        }
-    }
+				// 日付がその月の最後の日付を超えたらループを終了
+				if (date > lastDate) {
+					break;
+				}
+			}
 
-    // 月を変更する関数
-    function changeMonth(offset) {
-        currentDate.setMonth(currentDate.getMonth() + offset); // 月を移動
-        updateCalendar(); // カレンダーを更新
-    }
+			// 時間の選択肢を追加（8:00から21:00まで）
+			for (let h = 8; h <= 20; h++) {
+				for (let m = 0; m < 60; m += 30) {
+					let option = document.createElement('option');
+					let hour = String(h).padStart(2, '0');
+					let minute = String(m).padStart(2, '0');
+					option.value = `${hour}:${minute}`;
+					option.textContent = `${hour}:${minute}`;
+					timeSelect.appendChild(option);
+				}
+			}
+		}
 
-    // 決定ボタンがクリックされたときの処理
-    function selectDateTime() {
-        const dateSelect = document.getElementById('date-select').value;
-        const timeSelect = document.getElementById('time-select').value;
-        if (dateSelect && timeSelect) {
-            alert(`選択された日時: ${dateSelect} ${timeSelect}`);
-        } else {
-            alert('日付と時間を選択してください。');
-        }
-    }
+		// 月を変更する関数
+		function changeMonth(offset) {
+			currentDate.setMonth(currentDate.getMonth() + offset); // 月を移動
+			updateCalendar(); // カレンダーを更新
+		}
 
-    // ページの読み込みが完了したときにカレンダーを初期表示
-    document.addEventListener('DOMContentLoaded', updateCalendar);
-</script>
+		// 決定ボタンがクリックされたときの処理
+		function selectDateTime() {
+			const dateSelect = document.getElementById('date-select').value;
+			const timeSelect = document.getElementById('time-select').value;
+			if (dateSelect && timeSelect) {
+				alert(`選択された日時: ${dateSelect} ${timeSelect}`);
+			} else {
+				alert('日付と時間を選択してください。');
+			}
+		}
+
+		// ページの読み込みが完了したときにカレンダーを初期表示
+		document.addEventListener('DOMContentLoaded', updateCalendar);
+	</script>
 
 </body>
+
 </html>
