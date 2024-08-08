@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightgoldenrodyellow;
+	/* ページ全体の背景色 */
+	height: 100%;
+	margin: 0;
+}
+
+#headline {
+	/* ヘッドラインの背景色 */
+	height: 100px;
+	background-color: chartreuse;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* 下線を追加 */
+	border-bottom: 3px solid rgb(0, 128, 0);
+}
+
+.title {
+	text-align: center;
+	color: red;
+	font-size: 30px;
+}
+
+/* リボン風の見出し */
+h2 {
+	margin-top: 2%;
+	position: relative;
+	padding: 1rem 2rem 1rem 4em;
+	background: #fff;
+	margin-left: 35%;
+	margin-right: 35%;
+	/* 店舗情報の表記をまとめて中央へ */
+	text-align: center;
+	/* 文字間を広げる */
+	letter-spacing: 0.5em;
+}
+
+h2 span {
+	position: absolute;
+	top: -10px;
+	left: 20px;
+	display: inline-block;
+	width: 52px;
+	height: 50px;
+	text-align: center;
+	background: #fa4141;
+}
+
+h2 span:before,
+h2 span:after {
+	position: absolute;
+	content: '';
+}
+
+h2 span:before {
+	right: -10px;
+	width: 0;
+	height: 0;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #d90606;
+}
+
+h2 span:after {
+	top: 50%;
+	left: 0;
+	display: block;
+	height: 50%;
+	border: 1em solid #fa4141;
+	border-bottom-width: 15px;
+	border-bottom-color: transparent;
+}
+
+h2 span i {
+	margin-top: 3rel;
+	position: relative;
+	z-index: 1;
+	color: #fff100;
+}
+
+#main {
+	margin-top: 3%;
+	/*	padding: 1.5rem 2rem;*/
+	padding: 5.5rem 10rem;
+	position: relative;
+	margin-left: 20%;
+	margin-right: 20%;
+
+	color: #fff;
+	background: linear-gradient(-45deg, #cc5500 25%, #eb6100 0, #eb6100 50%, #cc5500 0, #cc5500 75%, #eb6100 0);
+	background-size: 20px 20px;
+}
+
+h2::before,
+h2::after {
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	content: '';
+}
+
+h2::before {
+	top: 4px;
+	left: 0;
+	background: #b34d00;
+	/* darken(#eb6100, 6%)に相当 */
+}
+
+h2::after {
+	bottom: 4px;
+	left: 0;
+	background: #b34d00;
+	/* darken(#eb6100, 6%)に相当 */
+}
+
+.shopName{
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 50px;
+}
+
+.shopAddress {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 30px;
+}
