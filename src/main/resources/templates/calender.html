@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="ja">
 
 <head>
@@ -127,29 +128,78 @@
 			justify-content: center;
 			/* 水平方向に中央揃え */
 			align-items: center;
-			/* 垂直方向の中央揃え */
+			/* 垂直方向に中央揃え */
 		}
 
 		.datetime-container label {
 			margin-right: 10px;
-
 		}
 
 		.datetime-container select {
 			padding: 5px;
 			font-size: 14px;
-			margin-right: 50px;
+			margin-right: 10px;
 			/* ボタンとの間にスペースを追加 */
 		}
 
-		/* 決定ボタンのスタイル設定 */
 		.datetime-container button {
 			padding: 10px;
 			font-size: 16px;
-			/* 文字サイズを指定 */
+			/* ボタンの文字サイズ */
+		}
+
+		/* 注文履歴部分のスタイル設定 */
+		.order-history-container {
+			margin-top: 40px;
+			text-align: center;
+			/* タイトルを中央寄せ */
+		}
+
+		.order-history {
+			width: 80%;
+			/* 履歴の幅を指定 */
+			margin: 0 auto;
+			/* 中央寄せ */
+			max-height: 400px;
+			/* 最大高さを指定して、スクロールバーを出す */
+			overflow-y: auto;
+			/* 垂直方向のスクロールバーを追加 */
+		}
+
+		.order-history table {
+			width: 100%;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		/* 注文履歴の項目 */
+		.order-history th {
+			height: 50px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		/* 注文履歴の内容 */
+		.order-history td {
+			height: 100px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		/* 履歴のスクロール固定 */
+		.order-history thead th {
+		    position: -webkit-sticky; /* Safari */
+		    position: sticky;
+		    top: 0;
+		    background-color: #f2f2f2;
+		    z-index: 1;
 		}
 	</style>
 </head>
+
 
 <body>
 
@@ -170,11 +220,11 @@
 		<table id="calendar-table">
 			<thead>
 				<tr>
-					<th>月</th>
-					<th>火</th>
-					<th>水</th>
-					<th>木</th>
-					<th>金</th>
+					<th class="monday">月</th>
+					<th class="tuesday">火</th>
+					<th class="wednesday">水</th>
+					<th class="thursday">木</th>
+					<th class="friday">金</th>
 					<th class="saturday">土</th>
 					<th class="sunday">日</th>
 				</tr>
@@ -196,8 +246,45 @@
 				<!-- JavaScriptで生成される時間の選択肢がここに表示されます -->
 			</select>
 
-			<br><br>
 			<button onclick="selectDateTime()">決定</button>
+		</div>
+	</div>
+
+	<!-- 注文履歴表示部分 -->
+	<div class="order-history-container">
+		<h2>注文履歴</h2>
+		<div class="order-history">
+			<table>
+				<thead>
+					<tr>
+						<th>注文日時</th>
+						<th>店名</th>
+						<th>注文内容</th>
+						<th>合計金額</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>2024/8/8 12:00</td>
+						<td>Hanaのお弁当</td>
+						<td>かつ丼</td>
+						<td>1200円</td>
+					</tr>
+					<tr>
+						<td>2024/8/10 13:00</td>
+						<td>おいしいごはん</td>
+						<td>焼肉弁当</td>
+						<td>1000円</td>
+					</tr>
+					<tr>
+						<td>2024/8/12 11:00</td>
+						<td>ほっかほか弁当</td>
+						<td>のり弁当</td>
+						<td>900円</td>
+					</tr>
+
+				</tbody>
+			</table>
 		</div>
 	</div>
 
@@ -224,91 +311,79 @@
 			const timeSelect = document.getElementById('time-select');
 			calendarBody.innerHTML = ''; // カレンダーの中身をクリア
 			dateSelect.innerHTML = ''; // 日付の選択肢をクリア
-			timeSelect.innerHTML = ''; // 時間の選択肢をクリア
 
-			const year = currentDate.getFullYear(); // 現在の年を取得
-			const month = currentDate.getMonth(); // 現在の月を取得
+			// 現在の月の最初の日と最後の日を取得
+			const year = currentDate.getFullYear();
+			const month = currentDate.getMonth();
+			const firstDay = new Date(year, month, 1);
+			const lastDay = new Date(year, month + 1, 0);
 
-			// カレンダーのタイトル（年と月）を更新
-			monthYear.textContent = `${year}年 ${month + 1}月`;
+			// 月と年を表示
+			const options = {year: 'numeric', month: 'long'};
+			monthYear.textContent = currentDate.toLocaleDateString('ja-JP', options);
 
-			// その月の最初の日の曜日を取得（ここで日曜始まり→月曜始まりに調整）
-			const firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
-			// その月の最後の日付を取得
-			const lastDate = new Date(year, month + 1, 0).getDate();
+			// 最初の日の曜日を取得し、月曜日始まりに調整
+			const startDay = (firstDay.getDay() + 6) % 7;
 
-			let date = 1;
-			// 最大6行のカレンダー行を作成
-			for (let i = 0; i < 6; i++) {
-				let row = document.createElement('tr');
+			// カレンダーの日付を埋める
+			let row = document.createElement('tr');
+			for (let i = 0; i < startDay; i++) {
+				row.appendChild(document.createElement('td')); // 空白セルを追加
+			}
 
-				// 1週間（7日）のセルを作成
-				for (let j = 0; j < 7; j++) {
-					let cell = document.createElement('td');
+			// 月の日付を埋める
+			for (let day = 1; day <= lastDay.getDate(); day++) {
+				const cell = document.createElement('td');
+				const cellDate = new Date(year, month, day);
+				const cellDateString = cellDate.toISOString().split('T')[0];
+				cell.textContent = day;
 
-					// 最初の行で前月の空白部分を埋める処理
-					if (i === 0 && j < firstDay) {
-						cell.textContent = '';
-					}
-					// その月の最後の日付を超えたら終了
-					else if (date > lastDate) {
-						break;
-					}
-					// 日付をセルに設定
-					else {
-						const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-						cell.innerHTML = `${date}`; // HTMLとして日付のみを設定
-
-						// 今日の日付かどうかをチェック
-						if (new Date(year, month, date).toDateString() === today) {
-							cell.classList.add('today'); // 今日の日付にスタイルを追加
-						}
-
-						// 日曜日と土曜日のスタイルを適用
-						if (j === 6) {
-							cell.classList.add('sunday');
-						} else if (j === 5) {
-							cell.classList.add('saturday');
-						}
-
-						// イベントがある場合、イベントをセルに追加
-						if (events[dateStr]) {
-							events[dateStr].forEach(event => {
-								let eventDiv = document.createElement('div');
-								eventDiv.classList.add('event');
-								eventDiv.textContent = event;
-								cell.appendChild(eventDiv);
-							});
-						}
-
-						// 日付の選択肢を追加
-						let option = document.createElement('option');
-						option.value = dateStr;
-						option.textContent = `${year}/${String(month + 1).padStart(2, '0')}/${String(date).padStart(2, '0')}`;
-						dateSelect.appendChild(option);
-
-						date++;
-					}
-
-					row.appendChild(cell); // 行にセルを追加
+				// 今日の日付の場合、クラスを追加して強調表示
+				if (cellDate.toDateString() === today) {
+					cell.classList.add('today');
 				}
 
-				calendarBody.appendChild(row); // テーブル本体に行を追加
+				// イベントがある場合、イベントを表示
+				if (events[cellDateString]) {
+					events[cellDateString].forEach(event => {
+						const eventDiv = document.createElement('div');
+						eventDiv.className = 'event';
+						eventDiv.textContent = event;
+						cell.appendChild(eventDiv);
+					});
+				}
 
-				// 日付がその月の最後の日付を超えたらループを終了
-				if (date > lastDate) {
-					break;
+				row.appendChild(cell);
+
+				if ((startDay + day) % 7 === 0) {
+					calendarBody.appendChild(row);
+					row = document.createElement('tr');
 				}
 			}
 
-			// 時間の選択肢を追加（8:00から21:00まで）
-			for (let h = 8; h <= 20; h++) {
-				for (let m = 0; m < 60; m += 30) {
-					let option = document.createElement('option');
-					let hour = String(h).padStart(2, '0');
-					let minute = String(m).padStart(2, '0');
-					option.value = `${hour}:${minute}`;
-					option.textContent = `${hour}:${minute}`;
+			// 最後の行に空白セルを追加して、7列に調整
+			if (row.children.length > 0) {
+				while (row.children.length < 7) {
+					row.appendChild(document.createElement('td'));
+				}
+				calendarBody.appendChild(row);
+			}
+
+			// 日付の選択肢を追加
+			for (let day = 1; day <= lastDay.getDate(); day++) {
+				const option = document.createElement('option');
+				option.value = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+				option.textContent = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+				dateSelect.appendChild(option);
+			}
+
+			// 時間の選択肢を追加
+			timeSelect.innerHTML = ''; // 時間の選択肢をクリア
+			for (let hour = 8; hour <= 20; hour++) {
+				for (let minute = 0; minute < 60; minute += 30) {
+					const option = document.createElement('option');
+					option.value = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+					option.textContent = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 					timeSelect.appendChild(option);
 				}
 			}
@@ -316,23 +391,19 @@
 
 		// 月を変更する関数
 		function changeMonth(offset) {
-			currentDate.setMonth(currentDate.getMonth() + offset); // 月を移動
-			updateCalendar(); // カレンダーを更新
+			currentDate.setMonth(currentDate.getMonth() + offset);
+			updateCalendar();
 		}
 
-		// 決定ボタンがクリックされたときの処理
+		// 日時を選択する関数
 		function selectDateTime() {
-			const dateSelect = document.getElementById('date-select').value;
-			const timeSelect = document.getElementById('time-select').value;
-			if (dateSelect && timeSelect) {
-				alert(`選択された日時: ${dateSelect} ${timeSelect}`);
-			} else {
-				alert('日付と時間を選択してください。');
-			}
+			const date = document.getElementById('date-select').value;
+			const time = document.getElementById('time-select').value;
+			alert(`選択した日付と時間: ${date} ${time}`);
 		}
 
-		// ページの読み込みが完了したときにカレンダーを初期表示
-		document.addEventListener('DOMContentLoaded', updateCalendar);
+		// 初期カレンダーを表示
+		updateCalendar();
 	</script>
 
 </body>
