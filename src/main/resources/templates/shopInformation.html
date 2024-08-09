@@ -17,6 +17,11 @@
 	</div>
 
 	<div id="main">
+		
+		<div class="image">
+		<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana"></img>
+		</div>
+		
 		<h1 class="shopName"><span>「Hanaのお弁当」</span></h1>
 
 		<p class="item"><span>01</span>住所</p>
@@ -28,6 +33,7 @@
 			width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
 			referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
+<!--		{"text":"benpura","cur":{"from":7,"to":7}}-->
 		
 		<p class="item"><span>02</span>営業時間</p>
 		<p class="shopHour">11:00~18:00</p>
@@ -36,7 +42,8 @@
 		<p class="holiday">土曜・日曜・祝日</p>
 
 		<p class="item"><span>04</span>連絡先</p>
-		<p class="shopTel">671828288</p>
+<!--		<a class="shopTel" href="tel:/012011222">671828288</a>-->
+		<p class="shopTel" >671828288</p>
 	</div>
 
 	<div class="scroll">

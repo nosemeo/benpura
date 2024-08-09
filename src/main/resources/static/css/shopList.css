@@ -5,6 +5,11 @@ body {
 	/* ページ全体の背景色 */
 	height: 100%;
 	margin: 0;
+	
+	background-image: url('../image/背景のたまごちゃん.png');
+    background-size: cover; /* 画像を画面全体に表示 */
+    background-position: center; /* 画像を中央に配置 */
+    background-repeat: no-repeat; /* 画像を繰り返し表示しない */
 
 }
 
@@ -72,6 +77,11 @@ h2:first-letter {
 
 #content1,
 #content2 {
+	/* 写真を枠内に入れる処理 */
+	display: flex;
+	align-items: center;
+	padding: 20px;
+
 	/* コンテンツの背景色 */
 	background-color: rgb(255, 128, 0);
 
@@ -124,9 +134,27 @@ h2:first-letter {
 	}
 }
 
+img {
+	/* 写真の幅を30%に設定 */
+	width: 30%;
+	margin-left: 3%;
+	margin-right: 3%;
+	/* 写真とテキストの間に余白を設定 */
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	/* テキスト列の間隔を均等に配置 */
+	/*	justify-content: space-between;*/
+	width: 100%;
+	/* テキストの幅を70%に設定 */
+}
+
 .shopName {
 	font-size: 40px;
-	margin-left: 50%;
+	margin-left: 10%;
+	margin-top: 10%;
 	font-family: sans-serif;
 
 	/* 文字に影を入れ斜めにする */
@@ -143,13 +171,14 @@ h2:first-letter {
 
 .shopAddress {
 	font-size: 25px;
-	margin-left: 60%;
+	margin-left: 25%;
 }
 
 a {
 	font-size: 25px;
-	margin-left: 75%;
+	margin-left: 60%;
 	/*	transform: scale(0,1);*/
+	display: inline-block;
 }
 
 /* アニメーション */
@@ -158,6 +187,7 @@ a {
 	padding-bottom: 5px;
 	position: relative;
 	/*	::afterにabsoluteをかけるので設定*/
+	display: inline-block;
 }
 
 .button:after {
@@ -175,7 +205,8 @@ a {
 	/*	 線の位置 */
 	left: 0;
 	/*	 線の位置 */
-	transform: scale(0, 1);
+	/*	transform: scale(0, 1);*/
+	transform: scaleX(0);
 	/*	 線のx軸の長さを0 */
 	transition: .5s;
 	/*	 要素の変形する時間*/
@@ -186,7 +217,7 @@ a {
 /* 追記 */
 .button:hover:after {
 	transform: scale(1, 1);
-	/*	 線のx軸の長さを1 */
+	/* 線がテキストの幅に合わせて伸びる */
 }
 
 /* Scrollの表示 */

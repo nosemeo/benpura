@@ -129,6 +129,15 @@ h2::after {
 	/*	 darken(#eb6100, 6%)に相当 */
 }
 
+.image {
+	/* 写真の幅を30%に設定 */
+	width: 30%;
+	margin-top: 5%;
+	margin-left: 20%;
+	text-align: center;
+
+}
+
 /* 項目 */
 .item {
 	color: rgb(255, 255, 255);
