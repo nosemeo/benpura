@@ -9,14 +9,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CalenderEntity {
+//
+//  entityパッケージ
+//  Calenderクラスの生成
+//
+public class Calender {
 	
 	@Id
+	private Integer orderID;	
 	private String orderDateTime;
 //　Date型にするとたくさんエラーがでる
 //	今はとりあえずStringで定義
 	private String shopName;
-	private String name;
+	private String item;
 	private Integer totalValue;
 	
 	
