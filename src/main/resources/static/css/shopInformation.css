@@ -226,11 +226,14 @@ h2::after {
 	font-size: 30px;
 }
 
+
 .map {
 	margin-top: -55%;
-	width: 100%;
+	width: 90%;
 	position: relative;
 	padding-top: 56.25%;
+	border: 2px solid #000;
+	/* マップの枠線を設定 */
 }
 
 .map iframe {
