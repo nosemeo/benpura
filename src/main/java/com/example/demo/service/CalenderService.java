@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
-public class CalenderService {
-
+public interface CalenderService {
+	
+	
+	
 }
