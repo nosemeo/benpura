@@ -5,6 +5,11 @@ body {
 	/* ページ全体の背景色 */
 	height: 100%;
 	margin: 0;
+	
+	background-image: url('../image/背景のたまごちゃん.png');
+    background-size: cover; /* 画像を画面全体に表示 */
+    background-position: center; /* 画像を中央に配置 */
+    background-repeat: no-repeat; /* 画像を繰り返し表示しない */
 }
 
 #headline {
