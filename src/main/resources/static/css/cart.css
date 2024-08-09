@@ -1,18 +1,36 @@
 @charset "UTF-8";
+
 body {
-	background: #eee;
+	background: #a8ffa8	;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
 }
 
+.content-title {
+	text-align: center;
+	font-size: 3rem;
+	font-family: "RocknRoll One", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color:black;
+	
+}
+.content-title span{
+	background-color: #990000;
+	
+	color: white;
+	}
+	
+
 .clearfix {
-  content: "";
-  display: table;
-  clear: both;	
+	content: "";
+	display: table;
+	clear: both;
 }
 
-#site-header, #site-footer {
+#site-header,
+#site-footer {
 	background: #fff;
 }
 
@@ -31,16 +49,18 @@ body {
 a {
 	color: #000;
 	text-decoration: none;
-
+	
 	-webkit-transition: color .2s linear;
 	-moz-transition: color .2s linear;
 	-ms-transition: color .2s linear;
 	-o-transition: color .2s linear;
 	transition: color .2s linear;
+	
 }
 
 a:hover {
 	color: #53b5aa;
+
 }
 
 #site-header h1 span {
@@ -60,7 +80,8 @@ a:hover {
 	transition: all .2s linear;
 }
 
-#site-header h1:hover span.last-span, #site-header h1 span.is-open {
+#site-header h1:hover span.last-span,
+#site-header h1 span.is-open {
 	left: 363px;
 }
 
@@ -123,7 +144,8 @@ a:hover {
 	height: 100%;
 }
 
-.product header, .product .content {
+.product header,
+.product .content {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-style: none none solid none;
@@ -150,14 +172,16 @@ a:hover {
 
 .product header h3 {
 	background: #53b5aa;
+	text-align: center;
 	color: #fff;
-	font-size: 22px;
+	font-size: 3rem;
 	font-weight: 300;
-	line-height: 49px;
+	font-family: "RocknRoll One", sans-serif;
+	line-height: 4rem;
 	margin: 0;
 	padding: 0 30px;
 	position: absolute;
-	bottom: -50px;
+	bottom: -4rem;
 	right: 0;
 	left: 0;
 
@@ -221,44 +245,24 @@ a:hover {
 	transition: margin .15s linear;
 }
 
-.qt, .qt-plus, .qt-minus {
+.qt{
 	display: block;
 	float: left;
 }
 
 .qt {
-	font-size: 19px;
+	font-size: 2.5rem;
 	line-height: 50px;
 	width: 70px;
 	text-align: center;
 }
 
-.qt-plus, .qt-minus {
-	background: #fcfcfc;
-	border: none;
-	font-size: 30px;
-	font-weight: 300;
-	height: 100%;
-	padding: 0 20px;
-	-webkit-transition: background .2s linear;
-	-moz-transition: background .2s linear;
-	-ms-transition: background .2s linear;
-	-o-transition: background .2s linear;
-	transition: background .2s linear;
-}
 
-.qt-plus:hover, .qt-minus:hover {
+
+.qt {
 	background: #53b5aa;
 	color: #fff;
 	cursor: pointer;
-}
-
-.qt-plus {
-	line-height: 50px;
-}
-
-.qt-minus {
-	line-height: 47px;
 }
 
 #site-footer {
@@ -332,29 +336,6 @@ a:hover {
 	left: 100%;
 }
 
-.type, .color {
-	border: 1px solid #ccc;
-	border-style: none none solid none;
-	position: absolute;
-}
-
-.color {
-	width: 40px;
-	height: 40px;
-	right: -40px;
-}
-
-.red {
-	background: #cb5a5e;
-}
-
-.yellow {
-	background: #f1c40f;
-}
-
-.blue {
-	background: #3598dc;
-}
 
 .minused {
 	margin: 0 50px 0 0 !important;
