@@ -125,7 +125,7 @@ h2:first-letter {
 }
 
 .shopName {
-	font-size: 30px;
+	font-size: 40px;
 	margin-left: 50%;
 	font-family: sans-serif;
 
@@ -142,12 +142,12 @@ h2:first-letter {
 }
 
 .shopAddress {
-	font-size: 18px;
+	font-size: 25px;
 	margin-left: 60%;
 }
 
 a {
-	font-size: 18px;
+	font-size: 25px;
 	margin-left: 75%;
 	/*	transform: scale(0,1);*/
 }

@@ -33,6 +33,7 @@ h2 {
 	background: #fff;
 	margin-left: 35%;
 	margin-right: 35%;
+	font-size: 35px;
 	/* 店舗情報の表記をまとめて中央へ */
 	text-align: center;
 	/* 文字間を広げる */
@@ -83,17 +84,29 @@ h2 span i {
 
 #main {
 	margin-top: 3%;
-	/*	padding: 1.5rem 2rem;*/
-	padding: 5.5rem 10rem;
+	padding: 1.5rem 2rem;
 	position: relative;
 	margin-left: 20%;
 	margin-right: 20%;
+
+	margin-bottom: 10%;
 
 	color: #fff;
 	background: linear-gradient(-45deg, #cc5500 25%, #eb6100 0, #eb6100 50%, #cc5500 0, #cc5500 75%, #eb6100 0);
 	background-size: 20px 20px;
 }
 
+#main:before {
+	position: absolute;
+	top: -7px;
+	left: -7px;
+	width: 100%;
+	height: 100%;
+	content: '';
+	border: 4px solid #000;
+}
+
+/* 店舗情報のタイトルデザイン(枠線) */
 h2::before,
 h2::after {
 	position: absolute;
@@ -106,24 +119,191 @@ h2::before {
 	top: 4px;
 	left: 0;
 	background: #b34d00;
-	/* darken(#eb6100, 6%)に相当 */
+	/*	 darken(#eb6100, 6%)に相当 */
 }
 
 h2::after {
 	bottom: 4px;
 	left: 0;
 	background: #b34d00;
-	/* darken(#eb6100, 6%)に相当 */
+	/*	 darken(#eb6100, 6%)に相当 */
 }
 
-.shopName{
+/* 項目 */
+.item {
 	color: rgb(255, 255, 255);
+	margin-left: 15%;
+	font-size: 30px;
+
+	position: relative;
+	overflow: hidden;
+	padding: 1rem 1rem 1rem 15%;
+	border: 3px solid #000;
+	width: 15%;
+	/* 幅を指定して枠を短くする */
+}
+
+.item:before {
+	position: absolute;
+	top: -150%;
+	left: -100px;
+	width: 200px;
+	height: 300%;
+	content: '';
+	-webkit-transform: rotate(25deg);
+	transform: rotate(25deg);
+	background: #000;
+}
+
+.item span {
+	font-size: 40px;
+	font-size: 3rem;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	display: block;
+	padding-top: 5px;
+	padding-left: 14px;
+	color: #fff;
+}
+
+/* shopNameの枠 */
+.shopName {
+	padding: 3.5rem 1rem;
+	position: relative;
 	text-align: center;
+	border: 3px solid #000;
 	font-size: 50px;
 }
+
+.shopName:before,
+.shopName:after {
+	position: absolute;
+	content: '';
+}
+
+.shopName:before {
+	top: 4px;
+	left: 4px;
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
+	background: rgb(128, 64, 64);
+}
+
+.shopName span {
+	position: relative;
+	display: block;
+	padding: 1rem;
+	letter-spacing: .05em;
+	color: rgb(255, 128, 0);
+	text-shadow: #000 2px 0, #000 -2px 0, #000 0 -2px, #000 0 2px, #000 2px 2px, #000 -2px 2px, #000 2px -2px, #000 -2px -2px, #000 1px 2px, #000 -1px 2px, #000 1px -2px, #000 -1px -2px, #000 2px 1px, #000 -2px 1px, #000 2px -1px, #000 -2px -1px, 4px 4px 0 #000, 0 4px 0 #000;
+}
+
+.shopName span:before,
+.shopName span:after {
+	position: absolute;
+	left: 10px;
+	width: calc(100% - 30px);
+	/* 元々20px */
+	height: 2px;
+	content: '';
+	background: #000;
+}
+
+.shopName span:before {
+	top: 8px;
+}
+
+.shopName span:after {
+	bottom: 8px;
+}
+
 
 .shopAddress {
 	color: rgb(255, 255, 255);
 	text-align: center;
 	font-size: 30px;
+}
+
+.map {
+	margin-top: -55%;
+	width: 100%;
+	position: relative;
+	padding-top: 56.25%;
+}
+
+.map iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.shopHour {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 30px;
+}
+
+.holiday {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 30px;
+}
+
+.shopTel {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 30px;
+}
+
+/* Scrollの表示 */
+.scroll {
+	display: inline-block;
+	padding-top: 70px;
+	position: relative;
+
+	font-size: 18px;
+	margin-left: 90%;
+	margin-top: 0.5%;
+	margin-bottom: 5%;
+
+}
+
+.scroll::before {
+	animation: scroll 3.5s infinite;
+	border: solid #000;
+	border-width: 0 0 1px 1px;
+	content: "";
+	display: inline-block;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	transform: rotate(-45deg);
+	width: 20px;
+	height: 20px;
+}
+
+@keyframes scroll {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+	}
+
+	80% {
+		transform: rotate(-45deg) translate(-30px, 30px);
+	}
+
+	0%,
+	80%,
+	100% {
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 1;
+	}
 }
