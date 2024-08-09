@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Calender {
 	
 	@Id
-	private Integer orderID;	
+	private Integer orderId;	
 	private String orderDateTime;
 //　Date型にするとたくさんエラーがでる
 //	今はとりあえずStringで定義
