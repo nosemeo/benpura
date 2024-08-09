@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
-public class CalenderRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CalenderRepository extends CrudRepository<Calender,Integer> {
 
 }
