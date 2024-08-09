@@ -1,0 +1,145 @@
+/* ページ全体の中央寄せ設定 */
+.calendar-container {
+    text-align: center;
+}
+
+/* カレンダーの全体のスタイル設定 */
+table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+/* セルのスタイル設定 */
+th {
+    background-color: #f2f2f2;
+    height: 50px;
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    width: 14.28%;
+}
+
+td {
+    height: 100px;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+    vertical-align: top;
+    width: 14.28%;
+    position: relative;
+}
+
+/* 今日の日付を目立たせるスタイル */
+.today {
+    background-color: #ffeb3b;
+    font-weight: bold;
+    color: #d32f2f;
+    position: relative;
+}
+
+.today::after {
+    content: "今日";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    font-size: 15px;
+    color: #d32f2f;
+}
+
+/* 日曜日のテキスト色を赤に設定 */
+.sunday {
+    color: red;
+}
+
+/* 土曜日のテキスト色を青に設定 */
+.saturday {
+    color: blue;
+}
+
+/* ナビゲーションボタンのスタイル設定 */
+.navigation {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.navigation button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* イベント表示部分のスタイル設定 */
+.event {
+    background-color: #90ee90;
+    margin-top: 5px;
+    padding: 2px;
+    font-size: 12px;
+    width: 80%;
+    margin: 5px auto;
+    text-align: center;
+}
+
+/* タイトルを中央寄せ */
+h1 {
+    text-align: center;
+}
+
+/* 日時選択部分のスタイル設定 */
+.datetime-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.datetime-container label {
+    margin-right: 10px;
+}
+
+.datetime-container select {
+    padding: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.datetime-container button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* 注文履歴部分のスタイル設定 */
+.order-history-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.order-history {
+    width: 80%;
+    margin: 0 auto;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.order-history table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.order-history th, .order-history td {
+    height: 50px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 注文履歴のヘッダーを固定 */
+.order-history thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+}
