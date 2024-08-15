@@ -6,6 +6,4 @@ import com.example.demo.entity.Calender;
 
 public interface CalenderRepository extends CrudRepository<Calender,Integer> {
 	
-	
-	
 }
