@@ -30,8 +30,6 @@
 
 <body>
 
-	<a th:href="@{/nextpageLogin}">登録画面へ飛ぶ</a>&nbsp;
-	
 	<!-- カレンダー全体を囲むコンテナ -->
 	<div class="calendar-container">
 
@@ -40,6 +38,11 @@
 
 		<!-- ナビゲーションボタン（先月・来月に切り替え） -->
 		<div class="navigation">
+
+			<form method="get" action="/nextpagelogin">
+				<button type="submit" >登録画面へ</button>
+			</form>
+
 			<button onclick="changeMonth(-1)">先月</button>
 			<span id="month-year"></span>
 			<button onclick="changeMonth(1)">来月</button>
