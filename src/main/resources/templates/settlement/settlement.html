@@ -1,63 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注文確認</title>
-	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/settlement.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>注文確認</title>
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/settlement.css}">
+	<script th:src="@{/js/settlement.js}"></script>
 </head>
+
 <body>
-    <h1 class="title">注文確認</h1>
-    <div class="product">
-        <img class="image" src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="商品名">
-        <div class="details">
-            <h2>商品名</h2>
-            <p>受け取り日時: 2024年8月10日 14:00</p>
-            <!-- 個数選択機能 -->
-            <div class="quantity">
-                <label for="quantity">個数:</label>
-                <button onclick="decreaseQuantity()">-</button>
-                <input type="number" id="quantity" value="1" min="1" onchange="updateTotal()">
-                <button onclick="increaseQuantity()">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="total">
-        合計: <span id="totalPrice">¥10,000</span>
-    </div>
-    <button>カートに追加</button>
+	<h1 class="title">注文確認</h1>
+	<div class="product">
+		<img class="image" src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="商品名">
+		<div class="details">
+			<h2>商品名</h2>
+			<p>受け取り日時: 2024年8月10日 14:00</p>
+			<!-- 個数選択機能 -->
+			<div class="quantity">
+				<label for="quantity">個数:</label>
+				<button onclick="decreaseQuantity()">-</button>
+				<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()">
+				<button onclick="increaseQuantity()">+</button>
+			</div>
+		</div>
+	</div>
+	<div class="total">
+		合計: <span id="totalPrice">¥10,000</span>
+	</div>
+	<button>カートに追加</button>
 
-    <script>
-        // 商品の単価（例：10,000円）
-        const unitPrice = 10000;
 
-        // 数量を増やす関数
-        function increaseQuantity() {
-            const quantityInput = document.getElementById('quantity');
-            quantityInput.value = parseInt(quantityInput.value) + 1;
-            updateTotal();
-        }
-
-        // 数量を減らす関数
-        function decreaseQuantity() {
-            const quantityInput = document.getElementById('quantity');
-            if (parseInt(quantityInput.value) > 1) {
-                quantityInput.value = parseInt(quantityInput.value) - 1;
-                updateTotal();
-            }
-        }
-
-        // 合計金額を更新する関数
-        function updateTotal() {
-            const quantity = parseInt(document.getElementById('quantity').value);
-            const total = quantity * unitPrice;
-            document.getElementById('totalPrice').textContent = `¥${total.toLocaleString()}`;
-        }
-
-        // ページ読み込み時に合計を初期化
-        window.onload = updateTotal;
-    </script>
 </body>
+
 </html>
