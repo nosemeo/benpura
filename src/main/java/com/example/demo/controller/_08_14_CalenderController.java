@@ -11,7 +11,7 @@ package com.example.demo.controller;
 //
 //@Controller
 ////@RequestMapping() なくても動くのでコメントアウト
-public class _08_14_CalenderController {
+//public class _08_14_CalenderController {
 //	
 //	@Autowired
 //	CalenderService service;
@@ -35,7 +35,7 @@ public class _08_14_CalenderController {
 //	}
 //	
 //	
-}
+//}
 ////  ★未解決★  エクセルに記載して質問
 ////  簡単①  DBにユーザーネームを追加 ※これは簡単
 ////  難しい⓪  注文日時の引継ぎに曜日と時間型に変換が必要
