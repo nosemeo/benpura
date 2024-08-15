@@ -34,6 +34,11 @@ public class CalenderController {
 		return "nextpage";
 	}
 	
+	@GetMapping("/nextpageLogin") //次のサイトが完成したらこちらに記載
+	public String showNextPageLogin() {
+		// nextpageLogin.htmlを表示
+		return "nextpageLogin";
+	}
 	
 }
 //  ★未解決★  エクセルに記載して質問

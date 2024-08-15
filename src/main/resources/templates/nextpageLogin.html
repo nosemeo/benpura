@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>仮のページ / 表示確認用</title>
+</head>
+
+<body>
+	<h1>仮のログイン画面です。</h1>
+	<!-- ログインフォーム -->
+	<!-- th:actionはSecurityConfigのloginProcessingUrlで指定したURL -->
+	<form th:action="/calender" method="post">
+		<table>
+			<tr>
+				<th>ID</th>
+				<td><input type="text" name="username" /></td>
+			</tr>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" name="password" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="登録/別ページへ" />
+	</form>
+
+</body>
+
+</html>
