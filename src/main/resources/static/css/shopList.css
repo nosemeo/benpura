@@ -5,11 +5,14 @@ body {
 	/* ページ全体の背景色 */
 	height: 100%;
 	margin: 0;
-	
+
 	background-image: url('../image/背景のたまごちゃん.png');
-    background-size: cover; /* 画像を画面全体に表示 */
-    background-position: center; /* 画像を中央に配置 */
-    background-repeat: no-repeat; /* 画像を繰り返し表示しない */
+	background-size: cover;
+	/* 画像を画面全体に表示 */
+	background-position: center;
+	/* 画像を中央に配置 */
+	background-repeat: no-repeat;
+	/* 画像を繰り返し表示しない */
 
 }
 
@@ -38,6 +41,8 @@ body {
 	text-align: center;
 	/* 文字間を広げる */
 	letter-spacing: 0.5em;
+	
+	font-size: 20px;
 }
 
 h2 {
@@ -154,7 +159,7 @@ img {
 .shopName {
 	font-size: 40px;
 	margin-left: 10%;
-	margin-top: 10%;
+	margin-top: 8%;
 	font-family: sans-serif;
 
 	/* 文字に影を入れ斜めにする */
@@ -172,53 +177,81 @@ img {
 .shopAddress {
 	font-size: 25px;
 	margin-left: 25%;
+	margin-top: 1%;
 }
 
-a {
+a{
 	font-size: 25px;
 	margin-left: 60%;
-	/*	transform: scale(0,1);*/
+/*	transform: scale(0, 1);*/
 	display: inline-block;
-}
 
-/* アニメーション */
-.button {
-	color: blue;
-	padding-bottom: 5px;
 	position: relative;
-	/*	::afterにabsoluteをかけるので設定*/
-	display: inline-block;
+	padding-bottom: -10%;
+	text-decoration: none;
+	transition: color .3s;
+}
+/* アニメーション */
+.btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  /* 線の長さはここで調整する */
+  width: 80%;
+  height: 3px;
+  background-color: #4c7aaf;
+  transition: transform .3s;
+}
+@media (hover) {
+  .btn:hover {
+    color: #4c7aaf;
+  }
+  .btn:hover::after {
+    transform: scaleX(1); /* 0→1でX軸方向に100%変形 */
+    transform-origin: bottom left;
+  }
 }
 
-.button:after {
-	content: '';
-	/*	 コンテンツを追加 */
-	width: 100%;
-	/*	 線の幅 */
-	height: 1px;
-	/*	 線の高さ */
-	background-color: blue;
-	/*	 線の色 */
-	position: absolute;
-	/*	 position: relative;からの線の絶対位置 */
-	bottom: 0;
-	/*	 線の位置 */
-	left: 0;
-	/*	 線の位置 */
-	/*	transform: scale(0, 1);*/
-	transform: scaleX(0);
-	/*	 線のx軸の長さを0 */
-	transition: .5s;
-	/*	 要素の変形する時間*/
-	transform-origin: left top;
-	/*	 要素の座標の原点を設定*/
-}
+/*.btn {*/
+/*	color: blue;*/
+/*	padding-bottom: 5px;*/
+/*	position: relative;*/
+/*			::afterにabsoluteをかけるので設定*/
+/*		display: inline-block;*/
+/*}*/
+
+/*.button:after {*/
+/*	content: '';*/
+/*		 コンテンツを追加 */
+/*	width: 100%;*/
+/*		 線の幅 */
+/*	height: 1px;*/
+/*		 線の高さ */
+/*	background-color: blue;*/
+/*		 線の色 */
+/*	position: absolute;*/
+/*		 position: relative;からの線の絶対位置 */
+/*	bottom: 0;*/
+/*		 線の位置 */
+/*	left: 0;*/
+/*		 線の位置 */
+/*		transform: scale(0, 1);*/
+/*	transform: scaleX(0);*/
+/*		 線のx軸の長さを0 */
+/*	transition: .5s;*/
+/*		 要素の変形する時間*/
+/*	transform-origin: left top;*/
+/*		 要素の座標の原点を設定*/
+/*}*/
 
 /* 追記 */
-.button:hover:after {
-	transform: scale(1, 1);
-	/* 線がテキストの幅に合わせて伸びる */
-}
+/*.button:hover:after {*/
+/*	transform: scale(1, 1);*/
+/*	 線がテキストの幅に合わせて伸びる */
+/*}*/
 
 /* Scrollの表示 */
 .scroll {
@@ -228,6 +261,8 @@ a {
 
 	font-size: 18px;
 	margin-left: 90%;
+	margin-top: -5%;
+	margin-bottom: -5%;
 }
 
 .scroll::before {
@@ -265,4 +300,3 @@ a {
 		opacity: 1;
 	}
 }
-

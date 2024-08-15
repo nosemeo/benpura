@@ -11,37 +11,36 @@
 	<div id="headline">
 		<p class="title">ここにロゴとマイページを挿入</p>
 	</div>
-
+	
 	<div class="subtitle">
 		<!--		<h2 style="text-align:center;">-->
-		<h2>店舗一覧</h2>
+		<h2><span th:text="${holidays}">曜日営業の店舗一覧</span></h2>
 	</div>
 
-	<div id="content1">
+	<div id="content1" th:each="shop : ${shopLists}">
 		<br>
 		<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana"></img>
 		<div class="text">
-			<h1 class="shopName">「Hanaのお弁当」</h1>
-			<p class="shopAddress">大阪市中央区松屋町5-2</p>
-			<a class="button" href="/shopInformation">店舗情報を見る</a>
-	</div>
+			<h1 class="shopName" th:text="${shop.shopName}"></h1>
+			<p class="shopAddress" th:text="${shop.shopAddress}"></p>
+			<a class="btn" href="/shopInformation">店舗情報を見る</a>
+		</div>
 	</div>
 
-	<div id="content2">
+	<div id="content2" th:each="shop2 : ${shopLists2}">
 		<br>
-		<!--		<img th:src="'data:image/jpg:base64,'+${list[1]}" alt="おいしいごはん"></img>-->
+		<!--<img th:src="'data:image/jpg:base64,'+${list[1]}" alt="おいしいごはん"></img>-->
 		<div class="text">
-			<h1 class="shopName">「おいしいごはん」</h1>
-			<p class="shopAddress">大阪市中央区難波3-1-28</p>
+			<h1 class="shopName" th:text="${shop2.shopName}"></h1>
+			<p class="shopAddress" th:text="${shop2.shopAddress}"></p>
+			<a class="btn" href="/shopInformation">店舗情報を見る</a>
+		</div>
+	</div>
 
-			<a class="button" href="/shopInformation">店舗情報を見る</a>
-		</div>
-		</div>
-		
 
-		<div class="scroll">
-			<span class="txt">Scroll</span>
-		</div>
+	<div class="scroll">
+		<span class="txt">Scroll</span>
+	</div>
 
 </body>
 
