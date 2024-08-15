@@ -1,4 +1,4 @@
-//package com.example.demo.controller;
+package com.example.demo.controller;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@
 //
 //@Controller
 ////@RequestMapping() なくても動くのでコメントアウト
-//public class CalenderController_08_14 {
+public class _08_14_CalenderController {
 //	
 //	@Autowired
 //	CalenderService service;
@@ -35,7 +35,7 @@
 //	}
 //	
 //	
-//}
+}
 ////  ★未解決★  エクセルに記載して質問
 ////  簡単①  DBにユーザーネームを追加 ※これは簡単
 ////  難しい⓪  注文日時の引継ぎに曜日と時間型に変換が必要
