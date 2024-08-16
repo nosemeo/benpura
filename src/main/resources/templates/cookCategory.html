@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>カテゴリ</title>
+	<link rel="stylesheet" th:href="@{cookCategory.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+		<h1> BANPURA MENU 弁ぷら</h1>
+		<div class="menu-items">
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${osusume}" alt="オススメ">
+				<div class="text-wrapper">
+					<p class="item-name">オススメ</p>
+				</div>
+				<div class="size-wrapper">
+					<span class="item-size">Sサイズ </span><span class="item-price"
+						th:text="${osusumeSPrice} + '円'"></span>
+					<br />
+					<span class="item-size">Mサイズ </span><span class="item-price"
+						th:text="${osusumeMPrice} + '円'"></span>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${higawari}" alt="日替わり">
+				<div class="text-wrapper">
+					<p class="item-name">日替わり</p>
+				</div>
+				<div class="size-wrapper">
+					<span class="item-size">Sサイズ </span><span class="item-price"
+						th:text="${higawariSPrice} + '円'"></span>
+					<br />
+					<span class="item-size">Mサイズ </span><span class="item-price"
+						th:text="${higawariMPrice} + '円'"></span>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${omakase}" alt="おまかせ">
+				<div class="text-wrapper">
+					<div class="item-name">おまかせ</div>
+				</div>
+				<div class="size-wrapper">
+					<span class="item-size">Sサイズ </span><span class="item-price"
+						th:text="${omakaseSPrice} + '円'"></span>
+					<br />
+					<span class="item-size">Mサイズ </span><span class="item-price"
+						th:text="${omakaseMPrice} + '円'"></span>
+				</div>
+			</div>
+
+
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${nikubentou}" alt="肉弁当">
+				<div class="text-wrapper">
+					<div class="item-name">
+						<a href="/cookCategory/niku">肉弁当</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${sakanabentou}" alt="魚弁当">
+				<div class="text-wrapper">
+					<div class="item-name">
+						<a href="/cookCategory/sakana">魚弁当</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${donburi}" alt="丼ぶり">
+				<div class="text-wrapper">
+					<div class="item-name">
+						<a href="/cookCategory/donburi">丼ぶり</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

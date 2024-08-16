@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>魚弁当</title>
+	<link rel="stylesheet" th:href="@{/sakana.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+			<h1>SAKANA BENTOU    魚弁当</h1>
+
+		<div class="box1">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${omakase}" alt="ザ・オマカセ弁当">
+					<div class="text-wrapper">
+						<p class="item-name">ザ・オマカセ弁当</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${omakaseSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${omakaseMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box2">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${syake}" alt="シャケデラックス弁当">
+					<div class="text-wrapper">
+						<p class="item-name">シャケデラックス弁当</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${syakeSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${syakeMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box3">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${saba}" alt="さば炭火焼デラックス弁当">
+					<div class="text-wrapper">
+						<p class="item-name">さば炭火焼デラックス弁当</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${sabaSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${sabaMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box4">
+			<h1><a href="/cookCategory">カテゴリへ戻る</a></h1>
+		</div>
+</body>

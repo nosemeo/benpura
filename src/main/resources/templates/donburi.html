@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>丼ぶり</title>
+	<link rel="stylesheet" th:href="@{/donburi.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+			<h1>DONBURI    丼ぶり</h1>
+
+		<div class="box1">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${katsudon}" alt="かつ丼">
+					<div class="text-wrapper">
+						<p class="item-name">かつ丼</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${katsudonSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${katsudonMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box2">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${yakinikub}" alt="焼肉ビビンバ丼">
+					<div class="text-wrapper">
+						<p class="item-name">焼肉ビビンバ丼</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${yakinikubSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${yakinikubMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box3">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${oyakodon}" alt="月見親子丼">
+					<div class="text-wrapper">
+						<p class="item-name">月見親子丼</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${oyakodonSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${oyakodonMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box4">
+			<h1><a href="/cookCategory">カテゴリへ戻る</a></h1>
+		</div>
+</body>
