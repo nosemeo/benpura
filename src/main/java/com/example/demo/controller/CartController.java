@@ -1,9 +1,16 @@
 package com.example.demo.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.example.demo.entity.CookCategory;
+import com.example.demo.service.SettlementServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -12,6 +19,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class CartController {
 	private HttpSession session;
+	@Autowired
+	SettlementServiceImpl service;
 
 	@Autowired
 	public CartController(HttpSession session) {
@@ -20,9 +29,9 @@ public class CartController {
 	}
 
 	@GetMapping("/cart")
-	public String cartShow() {
-		
-		
+	public String cartShow(Model model) {
+		Optional<CookCategory> menu = service.select(1);
+		model.addAttribute("menu", menu);
 		return "settlement/cart";
 	}
 //	@GetMapping("/cart")
@@ -38,8 +47,9 @@ public class CartController {
 //		
 //		return "settlement/cart";
 //	}
-	@GetMapping("/settlement")
+	@PostMapping("/settlement")
 	public String showSettlement() {
+		
 		return "settlement/settlement";
 	}
 }

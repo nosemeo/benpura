@@ -15,7 +15,7 @@ public class CalenderController {
 	
 	@Autowired
 	CalenderService service;
-	
+
 	//htmlの呼び出し
 	@GetMapping
 	public String calenderShowList(Model model) {
@@ -34,6 +34,11 @@ public class CalenderController {
 		return "nextpage";
 	}
 	
+	@GetMapping("/nextpage2")
+	public String showNextPage2() {
+		// nextpage2.htmlを表示
+		return "nextpage2";
+	}
 	
 }
 //  ★未解決★  エクセルに記載して質問

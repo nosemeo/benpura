@@ -1,7 +1,10 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +22,8 @@ public class Calender {
 	
 	@Id
 	private Integer id;	
-	private String date;
-//　Date型にするとたくさんエラーがでる
-//	今はとりあえずStringで定義
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate date;
 	private String name;
 	private String item;
 	private Integer price;

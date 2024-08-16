@@ -29,6 +29,7 @@
 </head>
 
 <body>
+
 	<!-- カレンダー全体を囲むコンテナ -->
 	<div class="calendar-container">
 
@@ -40,6 +41,11 @@
 			<button onclick="changeMonth(-1)">先月</button>
 			<span id="month-year"></span>
 			<button onclick="changeMonth(1)">来月</button>
+
+			<form method="get" action="/nextpage2">
+				<button type="submit">登録画面へ</button>
+			</form>
+
 		</div>
 
 		<!-- 注文履歴の読み込み -->
@@ -104,18 +110,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>2024/8/8 12:00</td>
-						<td>Hanaのお弁当</td>
-						<td>かつ丼</td>
-						<td>1200円</td>
-					</tr>
-					<tr>
-						<td>2024/8/10 13:00</td>
-						<td>おいしいごはん</td>
-						<td>焼肉弁当</td>
-						<td>1000円</td>
-					</tr>
 					<tr th:each="obj : ${list}" align="center">
 						<td th:text="${obj.date}"></td>
 						<td th:text="${obj.name}"></td>
