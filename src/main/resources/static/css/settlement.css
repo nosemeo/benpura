@@ -1,0 +1,65 @@
+@charset "UTF-8";
+        /* 全体のスタイル設定 */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title{
+			text-align: center;
+			font-family: "RocknRoll One", sans-serif;
+			font-size: 3rem;
+		}
+		.image{
+			height: 30%;
+			width:auto;
+		}
+        /* 商品情報のコンテナスタイル */
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        /* 商品画像のスタイル */
+        .product img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        /* 商品詳細情報のスタイル */
+        .details {
+            flex-grow: 1;
+        }
+        
+        /* 合計金額のスタイル */
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        /* カートに追加ボタンのスタイル */
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        /* 個数選択用のスタイル */
+        .quantity {
+            margin-top: 10px;
+        }
+        .quantity input {
+            width: 40px;
+            text-align: center;
+        }
