@@ -141,9 +141,10 @@ h2:first-letter {
 
 img {
 	/* 写真の幅を30%に設定 */
-	width: 30%;
+	width: 80%;
 	margin-left: 3%;
 	margin-right: 3%;
+	margin-top: 3%;
 	/* 写真とテキストの間に余白を設定 */
 }
 
@@ -180,7 +181,8 @@ img {
 	margin-top: 1%;
 }
 
-a{
+.btn{
+	text-align: center;
 	font-size: 25px;
 	margin-left: 60%;
 /*	transform: scale(0, 1);*/
@@ -200,7 +202,7 @@ a{
   transform: scaleX(0);
   transform-origin: bottom right;
   /* 線の長さはここで調整する */
-  width: 80%;
+  width: 85%;
   height: 3px;
   background-color: #4c7aaf;
   transition: transform .3s;
