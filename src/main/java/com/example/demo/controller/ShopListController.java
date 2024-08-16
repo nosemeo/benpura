@@ -128,6 +128,7 @@ public class ShopListController {
 		model.addAttribute("shopLists2", list8);
 
 		return "shopInformation";
+//		return "redirect:/cookCategory";
 	}
 
 }
