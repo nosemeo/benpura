@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dto.CartDto;
 import com.example.demo.service.SettlementServiceImpl;
@@ -31,12 +33,7 @@ public class CartController {
 		this.session = session;
 	}
 
-//	@GetMapping("/cart")
-//	public String cartShow(Model model) {
-//		Optional<CookCategory> menu = service.select(1);
-//		model.addAttribute("menu", menu);
-//		return "settlement/cart";
-//	}
+
 	@PostMapping("/cart")
 	public String cartShow(@ModelAttribute CartDto dto,Model model) {
 		List<CartDto> dtoList = (List<CartDto>) this.session.getAttribute("dtoList");
@@ -45,9 +42,16 @@ public class CartController {
 		}
 		dtoList.add(dto);
 		this.session.setAttribute("dtoList", dtoList);
+		int i = 0;
+		List<Integer> backLog = new ArrayList<>();
+		while(i <  backLog.size()) {
+			i++;
+			backLog.add(i);
+		}
+			
 		
 		model.addAttribute("dtoList",dtoList);
-		
+		model.addAttribute("bn", backLog);
 		return "settlement/cart2";
 	}
 	@GetMapping("/settlement")
@@ -66,6 +70,15 @@ public class CartController {
 		model.addAttribute("dto1",dto);
 		return "settlement/settlement";
 	}
+	 @PostMapping("/delete")
+	    public ModelAndView deleteItem(@RequestParam ) {
+	        List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
+	        
+
+	        ModelAndView modelAndView = new ModelAndView("deleteSuccess");
+	        return modelAndView;
+	    }
+	
 //	@GetMapping("/reservations")
 //    public String getReservations(Model model) {
 //        Map<LocalDate, String> reservations = new HashMap<>();
