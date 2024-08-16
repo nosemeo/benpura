@@ -1,17 +1,17 @@
-// 商品の単価（例：10,000円）
-const unitPrice = 10000;
+// 初期価格を設定します（例: 10000円）
+let unitPrice = parseFloat(initialPrice);
 
 // 数量を増やす関数
 function increaseQuantity() {
-	const quantityInput = document.getElementById('quantity');
+	let quantityInput = document.getElementById('quantity');
 	quantityInput.value = parseInt(quantityInput.value) + 1;
 	updateTotal();
 }
 
 // 数量を減らす関数
 function decreaseQuantity() {
-	const quantityInput = document.getElementById('quantity');
-	if (parseInt(quantityInput.value) > 1) {
+	let quantityInput = document.getElementById('quantity');
+	if (quantityInput.value > 1) {
 		quantityInput.value = parseInt(quantityInput.value) - 1;
 		updateTotal();
 	}
@@ -19,10 +19,12 @@ function decreaseQuantity() {
 
 // 合計金額を更新する関数
 function updateTotal() {
-	const quantity = parseInt(document.getElementById('quantity').value);
-	const total = quantity * unitPrice;
-	document.getElementById('totalPrice').textContent = `¥${total.toLocaleString()}`;
+	let quantity = document.getElementById('quantity').value;
+	let totalPrice = document.getElementById('totalPrice');
+	totalPrice.textContent = '¥' + (unitPrice * quantity).toLocaleString();
 }
 
-// ページ読み込み時に合計を初期化
-window.onload = updateTotal;
+// ページ読み込み時に合計金額を初期化
+document.addEventListener('DOMContentLoaded', function() {
+	updateTotal();
+});
