@@ -13,11 +13,21 @@ body {
 
 .menu-section h1 {
 	margin: 10;
-	font-size: 45px;
+	font-size: 50px;
+	background-color: rgb(255, 255, 0);
 	color: rgb(0, 0, 0);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.item-description {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(0, 0, 0);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: center;
 }
 
 .menu-items {
@@ -59,7 +69,7 @@ body {
 .menu-section .box4 h1 {
 	margin: 0;
 	font-size: 20px;
-	background:rgb(192, 192, 192);
+	background: rgb(192, 192, 192);
 }
 
 .menu-item {
@@ -97,6 +107,7 @@ body {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 15px;
 	color: rgb(45, 45, 45);
+	margin: 10px;
 	line-height: 2;
 	font-weight: bold;
 }
@@ -105,8 +116,24 @@ body {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 15px;
 	color: rgb(255, 0, 0);
-	margin-top: 10px;
+	line-height: 2;
 	font-weight: bold;
+}
+
+
+.size-wrapper input[type="radio"] {
+	margin-right: 2px;
+	/* ラジオボタンとラベルの間に余白を追加 */
+
+}
+
+.size-wrapper label {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+	/* ラジオボタンのセット間に余白を追加 */
+	font-size: 15px;
+	line-height: 1.5;
 }
 
 .text-wrapper {
@@ -124,6 +151,8 @@ body {
 .size-wrapper {
 	width: auto;
 	padding: 5px;
+	display: flex;
+	align-items: center;
 }
 
 a {
@@ -133,4 +162,36 @@ a {
 	/* 设置链接的颜色 */
 	font-weight: bold;
 	/* 可选：设置链接文字加粗 */
+}
+
+.select-button {
+	background-color: #ff69b4;
+	/* 可愛いピンク色 */
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 10px;
+	/* 丸みを強調 */
+	cursor: pointer;
+	font-size: 15px;
+	font-family: 'Quicksand', sans-serif;
+	/* 可愛いフォント */
+	transition: background-color 0.3s, transform 0.2s;
+	/* アニメーション */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	/* 柔らかい影 */
+}
+
+.select-button:hover {
+	background-color: #ff85c2;
+	/* ホバー時の色を少し明るく */
+	transform: scale(1.05);
+	/* 少し大きくなるアニメーション */
+}
+
+.select-button:active {
+	background-color: #ff4da6;
+	/* クリック時の色を少し濃く */
+	transform: scale(0.95);
+	/* 押し込むような効果 */
 }
