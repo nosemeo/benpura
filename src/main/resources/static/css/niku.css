@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background: url('https://thumb.ac-illust.com/7e/7e8d9c0596ed2a9f4c0b2133d571f350_t.jpeg');
+}
+
+.menu-section {
+	color: aquamarine;
+}
+
+.menu-section h1 {
+	margin: 10;
+	font-size: 45px;
+	color: rgb(0, 0, 0);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu-items {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 60px;
+
+}
+
+.box1 {
+	float: left;
+	width: 33.3333%;
+}
+
+.box2 {
+	float: left;
+	width: 33.3333%;
+}
+
+.box3 {
+	float: left;
+	width: 33.3333%;
+}
+
+.box4 {
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(192, 192, 192);
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	background-color: rgb(192, 192, 192);
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+
+.menu-section .box4 h1 {
+	margin: 0;
+	font-size: 20px;
+	background:rgb(192, 192, 192);
+}
+
+.menu-item {
+	background-color: rgb(255, 255, 255);
+	border: rgb(255, 255, 255) 5px solid;
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgb(241, 248, 7);
+	width: calc(80%);
+	height: 80%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.menu-item img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.item-name {
+	font-family: 'Quicksand', sans-serif;
+	/* 可爱的字体 */
+	font-size: 20px;
+	margin: 8px;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	/* 增加粗体 */
+
+}
+
+.item-size {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(45, 45, 45);
+	line-height: 2;
+	font-weight: bold;
+}
+
+.item-price {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(255, 0, 0);
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.text-wrapper {
+	width: auto;
+	background: rgb(128, 255, 128);
+	/* 这里的 alpha 值 (0.7) 控制透明度 */
+	padding: 3px;
+	/* 可以添加一些内边距，使文字更突出 */
+	border-radius: 5px;
+	/* 可选：添加圆角以匹配样式 */
+	box-shadow: 0 0 5px rgb(255, 255, 255);
+	/* 可选：添加阴影 */
+}
+
+.size-wrapper {
+	width: auto;
+	padding: 5px;
+}
+
+a {
+	text-decoration: none;
+	/* 去掉下划线 */
+	color: rgb(45, 45, 45);
+	/* 设置链接的颜色 */
+	font-weight: bold;
+	/* 可选：设置链接文字加粗 */
+}

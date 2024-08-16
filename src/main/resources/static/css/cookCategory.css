@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	
+	margin: 0;
+	padding: 0;
+	background:url('https://www.sozailab.jp/db_img/sozai/71628/0e1d53ea1a3b4a9ecc517d6684d2f975.jpg');
+}
+
+.menu-section {
+	
+	padding: 30px;
+	color: white;
+	text-align: center;
+}
+
+.menu-section h1 {
+	margin: 0;
+	font-size: 50px;
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 172, 0);
+}
+
+.menu-items {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.menu-item {
+	background-color: rgb(255, 255, 255);
+	border: rgb(255, 255, 255) 5px solid;
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: calc(33.333% - 20px);
+	height: 80%;
+	box-sizing: border-box;
+	position: relative;
+
+}
+
+.menu-item img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.item-name {
+	font-family: 'Quicksand', sans-serif;
+	/* 可爱的字体 */
+	font-size: 25px;
+	margin: 10px;
+	color: rgb(45, 45, 45);
+	font-weight: bold;/* 增加粗体 */
+	line-height: 1.5; /* 调整行高以对齐 */
+}
+
+.item-size {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(45, 45, 45);
+	line-height: 2;
+	font-weight: bold;
+}
+
+.item-price {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(255, 0, 0);
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.text-wrapper {
+	width: auto;
+	background: rgb(255, 255, 0);
+	/* 这里的 alpha 值 (0.7) 控制透明度 */
+	padding: 3px;
+	/* 可以添加一些内边距，使文字更突出 */
+	border-radius: 5px;
+	/* 可选：添加圆角以匹配样式 */
+	
+}
+
+.size-wrapper {
+	width: auto;
+	padding: 5px;
+}
+
+a {
+	text-decoration: none;
+	/* 去掉下划线 */
+	color: rgb(45, 45, 45);
+	/* 设置链接的颜色 */
+	font-weight: bold;
+	/* 可选：设置链接文字加粗 */
+}

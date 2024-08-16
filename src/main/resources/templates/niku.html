@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>肉弁当</title>
+	<link rel="stylesheet" th:href="@{/niku.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+			<h1>NIKU BENTOU    肉弁当</h1>
+
+		<div class="box1">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${hamburger}" alt="おろしハンバーグ弁当">
+					<div class="text-wrapper">
+						<p class="item-name">おろしハンバーグ弁当</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${hamburgerSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${hamburgerMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box2">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${yakiniku}" alt="焼肉弁当">
+					<div class="text-wrapper">
+						<p class="item-name">焼肉弁当</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${yakinikuSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${yakinikuMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box3">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${chicken}" alt="ねぎ塩チキン竜田弁当">
+					<div class="text-wrapper">
+						<p class="item-name">ねぎ塩チキン竜田弁当</p>
+					</div>
+					<div class="size-wrapper">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${chickenSPrice} + '円'"></span>
+						<br />
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${chickenMPrice} + '円'"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box4">
+			<h1><a href="/cookCategory">カテゴリへ戻る</a></h1>
+		</div>
+</body>
