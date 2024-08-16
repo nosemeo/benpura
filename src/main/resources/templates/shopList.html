@@ -13,9 +13,14 @@
 	</div>
 	
 	<div class="subtitle">
-		<!--		<h2 style="text-align:center;">-->
 <!--		<h2><span th:text="${holidays}">曜日営業の店舗一覧</span></h2>-->
-		<h2 th:text="${holidays}">曜日営業の店舗一覧</h2>
+		<h2 >営業の店舗一覧</h2>
+		<ul>
+		       <li th:each="shop : ${openShops}">
+		           <a th:href="@{/shop-details(id=${shop.id})}" th:text="${shop.shopName}"></a>
+		       </li>
+		   </ul>
+
 	</div>
 
 	<div id="content1" th:each="shop : ${shopLists}">

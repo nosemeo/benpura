@@ -13,6 +13,6 @@ public interface ShopListRepository extends CrudRepository<ShopList, Integer> {
 
 //public interface ShopListRepository extends JpaRepository<ShopList, Long> {
 
-	// 店名で店舗情報を取得するメソッドを作成(曜日確認用に追記)
-    ShopList findByShopName(String shopName);
+//	// 店名で店舗情報を取得するメソッドを作成(曜日確認用に追記)
+//    ShopList findByShopName(String shopName);
 }
