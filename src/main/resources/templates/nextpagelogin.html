@@ -10,18 +10,14 @@
 
 <body>
 	<h1>仮のログイン画面です。</h1>
-	<form th:action="/calender" method="get">
+	<form th:action="@{/calender2}" method="get">
 		<table>
 			<tr>
-				<th>ID</th>
+				<th>username</th>
 				<td><input type="text" name="username"></td>
 			</tr>
-			<tr>
-				<th>PASSWORD</th>
-<!--				<td><input type="password" name="password"></td>-->
-			</tr>
 		</table>
-		<input type="submit" value="登録/カレンダーへ">
+		<input type="submit" value="username飛ばします">
 	</form>
 
 </body>

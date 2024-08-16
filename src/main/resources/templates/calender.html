@@ -29,7 +29,6 @@
 </head>
 
 <body>
-
 	<!-- カレンダー全体を囲むコンテナ -->
 	<div class="calendar-container">
 
@@ -41,13 +40,14 @@
 			<button onclick="changeMonth(-1)">先月</button>
 			<span id="month-year"></span>
 			<button onclick="changeMonth(1)">来月</button>
-
-			<form method="get" action="/nextpage2">
-				<button type="submit">登録画面へ</button>
-			</form>
-
 		</div>
 
+
+		<!--ログインIDを取得するために仮のログイン画面へ飛ぶ-->
+		<form method="get" action="/nextpagelogin">
+			<button type="submit">登録画面へ</button>
+		</form>
+		
 		<!-- 注文履歴の読み込み -->
 		<div id="event-calender">
 			<div th:each="event : ${list}" th:attr="data-event-date=${event.date}, data-event-item=${event.item}">
@@ -78,12 +78,15 @@
 
 			<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
 			<form method="get" action="/nextpage">
-
+				
+				
 				<label for="date-select">日付:</label>
-				<!-- ↓ データ名"orderdate"にて日付をaction先のページにsubmit/送信-->
+				<!-- ↓ データ名"orderdate"にて日付を-->
+				<!-- ↓action先のページにsubmit/送信-->
 				<select id="date-select" name="orderdate">
 				</select>
-
+				
+				
 				<label for="time-select">時間:</label>
 				<select id="time-select">
 				</select>

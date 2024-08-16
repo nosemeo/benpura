@@ -14,9 +14,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CalenderForm {
 	
+	// 次のページにデータを飛ばすよう
 	@Id
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate orderdate;
+	private String username;
 
 //	private String dayofweek;
 	

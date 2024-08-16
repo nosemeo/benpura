@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +15,7 @@ import com.example.demo.service.CalenderService;
 @Controller
 //@RequestMapping() なくても動くのでコメントアウト
 public class CalenderController {
-	
+
 	@Autowired
 	CalenderService service;
 
@@ -20,26 +23,49 @@ public class CalenderController {
 	@GetMapping
 	public String calenderShowList(Model model) {
 		//注文履歴を全件取得
-		Iterable<Calender>list=service.selectAll();
+		Iterable<Calender> list = service.selectAll();
 		//表示用「Model」への格納
-		model.addAttribute("list",list);
+		model.addAttribute("list", list);
 		//calender.htmlのカレンダー、注文履歴の表示
 		return "calender";
 	}
-	
+
+	// わからない&&再表示用に
+	@GetMapping("/calender2")
+	public String calenderShowList2(Model model, CalenderForm f) {
+		//注文履歴を全件取得
+		Iterable<Calender> list = service.selectAll();
+		
+		// ログインIDをcalenderFormから.getUsernameにて受け取り
+		System.out.println("username：" + f.getUsername());
+		
+		// ログインIDと合致する注文履歴のみリストに追加
+		List<Calender>newlist= new ArrayList<>();
+		for (Calender temp : list) {
+			if (temp.getUsername().equals(f.getUsername())) {
+				newlist.add(temp);
+			}
+		}
+
+		//表示用「Model」への格納
+		model.addAttribute("list", newlist);
+		//calender.htmlのカレンダー、注文履歴の表示
+		return "calender";
+	}
+
 	//Getリクエストとメソッドを対応つける
 	@GetMapping("/nextpage") //次のサイトが完成したらこちらに記載
 	public String showNextPage(CalenderForm f) {
 		// nextpage.htmlを表示
 		return "nextpage";
 	}
-	
-	@GetMapping("/nextpage2")
-	public String showNextPage2() {
+
+	@GetMapping("/nextpagelogin")
+	public String showNextPageLogin() {
 		// nextpage2.htmlを表示
-		return "nextpage2";
+		return "nextpagelogin";
 	}
-	
+
 }
 //  ★未解決★  エクセルに記載して質問
 //  簡単①  DBにユーザーネームを追加 ※これは簡単
