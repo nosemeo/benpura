@@ -8,31 +8,42 @@
 	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
 		rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/css/settlement.css}">
-	<script th:src="@{/js/settlement.js}"></script>
+	<script th:inline="javascript">
+		const initialPrice = /*[[${dto.price}]]*/ 10000;
+	</script>
+	<script th:src="@{/js/settlement.js}" defer></script>
 </head>
 
 <body>
 	<h1 class="title">注文確認</h1>
 	<div class="product">
-		<img class="image" src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="商品名">
+		<!--		<img class="image" th:src="'data:image/png;base64,'+${dto.image}" alt="商品名">-->
 		<div class="details">
-			<h2>商品名</h2>
-			<h3>店名</h3>
-			<p>受け取り日時: 2024年8月10日 14:00</p>
-			<!-- 個数選択機能 -->
-			<div class="quantity">
-				<label for="quantity">個数:</label>
-				<button onclick="decreaseQuantity()">-</button>
-				<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()">
-				<button onclick="increaseQuantity()">+</button>
-			</div>
+			<h2 th:text="${dto.name}">商品名</h2>
+			<h3 th:text="${dto.shopName}">店名</h3>
+			<p>受け取り日時<spna th:text="${#temporals.format(dto.pickupTime, 'yyyy年MM月dd日 HH:mm')}"></spna>
+			</p>
 		</div>
 	</div>
-	<div class="total">
-		合計: <span id="totalPrice">¥10,000</span>
-	</div>
-	<button>カートに追加</button>
+	<!-- 個数選択機能 -->
+	<form th:action="@{/cart}" th:object="${dto}" method="post">
+		<div class="quantity">
+			<label for="quantity">個数:</label>
+			<button type="button" onclick="decreaseQuantity()">-</button>
+			<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()" th:field="*{number}">
+			<button type="button" onclick="increaseQuantity()">+</button>
+			<input type="hidden" th:field="*{name}">
+			<input type="hidden" th:field="*{shopName}">
+			<input type="hidden" th:field="*{pickupTime}">
+			<input type="hidden" th:field="*{image}">
+		</div>
 
+		<div class="total">
+			合計: <span id="totalPrice" th:text="'¥' + ${dto.price}" th:field="*{price}"></span>
+		</div>
+		<button type="submit">カートに追加</button>
+	</form>
+	
 
 </body>
 
