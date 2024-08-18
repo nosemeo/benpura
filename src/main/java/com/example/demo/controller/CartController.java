@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -71,7 +70,8 @@ public class CartController {
 		return "settlement/settlement";
 	}
 	 @PostMapping("/delete")
-	    public ModelAndView deleteItem(@RequestParam ) {
+	 //delete用リクエスト受ける
+	    public ModelAndView deleteItem( ) {
 	        List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
 	        
 
