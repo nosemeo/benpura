@@ -13,44 +13,83 @@
 		<h1> BANPURA MENU 弁ぷら</h1>
 		<div class="menu-items">
 			<div class="menu-item">
+				<div>
+					<p th:class="osusume">季節のおすすめ</p>
+				</div>
 				<img th:src="'data:image/png;base64,'+${osusume}" alt="オススメ">
+				<div class="item-description">
+					<p th:text="${osusumeIntroductions}"></p>
+				</div>
 				<div class="text-wrapper">
 					<p class="item-name">オススメ</p>
 				</div>
 				<div class="size-wrapper">
-					<span class="item-size">Sサイズ </span><span class="item-price"
-						th:text="${osusumeSPrice} + '円'"></span>
+					<input type="radio" id="osusumeS" name="osusumeSize" value="S">
+					<label for="osusumeS">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${osusumeSPrice} + '円'"></span>
+					</label>
 					<br />
-					<span class="item-size">Mサイズ </span><span class="item-price"
-						th:text="${osusumeMPrice} + '円'"></span>
+					<input type="radio" id="osusumeM" name="osusumeSize" value="M">
+					<label for="osusumeM">
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${osusumeMPrice} + '円'"></span>
+					</label>
+					<button class="select-button">選択</button>
 				</div>
 			</div>
 
 			<div class="menu-item">
+				<div>
+					<p th:class="ninki">人気NO.1</p>
+				</div>
 				<img th:src="'data:image/png;base64,'+${higawari}" alt="日替わり">
+				<div class="item-description">
+					<p th:text="${higawariIntroductions}"></p>
+				</div>
 				<div class="text-wrapper">
 					<p class="item-name">日替わり</p>
 				</div>
 				<div class="size-wrapper">
-					<span class="item-size">Sサイズ </span><span class="item-price"
-						th:text="${higawariSPrice} + '円'"></span>
+					<input type="radio" id="higawariS" name="higawariSize" value="S">
+					<label for="higawariS">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${higawariSPrice} + '円'"></span>
+					</label>
 					<br />
-					<span class="item-size">Mサイズ </span><span class="item-price"
-						th:text="${higawariMPrice} + '円'"></span>
+					<input type="radio" id="higawariM" name="higawariSize" value="M">
+					<label for="higawariM">
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${higawariMPrice} + '円'"></span>
+					</label>
+					<button class="select-button">選択</button>
 				</div>
 			</div>
 
 			<div class="menu-item">
+				<div>
+					<p th:class="new">NEW</p>
+				</div>
 				<img th:src="'data:image/png;base64,'+${omakase}" alt="おまかせ">
+				<div class="item-description">
+					<p th:text="${omakaseIntroductions}"></p>
+				</div>
 				<div class="text-wrapper">
 					<div class="item-name">おまかせ</div>
 				</div>
 				<div class="size-wrapper">
-					<span class="item-size">Sサイズ </span><span class="item-price"
-						th:text="${omakaseSPrice} + '円'"></span>
+					<input type="radio" id="omakaseS" name="omakaseSize" value="S">
+					<label for="omakaseS">
+						<span class="item-size">Sサイズ </span><span class="item-price"
+							th:text="${omakaseSPrice} + '円'"></span>
+					</label>
 					<br />
-					<span class="item-size">Mサイズ </span><span class="item-price"
-						th:text="${omakaseMPrice} + '円'"></span>
+					<input type="radio" id="omakaseM" name="omakaseSize" value="M">
+					<label for="omakaseM">
+						<span class="item-size">Mサイズ </span><span class="item-price"
+							th:text="${omakaseMPrice} + '円'"></span>
+					</label>
+					<button class="select-button">選択</button>
 				</div>
 			</div>
 

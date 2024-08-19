@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
 		rel="stylesheet">
 	<link th:href="@{/css/cart.css}" rel="stylesheet">
-	<script th:src="@{/js/cart.js}"></script>
+	<script th:src="@{/ajs/cart.js}"></script>
 </head>
 
 <body>
@@ -17,66 +17,50 @@
 		<p><span>弁ぷら</span>カート</p>
 	</div>
 
-	<div th:each="obj:${dtoList}" class="container">
+	<div th:each="obj,s:${dtoList}" class="container">
 
 		<section id="cart">
 			<article class="product">
 				<header>
-					<a class="remove">
-						<img th:src="'data:image/png;base64,'+${obj.image}" alt="店名">
+					<form th:action="@{/delete}" method="post">
+						<!--						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+						<input type="hidden" name="bn" th:value="${s.index}" />
 
-						<h3>削除</h3>
-					</a>
+						<button type="submit" class="remove">
+							<img th:src="'data:image/png;base64,'+${obj.image}" alt="店名">
+							<h3>削除</h3>
+						</button>
+					</form>
 				</header>
 
 				<div class="content">
 
 					<h1 th:text="${obj.name}">仮</h1>
 					<p>受け取り</p>
-					<p class="time">日時：8/25 12：00</p>
-					
+					<p class="time" th:text="${#temporals.format(obj.pickupTime, 'yyyy年MM月dd日 HH:mm')}">日時：8/25 12：00
+					</p>
+
 				</div>
 
 				<footer class=" content">
 
-						<select class="qt" onchange="updateTotal(this)">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-
-					<h2 class="full-price">
+					<h2 class="full-price" th:text="${obj.price}+'円'">
 						1300円
 					</h2>
 
-					<h2 class="price">
-						650円
+					<h2 class="price" th:text="${obj.number} + '個'">
+						個数
 					</h2>
-					</footer>
+				</footer>
+				<div class="order-btn">
+					<a class="btn">決済</a>
+				</div>
 			</article>
 
 		</section>
 
 	</div>
 
-	<footer id="site-footer">
-		<div class="container clearfix">
-
-			<div class="left">
-				<h2 class="subtotal">合計(抜税): <span>163.96</span>円</h2>
-				<h3 class="tax">消費税(5%): <span>8.2</span>円</h3>
-
-			</div>
-
-			<div class="right">
-				<h1 class="total">合計(税込): <span>177.16</span>円</h1>
-				<a class="btn">決済</a>
-			</div>
-
-		</div>
-	</footer>
 </body>
 
 </html>

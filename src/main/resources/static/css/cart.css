@@ -265,44 +265,6 @@ a:hover {
 	cursor: pointer;
 }
 
-#site-footer {
-	margin: 30px 0 0 0;
-}
-
-#site-footer {
-	padding: 40px;
-}
-
-#site-footer h1 {
-	background: #fcfcfc;
-	border: 1px solid #ccc;
-	border-style: none none solid none;
-	font-size: 24px;
-	font-weight: 300;
-	margin: 0 0 7px 0;
-	padding: 14px 40px;
-	text-align: center;
-}
-
-#site-footer h2 {
-	font-size: 24px;
-	font-weight: 300;
-	margin: 10px 0 0 0;
-}
-
-#site-footer h3 {
-	font-size: 19px;
-	font-weight: 300;
-	margin: 15px 0;
-}
-
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
 
 .btn {
 	background: #53b5aa;
@@ -337,10 +299,3 @@ a:hover {
 }
 
 
-.minused {
-	margin: 0 50px 0 0 !important;
-}
-
-.added {
-	margin: 0 -50px 0 0 !important;
-}

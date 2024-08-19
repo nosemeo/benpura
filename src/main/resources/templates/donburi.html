@@ -10,21 +10,31 @@
 
 <body>
 	<div class="menu-section">
-			<h1>DONBURI    丼ぶり</h1>
+		<h1>DONBURI 丼ぶり</h1>
 
 		<div class="box1">
 			<div class="menu-items">
 				<div class="menu-item">
 					<img th:src="'data:image/png;base64,'+${katsudon}" alt="かつ丼">
+					<div class="item-description">
+						<p th:text="${katsudonIntroductions}"></p>
+					</div>
 					<div class="text-wrapper">
 						<p class="item-name">かつ丼</p>
 					</div>
 					<div class="size-wrapper">
-						<span class="item-size">Sサイズ </span><span class="item-price"
-							th:text="${katsudonSPrice} + '円'"></span>
+						<input type="radio" id="katsudonS" name="katsudonSize" value="S">
+						<label for="katsudonS">
+							<span class="item-size">Sサイズ </span><span class="item-price"
+								th:text="${katsudonSPrice} + '円'"></span>
+						</label>
 						<br />
-						<span class="item-size">Mサイズ </span><span class="item-price"
-							th:text="${katsudonMPrice} + '円'"></span>
+						<input type="radio" id="katsudonM" name="katsudonSize" value="M">
+						<label for="katsudonM">
+							<span class="item-size">Mサイズ </span><span class="item-price"
+								th:text="${katsudonMPrice} + '円'"></span>
+						</label>
+						<button class="select-button">選択</button>
 					</div>
 				</div>
 			</div>
@@ -34,15 +44,25 @@
 			<div class="menu-items">
 				<div class="menu-item">
 					<img th:src="'data:image/png;base64,'+${yakinikub}" alt="焼肉ビビンバ丼">
+					<div class="item-description">
+						<p th:text="${yakinikubIntroductions}"></p>
+					</div>
 					<div class="text-wrapper">
 						<p class="item-name">焼肉ビビンバ丼</p>
 					</div>
 					<div class="size-wrapper">
-						<span class="item-size">Sサイズ </span><span class="item-price"
-							th:text="${yakinikubSPrice} + '円'"></span>
+						<input type="radio" id="yakinikubS" name="yakinikubSize" value="S">
+						<label for="yakinikubS">
+							<span class="item-size">Sサイズ </span><span class="item-price"
+								th:text="${yakinikubSPrice} + '円'"></span>
+						</label>
 						<br />
-						<span class="item-size">Mサイズ </span><span class="item-price"
-							th:text="${yakinikubMPrice} + '円'"></span>
+						<input type="radio" id="yakinikubM" name="yakinikubSize" value="M">
+						<label for="yakinikubM">
+							<span class="item-size">Mサイズ </span><span class="item-price"
+								th:text="${yakinikubMPrice} + '円'"></span>
+						</label>
+						<button class="select-button">選択</button>
 					</div>
 				</div>
 			</div>
@@ -52,15 +72,25 @@
 			<div class="menu-items">
 				<div class="menu-item">
 					<img th:src="'data:image/png;base64,'+${oyakodon}" alt="月見親子丼">
+					<div class="item-description">
+						<p th:text="${oyakodonIntroductions}"></p>
+					</div>
 					<div class="text-wrapper">
 						<p class="item-name">月見親子丼</p>
 					</div>
 					<div class="size-wrapper">
-						<span class="item-size">Sサイズ </span><span class="item-price"
-							th:text="${oyakodonSPrice} + '円'"></span>
+						<input type="radio" id="oyakodonS" name="oyakodonSize" value="S">
+						<label for="oyakodonS">
+							<span class="item-size">Sサイズ </span><span class="item-price"
+								th:text="${oyakodonSPrice} + '円'"></span>
+						</label>
 						<br />
-						<span class="item-size">Mサイズ </span><span class="item-price"
-							th:text="${oyakodonMPrice} + '円'"></span>
+						<input type="radio" id="oyakodonM" name="oyakodonSize" value="M">
+						<label for="oyakodonM">
+							<span class="item-size">Mサイズ </span><span class="item-price"
+								th:text="${oyakodonMPrice} + '円'"></span>
+						</label>
+						<button class="select-button">選択</button>
 					</div>
 				</div>
 			</div>

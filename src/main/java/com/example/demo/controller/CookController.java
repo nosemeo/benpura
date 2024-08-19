@@ -32,6 +32,9 @@ public class CookController {
 		String higawariMPrice = null;
 		String omakaseSPrice = null;
 		String omakaseMPrice = null;
+		String osusumeIntroductions = "";
+		String higawariIntroductions = "";
+		String omakaseIntroductions = "";
 
 		Iterable<CookCategory> imageData = repository.findAll();
 		List<String> list = new ArrayList<>();
@@ -42,18 +45,21 @@ public class CookController {
 				model.addAttribute("osusume", list2);
 				osusumeSPrice = cookCategory.getPriceS().toString();
 				osusumeMPrice = cookCategory.getPriceM().toString();
+				osusumeIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 9) {
 				String list2 = Base64.getEncoder().encodeToString(cookCategory.getImagePath());
 				model.addAttribute("higawari", list2);
 				higawariSPrice = cookCategory.getPriceS().toString();
 				higawariMPrice = cookCategory.getPriceM().toString();
+				higawariIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 4) {
 				String list2 = Base64.getEncoder().encodeToString(cookCategory.getImagePath());
 				model.addAttribute("omakase", list2);
 				omakaseSPrice = cookCategory.getPriceS().toString();
 				omakaseMPrice = cookCategory.getPriceM().toString();
+				omakaseIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 7) {
 				String list2 = Base64.getEncoder().encodeToString(cookCategory.getImagePath());
@@ -73,6 +79,9 @@ public class CookController {
 		model.addAttribute("higawariMPrice", higawariMPrice);
 		model.addAttribute("omakaseSPrice", omakaseSPrice);
 		model.addAttribute("omakaseMPrice", omakaseMPrice);
+		model.addAttribute("osusumeIntroductions", osusumeIntroductions);
+		model.addAttribute("higawariIntroductions", higawariIntroductions);
+		model.addAttribute("omakaseIntroductions", omakaseIntroductions);
 
 		return "cookCategory";
 	}
@@ -85,6 +94,9 @@ public class CookController {
 		String yakinikuMPrice = null;
 		String chickenSPrice = null;
 		String chickenMPrice = null;
+		String hamburgerIntroductions = "";
+		String yakinikuIntroductions = "";
+		String chickenIntroductions = "";
 
 		Iterable<CookCategory> imageData = repository.findAll();
 		List<String> list = new ArrayList<>();
@@ -95,16 +107,19 @@ public class CookController {
 				model.addAttribute("hamburger", nikubentouImage);
 				hamburgerSPrice = cookCategory.getPriceS().toString();
 				hamburgerMPrice = cookCategory.getPriceM().toString();
+				hamburgerIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 8) {
 				model.addAttribute("yakiniku", nikubentouImage);
 				yakinikuSPrice = cookCategory.getPriceS().toString();
 				yakinikuMPrice = cookCategory.getPriceM().toString();
+				yakinikuIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 9) {
 				model.addAttribute("chicken", nikubentouImage);
 				chickenSPrice = cookCategory.getPriceS().toString();
 				chickenMPrice = cookCategory.getPriceM().toString();
+				chickenIntroductions = cookCategory.getIntroductions().toString();
 			}
 		}
 		model.addAttribute("imageData", list);
@@ -114,6 +129,9 @@ public class CookController {
 		model.addAttribute("yakinikuMPrice", yakinikuMPrice);
 		model.addAttribute("chickenSPrice", chickenSPrice);
 		model.addAttribute("chickenMPrice", chickenMPrice);
+		model.addAttribute("hamburgerIntroductions", hamburgerIntroductions);
+		model.addAttribute("yakinikuIntroductions", yakinikuIntroductions);
+		model.addAttribute("chickenIntroductions", chickenIntroductions);
 
 		return "niku";
 	}
@@ -126,6 +144,10 @@ public class CookController {
 		String sabaMPrice = null;
 		String syakeSPrice = null;
 		String syakeMPrice = null;
+		String omakaseIntroductions = "";
+		String sabaIntroductions = "";
+		String syakeIntroductions = "";
+		
 
 		Iterable<CookCategory> imageData = repository.findAll();
 
@@ -137,16 +159,19 @@ public class CookController {
 				model.addAttribute("omakase", sakanabentouImage);
 				omakaseSPrice = cookCategory.getPriceS().toString();
 				omakaseMPrice = cookCategory.getPriceM().toString();
+				omakaseIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 5) {
 				model.addAttribute("syake", sakanabentouImage);
 				syakeSPrice = cookCategory.getPriceS().toString();
 				syakeMPrice = cookCategory.getPriceM().toString();
+				sabaIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 6) {
 				model.addAttribute("saba", sakanabentouImage);
 				sabaSPrice = cookCategory.getPriceS().toString();
 				sabaMPrice = cookCategory.getPriceM().toString();
+				syakeIntroductions = cookCategory.getIntroductions().toString();
 			}
 		}
 
@@ -157,6 +182,9 @@ public class CookController {
 		model.addAttribute("syakeMPrice", syakeMPrice);
 		model.addAttribute("sabaSPrice", sabaSPrice);
 		model.addAttribute("sabaMPrice", sabaMPrice);
+		model.addAttribute("omakaseIntroductions", omakaseIntroductions);
+		model.addAttribute("sabaIntroductions", sabaIntroductions);
+		model.addAttribute("syakeIntroductions", syakeIntroductions);
 
 		return "sakana";
 	}
@@ -169,6 +197,9 @@ public class CookController {
 		String yakinikubMPrice = null;
 		String oyakodonSPrice = null;
 		String oyakodonMPrice = null;
+		String katsudonIntroductions = "";
+		String yakinikubIntroductions = "";
+		String oyakodonIntroductions = "";
 
 		Iterable<CookCategory> imageData = repository.findAll();
 
@@ -180,16 +211,19 @@ public class CookController {
 				model.addAttribute("katsudon", donburiImage);
 				katsudonSPrice = cookCategory.getPriceS().toString();
 				katsudonMPrice = cookCategory.getPriceM().toString();
+				katsudonIntroductions = cookCategory.getIntroductions().toString();
 
 			} else if (cookCategory.getId() == 2) {
 				model.addAttribute("yakinikub", donburiImage);
 				yakinikubSPrice = cookCategory.getPriceS().toString();
 				yakinikubMPrice = cookCategory.getPriceM().toString();
+				yakinikubIntroductions = cookCategory.getIntroductions().toString();
 				
 			} else if (cookCategory.getId() == 3) {
 				model.addAttribute("oyakodon", donburiImage);
 				oyakodonSPrice = cookCategory.getPriceS().toString();
 				oyakodonMPrice = cookCategory.getPriceM().toString();
+				oyakodonIntroductions = cookCategory.getIntroductions().toString();
 			}
 		}
 		model.addAttribute("imageData", list);
@@ -199,6 +233,9 @@ public class CookController {
 		model.addAttribute("yakinikubMPrice", yakinikubMPrice);
 		model.addAttribute("oyakodonSPrice", oyakodonSPrice);
 		model.addAttribute("oyakodonMPrice", oyakodonMPrice);
+		model.addAttribute("katsudonIntroductions", katsudonIntroductions);
+		model.addAttribute("yakinikubIntroductions", yakinikubIntroductions);
+		model.addAttribute("oyakodonIntroductions", oyakodonIntroductions);
 		
 		return "donburi";
 	}
