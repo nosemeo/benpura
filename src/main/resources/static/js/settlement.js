@@ -20,8 +20,9 @@ function decreaseQuantity() {
 // 合計金額を更新する関数
 function updateTotal() {
 	let quantity = document.getElementById('quantity').value;
-	let totalPrice = document.getElementById('totalPrice');
-	totalPrice.textContent = '¥' + (unitPrice * quantity).toLocaleString();
+	let totalPrice = Math.floor(unitPrice * quantity)
+	document.getElementById('totalPrice').textContent = totalPrice +'円';
+	document.getElementById('totalPriceInput').value = totalPrice;
 }
 
 // ページ読み込み時に合計金額を初期化

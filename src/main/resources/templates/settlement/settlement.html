@@ -9,7 +9,7 @@
 		rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/css/settlement.css}">
 	<script th:inline="javascript">
-		const initialPrice = /*[[${dto.price}]]*/ 10000;
+		const initialPrice = /*[[${dto.price}]]*/1;
 	</script>
 	<script th:src="@{/js/settlement.js}" defer></script>
 </head>
@@ -39,7 +39,8 @@
 		</div>
 
 		<div class="total">
-			合計: <span id="totalPrice" th:text="'¥' + ${dto.price}" th:field="*{price}"></span>
+			合計: <span id="totalPrice" onchange></span>
+			<input type="hidden" id="totalPriceInput" th:field="*{price}">
 		</div>
 		<button type="submit">カートに追加</button>
 	</form>

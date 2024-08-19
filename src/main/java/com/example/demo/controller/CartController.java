@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,11 +46,11 @@ public class CartController {
 		model.addAttribute("dtoList",dtoList);
 		return "settlement/cart2";
 	}
-	@PostMapping("/settlement")
+	@GetMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
 		
 		
-			CartDto dto1 = new CartDto(null, null, null, null, null, null);
+			CartDto dto1 = new CartDto();
 			dto1.setName("弁当");
 			dto1.setShopName("Hana");
 			dto1.setPrice(1000);
