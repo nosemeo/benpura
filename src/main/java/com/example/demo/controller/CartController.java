@@ -7,11 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dto.CartDto;
 import com.example.demo.service.SettlementServiceImpl;
@@ -41,19 +40,12 @@ public class CartController {
 		}
 		dtoList.add(dto);
 		this.session.setAttribute("dtoList", dtoList);
-		int i = 0;
-		List<Integer> backLog = new ArrayList<>();
-		while(i <  backLog.size()) {
-			i++;
-			backLog.add(i);
-		}
 			
 		
 		model.addAttribute("dtoList",dtoList);
-		model.addAttribute("bn", backLog);
 		return "settlement/cart2";
 	}
-	@GetMapping("/settlement")
+	@PostMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
 		
 		
@@ -71,12 +63,12 @@ public class CartController {
 	}
 	 @PostMapping("/delete")
 	 //delete用リクエスト受ける
-	    public ModelAndView deleteItem( ) {
+	    public String deleteItem(@RequestParam int bn) {
 	        List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
+	        list.remove(bn);
+	        this.session.setAttribute("dtoList", list);
 	        
-
-	        ModelAndView modelAndView = new ModelAndView("deleteSuccess");
-	        return modelAndView;
+	        return "settlement/deleteSuccess";
 	    }
 	
 //	@GetMapping("/reservations")
