@@ -11,22 +11,23 @@
 	<div id="headline">
 		<p class="title">ここにロゴとマイページを挿入</p>
 	</div>
-	
+
 	<div class="subtitle">
-<!--		<h2><span th:text="${holidays}">曜日営業の店舗一覧</span></h2>-->
-		<h2 >営業中の店舗一覧</h2>
+		<!--		<h2><span th:text="${holidays}">曜日営業の店舗一覧</span></h2>-->
+		<h2>営業中の店舗一覧</h2>
 		<ul>
-		       <li th:each="shop : ${openShops}">
-		           <a th:href="@{/shop-details(id=${shop.id})}" th:text="${shop.shopName}"></a>
-		       </li>
-		   </ul>
+			<li th:each="shop : ${openShops}">
+				<a th:href="@{/shop-details(id=${shop.id})}" th:text="${shop.shopName}"></a>
+			</li>
+		</ul>
 
 	</div>
 
 	<div id="content1" th:each="shop : ${shopLists}">
 		<br>
-		<a href="/cookCategory" target="_blank">
-		<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana">
+		<!--		target="_blank"は別タブでリンク開く-->
+		<a th:href="@{/cookCategory}" target="_blank">
+			<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana"/>
 		</a>
 		<div class="text">
 			<h1 class="shopName" th:text="${shop.shopName}"></h1>
@@ -34,6 +35,7 @@
 			<a class="btn" href="/shopInformation">店舗情報を見る</a>
 		</div>
 	</div>
+
 
 	<div id="content2" th:each="shop2 : ${shopLists2}">
 		<br>

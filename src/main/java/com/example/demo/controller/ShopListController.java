@@ -110,6 +110,12 @@ public class ShopListController {
 //		}
 //	}
 
+//	@GetMapping("/cookCategory")
+//	public String cookCategoryshow(Model model) {
+//		CookCategory cookCategory = new CookCategory();
+////		cookCategory.showList();
+//		return "cookCategory";
+//	}
 
 	@GetMapping("/shopInformation")
 	public String shopInformationShow(Model model) {

@@ -202,7 +202,7 @@ h2::after {
 	left: 4px;
 	width: calc(100% - 10px);
 	height: calc(100% - 10px);
-	background: rgb(128, 64, 64);
+	background: rgb(128, 64, 0);
 }
 
 .shopName span {
@@ -226,11 +226,11 @@ h2::after {
 }
 
 .shopName span:before {
-	top: 8px;
+	top: 7px;
 }
 
 .shopName span:after {
-	bottom: 8px;
+	bottom: 7px;
 }
 
 
