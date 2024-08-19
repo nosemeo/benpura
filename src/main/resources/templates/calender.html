@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 
 <head>
+	<!-- 置き換わる内容-->
+	<div layout:fragment="content">
+	</div>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>★本番★マイページ/カレンダー</title>
@@ -28,7 +32,13 @@
 
 </head>
 
-<body>
+<body layout:decorate="layout.html">
+	<!-- この部分が layout.html の content フラグメントに挿入される -->
+	<div layout:fragment="content">
+		<h1>Welcome to Home Page</h1>
+		<p>This is the home page content.</p>
+	</div>
+
 	<!-- カレンダー全体を囲むコンテナ -->
 	<div class="calendar-container">
 
@@ -47,7 +57,7 @@
 		<form method="get" action="/nextpagelogin">
 			<button type="submit">登録画面へ</button>
 		</form>
-		
+
 		<!-- 注文履歴の読み込み -->
 		<div id="event-calender">
 			<div th:each="event : ${list}" th:attr="data-event-date=${event.date}, data-event-item=${event.item}">
@@ -78,21 +88,21 @@
 
 			<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
 			<form method="get" action="/nextpage">
-				
-				
+
+
 				<label for="date-select">日付:</label>
 				<!-- ↓ データ名"orderdate"にて日付を-->
 				<!-- ↓action先のページにsubmit/送信-->
 				<select id="date-select" name="orderdate">
 				</select>
-				
-				
+
+
 				<label for="time-select">時間:</label>
 				<select id="time-select" name="ordertime">
 				</select>
 
 				<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
-				<button type="submit" onclick="selectDateTime()">決定</button>
+				<button type="submit">決定</button>
 				<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
 			</form>
 		</div>
