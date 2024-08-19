@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>肉弁当</title>
-	<link rel="stylesheet" th:href="@{/niku.css}">
+	<link rel="stylesheet" th:href="@{/css/niku.css}">
 </head>
 
 <body>
@@ -20,21 +20,25 @@
 						<p th:text="${hamburgerIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">おろしハンバーグ弁当</p>
+						<p class="item-name" th:text="${hamburgerName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="hamburgerS" name="hamburgerSize" value="S">
-						<label for="hamburgerS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${hamburgerSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="hamburgerM" name="hamburgerSize" value="M">
-						<label for="hamburgerM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${hamburgerMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<input type="radio" id="hamburgerS" name="hamburgerSize" value="${hamburgerSPrice}">
+							<label for="hamburgerS">
+								<span class="item-size">Sサイズ </span><span class="item-price"
+									th:text="${hamburgerSPrice} + '円'"></span>
+							</label>
+							<br />
+							<input type="radio" id="hamburgerM" name="hamburgerSize" value="${hamburgerMPrice}">
+							<label for="hamburgerM">
+								<span class="item-size">Mサイズ </span><span class="item-price"
+									th:text="${hamburgerMPrice} + '円'"></span>
+							</label>
+							<input type="hidden" name="image" th:value="${hamburger}">
+							<input type="hidden" name="name" th:value="${hamburgerName}">
+							<button type="submit" class="select-button">選択</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -48,21 +52,25 @@
 						<p th:text="${yakinikuIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">焼肉弁当</p>
+						<p class="item-name" th:text="${yakinikuName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="yakinikuS" name="yakinikuSize" value="S">
-						<label for="yakinikuS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${yakinikuSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="yakinikuM" name="yakinikuSize" value="M">
-						<label for="yakinikuM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${yakinikuMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<input type="radio" id="yakinikuS" name="yakinikuSize" value="yakinikuSPrice">
+							<label for="yakinikuS">
+								<span class="item-size">Sサイズ </span><span class="item-price"
+									th:text="${yakinikuSPrice} + '円'"></span>
+							</label>
+							<br />
+							<input type="radio" id="yakinikuM" name="yakinikuSize" value="yakinikuMPrice">
+							<label for="yakinikuM">
+								<span class="item-size">Mサイズ </span><span class="item-price"
+									th:text="${yakinikuMPrice} + '円'"></span>
+							</label>
+							<input type="hidden" name="image" th:value="${yakiniku}">
+							<input type="hidden" name="name" th:value="${yakinikuName}">
+							<button type="submit" class="select-button">選択</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -76,21 +84,25 @@
 						<p th:text="${chickenIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">ねぎ塩チキン竜田弁当</p>
+						<p class="item-name" th:text="${chickenName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="chickenS" name="chickenSize" value="S">
-						<label for="chickenS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${chickenSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="chickenM" name="chickenSize" value="M">
-						<label for="chickenM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${chickenMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<input type="radio" id="chickenS" name="chickenSize" value="chickenSPrice">
+							<label for="chickenS">
+								<span class="item-size">Sサイズ </span><span class="item-price"
+									th:text="${chickenSPrice} + '円'"></span>
+							</label>
+							<br />
+							<input type="radio" id="chickenM" name="chickenSize" value="chickenMPrice">
+							<label for="chickenM">
+								<span class="item-size">Mサイズ </span><span class="item-price"
+									th:text="${chickenMPrice} + '円'"></span>
+							</label>
+							<input type="hidden" name="image" th:value="${chicken}">
+							<input type="hidden" name="name" th:value="${chickenName}">
+							<button type="submit" class="select-button">選択</button>
+						</form>
 					</div>
 				</div>
 			</div>

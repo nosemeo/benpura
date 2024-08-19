@@ -83,6 +83,15 @@ body {
 	border-radius: 5px;
 }
 
+.name-description {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: center;
+	font-weight: bold;
+}
 
 .item-description {
 	font-family: 'Quicksand', sans-serif;
@@ -109,33 +118,34 @@ body {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 15px;
 	color: rgb(45, 45, 45);
-	margin: 10px;
-	line-height: 2;
 	font-weight: bold;
+	
+	
 }
 
 .item-price {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 15px;
 	color: rgb(255, 0, 0);
-	line-height: 2;
+	margin-left: 5px;
 	font-weight: bold;
 }
 
+.buttom-style {
+	display: flex;
+	justify-content: flex-end;
+	
+}
+
 .size-wrapper input[type="radio"] {
-	margin-right: 5px;
-	/* ラジオボタンとラベルの間に余白を追加 */
-	vertical-align: middle;
-	/* テキストとラジオボタンを中央揃えにする */
+	margin-right: 10px;
+
 }
 
 .size-wrapper label {
 	display: flex;
 	align-items: center;
-	margin-right: 20px;
-	/* ラジオボタンのセット間に余白を追加 */
-	font-size: 15px;
-	line-height: 1.5;
+	margin-bottom: 5px;
 }
 
 .text-wrapper {
@@ -146,14 +156,17 @@ body {
 	/* 可以添加一些内边距，使文字更突出 */
 	border-radius: 5px;
 	/* 可选：添加圆角以匹配样式 */
+	align-items: flex-start;
+	/* ラベルを左に寄せる */
+	position: relative;
 
 }
 
 .size-wrapper {
-	width: auto;
-	padding: 5px;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	align-items: center; /* ラジオボタンとラベルを中央揃え */
+    width: 100%;
 }
 
 a {
@@ -165,7 +178,7 @@ a {
 	/* 可选：设置链接文字加粗 */
 }
 
-.select-button {
+.select-buttom {
 	background-color: #ff69b4;
 	/* 可愛いピンク色 */
 	color: white;
@@ -181,6 +194,8 @@ a {
 	/* アニメーション */
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	/* 柔らかい影 */
+	float: right;
+	
 }
 
 .select-button:hover {

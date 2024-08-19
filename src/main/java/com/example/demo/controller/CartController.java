@@ -1,13 +1,11 @@
 package com.example.demo.controller;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -50,20 +48,20 @@ public class CartController {
 		
 		return "settlement/cart2";
 	}
-	@GetMapping("/settlement")
+	@PostMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
 		
 		
-			CartDto dto1 = new CartDto(null, null, null, null, null, null);
-			dto1.setName("弁当");
-			dto1.setShopName("Hana");
-			dto1.setPrice(1000);
-			dto1.setImage(null);
-			dto1.setNumber(1);
-			dto1.setPickupTime(LocalDateTime.now());
-			model.addAttribute("dto",dto1);
+//			CartDto dto1 = new CartDto(null, null, null, null, null, null);
+//			dto1.setName("弁当");
+//			dto1.setShopName("Hana");
+//			dto1.setPrice(1000);
+//			dto1.setImage(null);
+//			dto1.setNumber(1);
+//			dto1.setPickupTime(LocalDateTime.now());
+//			model.addAttribute("dto",dto1);
 		
-		model.addAttribute("dto1",dto);
+		model.addAttribute("dto",dto);
 		return "settlement/settlement";
 	}
 //	@GetMapping("/reservations")

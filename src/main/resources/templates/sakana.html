@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>魚弁当</title>
-	<link rel="stylesheet" th:href="@{/sakana.css}">
+	<link rel="stylesheet" th:href="@{/css/sakana.css}">
 </head>
 
 <body>
@@ -20,21 +20,25 @@
 						<p th:text="${omakaseIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">ザ・オマカセ弁当</p>
+						<p class="item-name" th:text="${omakaseName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="omakaseS" name="omakaseSize" value="S">
-						<label for="omakaseS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${omakaseSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="omakaseM" name="omakaseSize" value="M">
-						<label for="omakaseM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${omakaseMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<input type="radio" id="omakaseS" name="omakaseSize" value="omakaseSPrice">
+							<label for="omakaseS">
+								<span class="item-size">Sサイズ </span><span class="item-price"
+									th:text="${omakaseSPrice} + '円'"></span>
+							</label>
+							<br />
+							<input type="radio" id="omakaseM" name="omakaseSize" value="omakaseMPrice">
+							<label for="omakaseM">
+								<span class="item-size">Mサイズ </span><span class="item-price"
+									th:text="${omakaseMPrice} + '円'"></span>
+							</label>
+							<input type="hidden" name="image" th:value="${omakase}">
+							<input type="hidden" name="name" th:value="${omakaseName}">
+							<button type="submit" class="select-button">選択</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -48,21 +52,25 @@
 						<p th:text="${syakeIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">シャケデラックス弁当</p>
+						<p class="item-name" th:text="${syakeName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="syakeS" name="syakeSize" value="S">
-						<label for="syakeS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${syakeSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="syakeM" name="syakeSize" value="M">
-						<label for="syakeM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${syakeMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<input type="radio" id="syakeS" name="syakeSize" value="syakeSPrice">
+							<label for="syakeS">
+								<span class="item-size">Sサイズ </span><span class="item-price"
+									th:text="${syakeSPrice} + '円'"></span>
+							</label>
+							<br />
+							<input type="radio" id="syakeM" name="syakeSize" value="syakeMPrice">
+							<label for="syakeM">
+								<span class="item-size">Mサイズ </span><span class="item-price"
+									th:text="${syakeMPrice} + '円'"></span>
+							</label>
+							<input type="hidden" name="image" th:value="${syake}">
+							<input type="hidden" name="name" th:value="${syakeName}">
+							<button type="submit" class="select-button">選択</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -76,21 +84,25 @@
 						<p th:text="${sabaIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">さば炭火焼デラックス弁当</p>
+						<p class="item-name" th:text="${sabaName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="sabaS" name="sabaSize" value="S">
-						<label for="sabaS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${sabaSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="sabaM" name="sabaSize" value="M">
-						<label for="sabaM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${sabaMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<input type="radio" id="sabaS" name="sabaSize" value="sabaSPrice">
+							<label for="sabaS">
+								<span class="item-size">Sサイズ </span><span class="item-price"
+									th:text="${sabaSPrice} + '円'"></span>
+							</label>
+							<br />
+							<input type="radio" id="sabaM" name="sabaSize" value="sabaMPrice">
+							<label for="sabaM">
+								<span class="item-size">Mサイズ </span><span class="item-price"
+									th:text="${sabaMPrice} + '円'"></span>
+							</label>
+							<input type="hidden" name="image" th:value="${saba}">
+							<input type="hidden" name="name" th:value="${sabaName}">
+							<button type="submit" class="select-button">選択</button>
+						</form>
 					</div>
 				</div>
 			</div>
