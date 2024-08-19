@@ -21,11 +21,21 @@ function decreaseQuantity() {
 function updateTotal() {
 	let quantity = document.getElementById('quantity').value;
 	let totalPrice = Math.floor(unitPrice * quantity)
-	document.getElementById('totalPrice').textContent = totalPrice +'円';
+	document.getElementById('totalPrice').textContent = totalPrice + '円';
 	document.getElementById('totalPriceInput').value = totalPrice;
 }
 
 // ページ読み込み時に合計金額を初期化
 document.addEventListener('DOMContentLoaded', function() {
 	updateTotal();
+});
+
+document.getElementById('openPopup').addEventListener('click', () => {
+	document.getElementById('overlay').classList.add('active');
+	document.getElementById('popup').classList.add('active');
+});
+
+document.getElementById('closePopup').addEventListener('click', () => {
+	document.getElementById('overlay').classList.remove('active');
+	document.getElementById('popup').classList.remove('active');
 });

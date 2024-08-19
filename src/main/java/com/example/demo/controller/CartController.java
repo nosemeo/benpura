@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,12 @@ public class CartController {
 		this.session = session;
 	}
 
-
+	@GetMapping("/cart")
+	public String cartShowGet(Model model) {
+		List<CartDto> dtoList = (List<CartDto>) this.session.getAttribute("dtoList");
+		model.addAttribute("dtoList", dtoList);
+		return "settlement/cart";
+	}
 	@PostMapping("/cart")
 	public String cartShow(@ModelAttribute CartDto dto,Model model) {
 		List<CartDto> dtoList = (List<CartDto>) this.session.getAttribute("dtoList");
@@ -44,7 +50,7 @@ public class CartController {
 			
 		
 		model.addAttribute("dtoList",dtoList);
-		return "settlement/cart2";
+		return "settlement/cart";
 	}
 	@GetMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
@@ -58,7 +64,10 @@ public class CartController {
 			dto1.setNumber(1);
 			dto1.setPickupTime(LocalDateTime.now());
 			model.addAttribute("dto",dto1);
-		
+			
+		LocalDate today = LocalDate.now();
+		model.addAttribute("today", today);
+		model.addAttribute("reservations", today);
 		model.addAttribute("dto1",dto);
 		return "settlement/settlement";
 	}

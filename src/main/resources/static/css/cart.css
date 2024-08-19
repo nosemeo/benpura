@@ -1,301 +1,288 @@
 @charset "UTF-8";
-
 body {
-	background: #a8ffa8	;
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .content-title {
-	text-align: center;
-	font-size: 3rem;
-	font-family: "RocknRoll One", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	color:black;
-	
-}
-.content-title span{
-	background-color: #990000;
-	
-	color: white;
-	}
-	
-
-.clearfix {
-	content: "";
-	display: table;
-	clear: both;
+    text-align: center;
+    margin: 20px 0;
 }
 
-#site-header,
-#site-footer {
-	background: #fff;
-}
-
-#site-header {
-	margin: 0 0 30px 0;
-}
-
-#site-header h1 {
-	font-size: 31px;
-	font-weight: 300;
-	padding: 40px 0;
-	position: relative;
-	margin: 0;
-}
-
-a {
-	color: #000;
-	text-decoration: none;
-	
-	-webkit-transition: color .2s linear;
-	-moz-transition: color .2s linear;
-	-ms-transition: color .2s linear;
-	-o-transition: color .2s linear;
-	transition: color .2s linear;
-	
-}
-
-a:hover {
-	color: #53b5aa;
-
-}
-
-#site-header h1 span {
-	color: #53b5aa;
-}
-
-#site-header h1 span.last-span {
-	background: #fff;
-	padding-right: 150px;
-	position: absolute;
-	left: 217px;
-
-	-webkit-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	-ms-transition: all .2s linear;
-	-o-transition: all .2s linear;
-	transition: all .2s linear;
-}
-
-#site-header h1:hover span.last-span,
-#site-header h1 span.is-open {
-	left: 363px;
-}
-
-#site-header h1 em {
-	font-size: 16px;
-	font-style: normal;
-	vertical-align: middle;
+.content-title p {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 3rem;
 }
 
 .container {
-	font-family: 'Open Sans', sans-serif;
-	margin: 0 auto;
-	width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
 }
 
 #cart {
-	width: 100%;
-}
-
-#cart h1 {
-	font-weight: 300;
-}
-
-#cart a {
-	color: #53b5aa;
-	text-decoration: none;
-
-	-webkit-transition: color .2s linear;
-	-moz-transition: color .2s linear;
-	-ms-transition: color .2s linear;
-	-o-transition: color .2s linear;
-	transition: color .2s linear;
-}
-
-#cart a:hover {
-	color: #000;
-}
-
-.product.removed {
-	margin-left: 980px !important;
-	opacity: 0;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .product {
-	border: 1px solid #eee;
-	margin: 20px 0;
-	width: 100%;
-	height: 195px;
-	position: relative;
-
-	-webkit-transition: margin .2s linear, opacity .2s linear;
-	-moz-transition: margin .2s linear, opacity .2s linear;
-	-ms-transition: margin .2s linear, opacity .2s linear;
-	-o-transition: margin .2s linear, opacity .2s linear;
-	transition: margin .2s linear, opacity .2s linear;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.product img {
-	width: 100%;
-	height: 100%;
+.product header img {
+    width: 100px;
+    height: auto;
 }
 
-.product header,
-.product .content {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-style: none none solid none;
-	float: left;
+.content {
+    flex: 1;
+    padding: 0 20px;
 }
 
-.product header {
-	background: #000;
-	margin: 0 1% 20px 0;
-	overflow: hidden;
-	padding: 0;
-	position: relative;
-	width: 24%;
-	height: 195px;
+.item-name {
+	font-weight: 0.5rem;
+	font-size: 1.5rem;
+}
+.shop-name {
+	font-size: 1.2rem;
 }
 
-.product header:hover img {
-	opacity: .7;
+.time {
+	font-size: 1.1rem;
+    color: #888;
 }
 
-.product header:hover h3 {
-	bottom: 73px;
+footer.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
-.product header h3 {
-	background: #53b5aa;
-	text-align: center;
-	color: #fff;
-	font-size: 3rem;
-	font-weight: 300;
-	font-family: "RocknRoll One", sans-serif;
-	line-height: 4rem;
-	margin: 0;
-	padding: 0 30px;
-	position: absolute;
-	bottom: -4rem;
-	right: 0;
-	left: 0;
-
-	-webkit-transition: bottom .2s linear;
-	-moz-transition: bottom .2s linear;
-	-ms-transition: bottom .2s linear;
-	-o-transition: bottom .2s linear;
-	transition: bottom .2s linear;
+footer.content table {
+	font-family: 'RocknRoll One', sans-serif;
+	font-size:1.5rem;
+	text-align: right;
 }
-
-.remove {
-	cursor: pointer;
-}
-
-.product .content {
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	height: 140px;
-	padding: 0 20px;
-	width: 75%;
-}
-
-.product h1 {
-	color: #53b5aa;
-	font-size: 25px;
-	font-weight: 300;
-	margin: 17px 0 20px 0;
-}
-
-.product footer.content {
-	height: 50px;
-	margin: 6px 0 0 0;
-	padding: 0;
-}
-
-.product footer .price {
-	background: #fcfcfc;
-	color: #000;
-	float: right;
-	font-size: 15px;
-	font-weight: 300;
-	line-height: 49px;
-	margin: 0;
-	padding: 0 30px;
-}
-
-.product footer .full-price {
-	background: #53b5aa;
-	color: #fff;
-	float: right;
-	font-size: 22px;
-	font-weight: 300;
-	line-height: 49px;
-	margin: 0;
-	padding: 0 30px;
-
-	-webkit-transition: margin .15s linear;
-	-moz-transition: margin .15s linear;
-	-ms-transition: margin .15s linear;
-	-o-transition: margin .15s linear;
-	transition: margin .15s linear;
-}
-
-.qt{
-	display: block;
-	float: left;
-}
-
-.qt {
-	font-size: 2.5rem;
-	line-height: 50px;
-	width: 70px;
-	text-align: center;
-}
-
-
-
-.qt {
-	background: #53b5aa;
-	color: #fff;
-	cursor: pointer;
-}
-
-
 .btn {
-	background: #53b5aa;
-	border: 1px solid #999;
-	border-style: none none solid none;
-	cursor: pointer;
-	display: block;
-	color: #fff;
-	font-size: 20px;
-	font-weight: 300;
-	padding: 16px 0;
-	width: 290px;
-	text-align: center;
-
-	-webkit-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	-ms-transition: all .2s linear;
-	-o-transition: all .2s linear;
-	transition: all .2s linear;
+	flex-direction: column;
+}
+.remove {
+    margin-top: 10px;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid rgb(128, 0, 0);
+    border-radius: 7px;
+    padding: 0.6rem 1rem ;
+    cursor: pointer;
+}
+.order {
+    margin-top: 10px;
+    background-color: rgb(0, 255, 64);
+    border: 1px solid rgb(0, 128, 0);
+    border-radius: 7px;
+    padding: 0.6rem 2.5rem ;
+    cursor: pointer;
 }
 
-.btn:hover {
-	color: #fff;
-	background: #429188;
+.remove h3 {
+    margin: 0;
+    font-size: 16px;
+}
+.order h3 {
+    margin: 0;
+    font-size: 16px;
 }
 
-.type {
-	background: #fcfcfc;
-	font-size: 13px;
-	padding: 10px 16px;
-	left: 100%;
+.remove:hover {
+    background-color: rgb(217, 17, 17);
+}
+.order:hover {
+    background-color: rgb(0, 255, 128);
 }
 
+@media (max-width: 768px) {
+    .product {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
+    footer.content {
+        align-items: flex-start;
+    }
+
+
+/* 全体のスタイル設定 */
+/*body {*/
+/*	background: #a8ffa8;  背景色 */
+/*	margin: 0;*/
+/*	padding: 0;*/
+/*	overflow-x: hidden;  横スクロールを非表示 */
+/*}*/
+
+/* タイトルのスタイル設定 */
+/*.content-title {*/
+/*	text-align: center;*/
+/*	font-size: 3rem;*/
+/*	font-family: "RocknRoll One", sans-serif;*/
+/*	font-weight: 400;*/
+/*	font-style: normal;*/
+/*	color: black;*/
+/*}*/
+
+/*.content-title span {*/
+/*	background-color: #990000;  背景色 */
+/*	color: white;  文字色 */
+/*}*/
+
+/* コンテナのスタイル設定 */
+/*.container {*/
+/*	font-family: 'Open Sans', sans-serif;*/
+/*	margin: 0 auto;*/
+/*	width: 75%;  幅 */
+/*}*/
+
+/* 商品カードのスタイル設定 */
+/*.product {*/
+/*	border: 1px solid #eee;  枠線 */
+/*	margin: 20px 0;*/
+/*	width: 100%;*/
+/*	height: auto;  高さを自動に設定 */
+/*	position: relative;*/
+/*	display: flex;  フレックスボックスを使用 */
+/*	flex-direction: row;  横方向に配置 */
+/*	align-items: center;  中央揃え */
+/*	padding: 20px;*/
+/*	border-radius: 10px;  角を丸くする */
+/*	background-color: #fff;  背景色 */
+/*}*/
+
+/* 商品画像のコンテナのスタイル設定 */
+/*.product header {*/
+/*	background: #000;  背景色 */
+/*	margin: 0 20px 0 0;  右マージンを追加 */
+/*	overflow: hidden;*/
+/*	padding: 0;*/
+/*	position: relative;*/
+/*	width: 195px;  固定幅 */
+/*	height: 195px;  固定高さ */
+/*	flex-shrink: 0;  画像のサイズを固定 */
+/*}*/
+
+/* 商品画像のスタイル設定 */
+/*.product header img {*/
+/*	width: 100%;*/
+/*	height: 100%;*/
+/*}*/
+
+/* 商品情報のスタイル設定 */
+/*.product .content {*/
+/*	box-sizing: border-box;*/
+/*	width: calc(100% - 235px);  画像とパディングを除いた幅 */
+/*	display: flex;  フレックスボックスを使用 */
+/*	flex-direction: row;  横方向に配置 */
+/*	justify-content: space-between;  内容を左右に配置 */
+/*	align-items: flex-start;  上揃え */
+/*}*/
+
+/* 商品名と受け取り時間のコンテナ */
+/*.product .details {*/
+/*	display: flex;*/
+/*	flex-direction: column;*/
+/*	margin-right: 20px;  右マージンを追加 */
+/*	justify-content: flex-start;  上揃え */
+/*	align-items: flex-start;  左揃え */
+/*}*/
+
+/* 商品名のスタイル設定 */
+/*.product h1 {*/
+/*	color: #53b5aa;  文字色 */
+/*	font-size: 25px;*/
+/*	font-weight: 300;*/
+/*	margin: 0 0 10px 0;  マージン調整 */
+/*}*/
+
+/* 受け取り時間のスタイル設定 */
+/*.product .time {*/
+/*	font-size: 15px;*/
+/*	color: #000;  文字色 */
+/*	margin: 0;  マージン調整 */
+/*}*/
+
+/* 個数と合計のコンテナ */
+/*.product .quantity-price {*/
+/*	display: flex;*/
+/*	flex-direction: column;  縦方向に配置 */
+/*	justify-content: flex-start;  上揃え */
+/*	align-items: flex-start;  左揃え */
+/*	margin-right: 20px;  右マージンを追加 */
+/*}*/
+
+/* 個数のスタイル設定 */
+/*.product .quantity {*/
+/*	font-size: 18px;*/
+/*	color: #000;  文字色 */
+/*	margin: 0 0 10px 0;  マージン調整 */
+/*}*/
+
+/* 合計金額のスタイル設定 */
+/*.product .full-price {*/
+/*	background: #53b5aa;  背景色 */
+/*	color: #fff;  文字色 */
+/*	font-size: 22px;*/
+/*	font-weight: 300;*/
+/*	padding: 10px 20px;*/
+/*	border-radius: 5px;  角を丸くする */
+/*}*/
+
+/* ボタンのコンテナ */
+/*.product .button-container {*/
+/*	display: flex;*/
+/*	flex-direction: row;  横方向に配置 */
+/*	align-items: flex-end;  下揃え */
+/*	position: absolute;*/
+/*	bottom: 20px;  下からの位置 */
+/*	right: 20px;  右からの位置 */
+/*}*/
+
+/* 削除ボタンのスタイル設定 */
+/*.product .delete-btn {*/
+/*	background: #53b5aa;  背景色 */
+/*	color: #fff;  文字色 */
+/*	font-size: 1.5rem;*/
+/*	font-weight: 300;*/
+/*	font-family: "RocknRoll One", sans-serif;*/
+/*	line-height: 3rem;*/
+/*	margin-right: 10px;  右マージンを追加 */
+/*	padding: 0 20px;*/
+/*	border-radius: 5px;  角を丸くする */
+/*	cursor: pointer;*/
+/*	transition: background-color .2s linear;  ホバー時の色変化 */
+/*}*/
+
+/* 削除ボタン: ホバー時の色変化 */
+/*.product .delete-btn:hover {*/
+/*	background-color: #3d8b84;  ホバー時の背景色 */
+/*}*/
+
+/* 決済ボタンのスタイル設定 */
+/*.order {*/
+/*	background-color: #007bff;  背景色 */
+/*	color: white;  文字色 */
+/*	padding: 10px 20px;*/
+/*	text-decoration: none;*/
+/*	border-radius: 5px;  角を丸くする */
+/*	transition: background-color .2s linear;  ホバー時の色変化 */
+/*	cursor: pointer;*/
+/*}*/
+
+/* 決済ボタン: ホバー時の色変化 */
+/*.order-btn .btn:hover {*/
+/*	background-color: #0056b3;  ホバー時の背景色 */
+/*}*/
