@@ -76,7 +76,9 @@
 		</section>
 
 	</div>
-
+	<div class="empty" 	th:if="${#lists.isEmpty(list)}">
+		<p>カートに商品がありません</p>
+	</div>
 </body>
 
 </html>

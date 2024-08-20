@@ -56,7 +56,7 @@ public class CartController {
 	@GetMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
 		dto.setNumber(1);
-		dto.setPickupTime((LocalDateTime) this.session.getAttribute(""));
+		dto.setPickupTime((LocalDateTime) this.session.getAttribute("orderdatetime"));
 		LocalDate today = LocalDate.now();
 		model.addAttribute("today", today);
 		model.addAttribute("reservations", today);

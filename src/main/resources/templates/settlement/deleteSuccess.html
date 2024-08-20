@@ -8,14 +8,15 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
 		rel="stylesheet">
-	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<link th:href="@{/css/deleteSuccess.css}" rel="stylesheet">
 </head>
 
 <body>
-	<div class="content-title">
-		<p>削除が完了しました。</p>
+	<div class="container">
+		<h1>削除が完了しました。</h1>
+		<p></p>
+		<a th:href="@{/cart}" class="button">カートへ戻る</a>
 	</div>
-	<a th:href="@{/cart}" class="btn">カートへ戻る</a>
 </body>
 
 </html>
