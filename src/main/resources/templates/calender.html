@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
 
 <head>
 	<meta charset="UTF-8">
@@ -25,110 +26,110 @@
 	<!--  メモ：obj : ${list}などのタイムリーフを使用する場合-->
 	<!--    th:ref @{/css/～.css}"の記載になる-->
 
+	<!-- 共通ヘッダー読み込み -->
+	<link th:href="@{/css/layout.css}" rel="stylesheet">
+
+
 </head>
 
-<body layout:decorate="layout.html">
-	<!-- ヘッダーの共通化 -->
-	<div layout:include="~{layout.html :: header}"></div>
-	
-	<!-- メインコンテンツ -->
+<body>
+
+	<!-- 共通ヘッダーを読み込み -->
 	<div layout:fragment="content">
-		<h1>Welcome to Home Page</h1>
-		<p>This is the home page content.</p>
-	</div>
 
-	<!-- カレンダー全体を囲むコンテナ -->
-	<div class="calendar-container">
+		<!-- カレンダー全体を囲むコンテナ -->
+		<div class="calendar-container">
 
-		<!-- カレンダーのタイトル -->
-		<h1>★本番★マイページ/カレンダー</h1>
+			<!-- カレンダーのタイトル -->
+			<h1>★本番★マイページ/カレンダー</h1>
 
-		<!-- ナビゲーションボタン（先月・来月に切り替え） -->
-		<div class="navigation">
-			<button onclick="changeMonth(-1)">先月</button>
-			<span id="month-year"></span>
-			<button onclick="changeMonth(1)">来月</button>
-		</div>
-
-
-		<!--ログインIDを取得するために仮のログイン画面へ飛ぶ-->
-		<form method="get" action="/nextpagelogin">
-			<button type="submit">登録画面へ</button>
-		</form>
-
-		<!-- 注文履歴の読み込み -->
-		<div id="event-calender">
-			<div th:each="event : ${list}" th:attr="data-event-date=${event.date}, data-event-item=${event.item}">
+			<!-- ナビゲーションボタン（先月・来月に切り替え） -->
+			<div class="navigation">
+				<button onclick="changeMonth(-1)">先月</button>
+				<span id="month-year"></span>
+				<button onclick="changeMonth(1)">来月</button>
 			</div>
-		</div>
-
-		<!-- カレンダーのテーブル -->
-		<table id="calendar-table">
-			<thead>
-				<tr>
-					<th>月</th>
-					<th>火</th>
-					<th>水</th>
-					<th>木</th>
-					<th>金</th>
-					<th class="saturday">土</th>
-					<th class="sunday">日</th>
-				</tr>
-			</thead>
-			<tbody id="calendar-body">
-				<!-- JavaScriptで生成されるカレンダーの日付がここに表示されます -->
-
-			</tbody>
-		</table>
-
-		<!-- 日時選択部分 -->
-		<div class="datetime-container">
-
-			<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
-			<form method="get" action="/nextpage">
 
 
-				<label for="date-select">日付:</label>
-				<!-- ↓ データ名"orderdate"にて日付を-->
-				<!-- ↓action先のページにsubmit/送信-->
-				<select id="date-select" name="orderdate">
-				</select>
-
-
-				<label for="time-select">時間:</label>
-				<select id="time-select" name="ordertime">
-				</select>
-
-				<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
-				<button type="submit">決定</button>
-				<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
+			<!--ログインIDを取得するために仮のログイン画面へ飛ぶ-->
+			<form method="get" action="/nextpagelogin">
+				<button type="submit">登録画面へ</button>
 			</form>
-		</div>
-		<h0>受け取るに日付と時間を選んで決定ボタンを押してください。</h0>
-	</div>
 
-	<!-- 注文履歴表示部分 -->
-	<div class="order-history-container">
-		<h2>注文履歴</h2>
-		<div class="order-history">
-			<table>
+			<!-- 注文履歴の読み込み -->
+			<div id="event-calender">
+				<div th:each="event : ${list}" th:attr="data-event-date=${event.date}, data-event-item=${event.item}">
+				</div>
+			</div>
+
+			<!-- カレンダーのテーブル -->
+			<table id="calendar-table">
 				<thead>
 					<tr>
-						<th>注文日時</th>
-						<th>店名</th>
-						<th>注文内容</th>
-						<th>合計金額</th>
+						<th>月</th>
+						<th>火</th>
+						<th>水</th>
+						<th>木</th>
+						<th>金</th>
+						<th class="saturday">土</th>
+						<th class="sunday">日</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr th:each="obj : ${list}" align="center">
-						<td th:text="${obj.date}"></td>
-						<td th:text="${obj.name}"></td>
-						<td th:text="${obj.item}"></td>
-						<td th:text="${obj.price}"></td>
-					</tr>
+				<tbody id="calendar-body">
+					<!-- JavaScriptで生成されるカレンダーの日付がここに表示されます -->
+
 				</tbody>
 			</table>
+
+			<!-- 日時選択部分 -->
+			<div class="datetime-container">
+
+				<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
+				<form method="get" action="/nextpage">
+
+
+					<label for="date-select">日付:</label>
+					<!-- ↓ データ名"orderdate"にて日付を-->
+					<!-- ↓action先のページにsubmit/送信-->
+					<select id="date-select" name="orderdate">
+					</select>
+
+
+					<label for="time-select">時間:</label>
+					<select id="time-select" name="ordertime">
+					</select>
+
+					<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
+					<button type="submit">決定</button>
+					<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
+				</form>
+			</div>
+			<h0>受け取るに日付と時間を選んで決定ボタンを押してください。</h0>
+		</div>
+
+		<!-- 注文履歴表示部分 -->
+		<div class="order-history-container">
+			<h2>注文履歴</h2>
+			<div class="order-history">
+				<table>
+					<thead>
+						<tr>
+							<th>注文日時</th>
+							<th>店名</th>
+							<th>注文内容</th>
+							<th>合計金額</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="obj : ${list}" align="center">
+							<td th:text="${obj.date}"></td>
+							<td th:text="${obj.name}"></td>
+							<td th:text="${obj.item}"></td>
+							<td th:text="${obj.price}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>

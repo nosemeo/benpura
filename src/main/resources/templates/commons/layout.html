@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<!-- 共通化するヘッダー -->
+<header>
+	<nav>
+		<b class="left-align">
+			<img src="/image/benpura.png" alt="Extra Image" class="extra-image">
+			弁プラ
+		</b>
+
+		<a href="/login">
+			<img src="/image/login.png" alt="Sample Image">
+			ログイン
+		</a>
+		<a href="/calender2">
+			<img src="/image/mypage.png" alt="Sample Image">
+			マイページ
+		</a>
+		<a href="/cart">
+			<img src="/image/cart.png" alt="Sample Image">
+			カート
+		</a>
+	</nav>
+</header>
+
+<!--引用先のサイトはこちらに表示-->
+<div layout:fragment="content">
+	引用先のサイトの中身がここに表示される
+</div>
