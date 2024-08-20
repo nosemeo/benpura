@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-
 <head>
-	<!-- 置き換わる内容-->
-	<div layout:fragment="content">
-	</div>
-
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>★本番★マイページ/カレンダー</title>
@@ -33,7 +28,10 @@
 </head>
 
 <body layout:decorate="layout.html">
-	<!-- この部分が layout.html の content フラグメントに挿入される -->
+	<!-- ヘッダーの共通化 -->
+	<div layout:include="~{layout.html :: header}"></div>
+	
+	<!-- メインコンテンツ -->
 	<div layout:fragment="content">
 		<h1>Welcome to Home Page</h1>
 		<p>This is the home page content.</p>
