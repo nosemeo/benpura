@@ -9,7 +9,7 @@
 		rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/css/settlement.css}">
 	<script th:inline="javascript">
-		const initialPrice = /*[[${dto.price}]]*/ 10000;
+		const initialPrice = /*[[${dto.price}]]*/1;
 	</script>
 	<script th:src="@{/js/settlement.js}" defer></script>
 </head>
@@ -17,7 +17,7 @@
 <body>
 	<h1 class="title">注文確認</h1>
 	<div class="product">
-		<!--		<img class="image" th:src="'data:image/png;base64,'+${dto.image}" alt="商品名">-->
+		<img class="image" th:src="'data:image/png;base64,'+${dto.image}" alt="商品名">
 		<div class="details">
 			<h2 th:text="${dto.name}">商品名</h2>
 			<h3 th:text="${dto.shopName}">店名</h3>
@@ -39,11 +39,31 @@
 		</div>
 
 		<div class="total">
-			合計: <span id="totalPrice" th:text="'¥' + ${dto.price}" th:field="*{price}"></span>
+			合計: <span id="totalPrice" onchange></span>
+			<input type="hidden" id="totalPriceInput" th:field="*{price}">
 		</div>
-		<button type="submit">カートに追加</button>
+		<div class="buttons">
+			<button type="submit">カートに追加</button>
+			<button type="button" id="openPopup">予約確認</button>
+		</div>
 	</form>
-	
+<!--	<div class="overlay" id="overlay"></div>-->
+<!--	<div class="popup" id="popup">-->
+<!--		<h2>今週の予約</h2>-->
+<!--		<div class="calendar" id="calendar">-->
+<!--			 日付がここに表示されます -->
+<!--			<div th:each="i : ${#numbers.sequence(0, 6)}">-->
+<!--				<div th:with="day = ${today.plusDays(i)}" th:class="day"-->
+<!--					th:classappend="${day == today} ? ' today' : ''">-->
+<!--					<div th:text="${#dates.format(day, 'E', 'ja')}">月</div>-->
+<!--					<div th:text="${day.getDayOfMonth()}">1</div>-->
+<!--					<div th:text="${reservations[day] ?: '予約なし'}">予約なし</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<button id="closePopup">閉じる</button>-->
+<!--	</div>-->
+
 
 </body>
 

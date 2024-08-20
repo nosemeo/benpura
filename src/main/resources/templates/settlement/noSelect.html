@@ -6,8 +6,7 @@
 	<title>弁ぷら　｜　カート</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap" rel="stylesheet">
 	<link th:href="@{/css/cart.css}" rel="stylesheet">
 	<script th:src="@{/js/cart.js}"></script>
 </head>
@@ -16,14 +15,14 @@
 	<div class="content-title">
 		<p><span>弁ぷら</span>カート</p>
 	</div>
-
-	<div th:each="obj:${dtoList}" class="container">
+	
+	<div class="container">
 
 		<section id="cart">
 			<article class="product">
 				<header>
 					<a class="remove">
-						<img th:src="'data:image/png;base64,'+${obj.image}" alt="店名">
+						<img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="">
 
 						<h3>削除</h3>
 					</a>
@@ -31,30 +30,30 @@
 
 				<div class="content">
 
-					<h1 th:text="${obj.name}">仮</h1>
+					<h1>仮</h1>
 					<p>受け取り</p>
 					<p class="time">日時：8/25 12：00</p>
 					
 				</div>
 
-				<footer class=" content">
-
-						<select class="qt" onchange="updateTotal(this)">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
+				<footer class="content">
+					
+					<select class="qt">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
 
 					<h2 class="full-price">
 						1300円
 					</h2>
 
-					<h2 class="price">
+					<h2 class="price" >
 						650円
 					</h2>
-					</footer>
+				</footer>
 			</article>
 
 		</section>
@@ -67,7 +66,7 @@
 			<div class="left">
 				<h2 class="subtotal">合計(抜税): <span>163.96</span>円</h2>
 				<h3 class="tax">消費税(5%): <span>8.2</span>円</h3>
-
+				
 			</div>
 
 			<div class="right">
