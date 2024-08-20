@@ -57,7 +57,7 @@ public class CartController {
 //			dto1.setShopName("Hana");
 //			dto1.setPrice(1000);
 //			dto1.setImage(null);
-//			dto1.setNumber(1);
+			dto.setNumber(1);
 //			dto1.setPickupTime(LocalDateTime.now());
 //			model.addAttribute("dto",dto1);
 		

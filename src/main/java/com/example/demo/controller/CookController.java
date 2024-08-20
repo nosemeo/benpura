@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.CookCategory;
 import com.example.demo.repository.CookCategoryRepository;
@@ -26,22 +24,22 @@ public class CookController {
 	@Autowired
 	private CookCategoryRepository repository;
 	
-	@PostMapping("/settlement")
-	public String settlementView(Model model,@RequestParam String image, @RequestParam String item, 
-			@RequestParam String priceS, @RequestParam String priceM, @RequestParam String selectedSize) {
-			
-			String price = "";
-			if ("S".equals(selectedSize)) {
-				price = priceS;
-			} else if ("M".equals(selectedSize)) {
-				price = priceM;
-			}
-			model.addAttribute("image", image);
-			model.addAttribute("name", item);
-			model.addAttribute("price", price);
-			
-		return "settlement";
-	}
+//	@PostMapping("/settlement")
+//	public String settlementView(Model model,@RequestParam String image, @RequestParam String item, 
+//			@RequestParam String priceS, @RequestParam String priceM, @RequestParam String selectedSize) {
+//			
+//			String price = "";
+//			if ("S".equals(selectedSize)) {
+//				price = priceS;
+//			} else if ("M".equals(selectedSize)) {
+//				price = priceM;
+//			}
+//			model.addAttribute("image", image);
+//			model.addAttribute("name", item);
+//			model.addAttribute("price", price);
+//			
+//		return "settlement";
+//	}
 
 	@GetMapping
 	public String showList(Model model) {

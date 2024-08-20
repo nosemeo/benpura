@@ -20,12 +20,13 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-.name-description{
+
+.name-description {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 25px;
 	color: rgb(0, 0, 0);
 	margin-top: 10px;
-	line-height:1.5;
+	line-height: 1.5;
 	text-align: center;
 	font-weight: bold;
 }
@@ -117,7 +118,7 @@ body {
 	font-size: 15px;
 	color: rgb(45, 45, 45);
 	margin: 10px;
-	line-height: 2;
+	line-height: 1.5;
 	font-weight: bold;
 }
 
@@ -125,7 +126,7 @@ body {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 15px;
 	color: rgb(255, 0, 0);
-	line-height: 2;
+	line-height: 1.5;
 	font-weight: bold;
 }
 
@@ -142,7 +143,7 @@ body {
 	margin-right: 20px;
 	/* ラジオボタンのセット間に余白を追加 */
 	font-size: 15px;
-	line-height: 1.5;
+
 }
 
 .text-wrapper {
@@ -155,13 +156,17 @@ body {
 	/* 可选：添加圆角以匹配样式 */
 	box-shadow: 0 0 5px rgb(255, 255, 255);
 	/* 可选：添加阴影 */
+
+	margin-bottom: 10px;
 }
 
 .size-wrapper {
-	width: auto;
-	padding: 5px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
+	/* ラジオボタンとラベルを中央揃え */
+	width: 100%;
+
 }
 
 a {
@@ -171,6 +176,14 @@ a {
 	/* 设置链接的颜色 */
 	font-weight: bold;
 	/* 可选：设置链接文字加粗 */
+}
+
+.button-style {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	/* 追加: select-buttomの上に余白を追加 */
+
 }
 
 .select-button {
@@ -189,6 +202,7 @@ a {
 	/* アニメーション */
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	/* 柔らかい影 */
+	float: center;
 }
 
 .select-button:hover {
