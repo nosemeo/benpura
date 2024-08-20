@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class CartController {
 	@GetMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
 		dto.setNumber(1);
-		dto.setPickupTime(this.session.getAttribute(""));
+		dto.setPickupTime((LocalDateTime) this.session.getAttribute(""));
 		LocalDate today = LocalDate.now();
 		model.addAttribute("today", today);
 		model.addAttribute("reservations", today);
