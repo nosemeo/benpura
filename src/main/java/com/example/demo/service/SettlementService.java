@@ -1,9 +1,10 @@
 package com.example.demo.service;
 
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.entity.CookCategory;
+import com.example.demo.entity.Order;
 
+@Transactional
 public interface SettlementService {
-	Optional<CookCategory> select(Integer id);
+	void insertOrder(Order order);
 }
