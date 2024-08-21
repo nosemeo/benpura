@@ -21,7 +21,7 @@ import com.example.demo.service.CalenderService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-//@RequestMapping("/calender2")
+//@RequestMapping("/calender")
 public class CalenderController {
 
 	// セッション準備 HttpSession型のフィールドを定義する
@@ -86,7 +86,7 @@ public class CalenderController {
 	//機能②：注文日時をセッションに保存、注文日にちと時間の結合
 	//
 	//その他：日時の形式を調整
-	@GetMapping("/nextpage") //次のサイトが完成したらこちらに記載
+	@GetMapping("/_nextpage") //次のサイトが完成したらこちらに記載
 	public String showNextPage(Model model, Form f) {
 
 		// 機能①：注文日時の曜日の取得と引き渡し
@@ -114,15 +114,15 @@ public class CalenderController {
 		model.addAttribute("orderdatetime", this.session.getAttribute("orderdatetime"));
 
 		// nextpage.htmlを表示
-		return "nextpage";
+		return "_nextpage";
 	}
 	
 	
 	// ログインページに戻るだけ
-	@GetMapping("/nextpagelogin")
+	@GetMapping("/_nextpagelogin")
 	public String showNextPageLogin() {
 		// nextpage2.htmlを表示
-		return "nextpagelogin";
+		return "_nextpagelogin";
 	}
 	
 }
