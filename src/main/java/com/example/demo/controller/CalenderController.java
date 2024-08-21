@@ -35,21 +35,10 @@ public class CalenderController {
 		// フィールドに代入する
 		this.session = session;
 	}
-
-	//htmlの呼び出し
-	@GetMapping
-	public String calenderShowList(Model model) {
-		//注文履歴を全件取得
-		Iterable<Calender> list = service.selectAll();
-		//表示用「Model」への格納
-		model.addAttribute("list", list);
-		//calender.htmlのカレンダー、注文履歴の表示
-		return "calender";
-	}
-
+	
 	// ユーザーネームをセッションに保存
 	// 再表示用
-	@GetMapping("/calender2")
+	@GetMapping("/calender")
 	public String calenderShowList2(Model model, Form f) {
 		//注文履歴を全件取得
 		Iterable<Calender> list = service.selectAll();
@@ -116,6 +105,17 @@ public class CalenderController {
 		// nextpage.htmlを表示
 		return "nextpage";
 	}
+	
+	// 変更前の記述
+//	@GetMapping("/calender2")
+//	public String calenderShowList(Model model) {
+//		//注文履歴を全件取得
+//		Iterable<Calender> list = service.selectAll();
+//		//表示用「Model」への格納
+//		model.addAttribute("list", list);
+//		//calender.htmlのカレンダー、注文履歴の表示
+//		return "calender";
+//	}
 	
 	// ログインページに戻るだけ
 	@GetMapping("/nextpagelogin")
