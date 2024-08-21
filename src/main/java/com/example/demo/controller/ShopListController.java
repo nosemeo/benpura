@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.dto.ShopListDto;
 import com.example.demo.entity.ShopList;
 import com.example.demo.repository.ShopListRepository;
 import com.example.demo.service.ShopListService;
@@ -31,7 +32,7 @@ public class ShopListController {
 		//		Implで内容を書く。それをControllerで反映
 		Iterable<ShopList> alldata = shopListService.selectAll();
 		List<String> list = new ArrayList<>();
-		List<ShopList> list8 = new ArrayList<>();
+		List<ShopListDto> list8 = new ArrayList<>();
 
 		// 写真の表示
 		for (ShopList shopList : alldata) {
@@ -39,11 +40,9 @@ public class ShopListController {
 			if (shopList.getShopPicture() != null) {
 				String list2 = Base64.getEncoder().encodeToString(shopList.getShopPicture());
 				list.add(list2);
-				list8.add(shopList);
+				list8.add(new ShopListDto(shopList.getId(),shopList.getShopName(),shopList.getShopAddress(),shopList.getShopTel(),shopList.getShopHour(),shopList.getHoliday(),list2));
 			}
 		}
-
-		model.addAttribute("image", list);
 		model.addAttribute("shopLists", list8); // 左はhtml側で呼び出す為の名前
 		return "shopList";
 	}

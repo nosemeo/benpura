@@ -30,7 +30,7 @@
 		<br>
 		<!--		target="_blank"は別タブでリンク開く-->
 		<a th:href="@{/cookCategory}" target="_blank">
-			<img class="shopimg" th:src="'data:image/png;base64,'+${image[0]}" alt="Hana" />
+			<img class="shopimg" th:src="'data:image/png;base64,'+${shop.image}" alt="Hana" />
 		</a>
 		<div class="text">
 			<h1 class="shopName" th:text="${shop.shopName}"></h1>
