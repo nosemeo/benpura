@@ -52,7 +52,7 @@ public class CartController {
 			
 		
 		model.addAttribute("dtoList",dtoList);
-		return "settlement/cart";
+		return "redirect:/cart";
 	}
 	@PostMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {

@@ -153,41 +153,11 @@ function formatDateToString(date) {
 //    日時のプルダウンが先月の日が選択できるようになっていた
 //    上のfunction formatDateToString(date) を追加したら直りました。
 //
+
 // 月を変更する関数
 function changeMonth(offset) {
 	currentDate.setMonth(currentDate.getMonth() + offset);
-	initialize();
-}
-
-// 日時選択の処理
-function selectDateTime() {
-	const dateSelect = document.getElementById('date-select');
-	const timeSelect = document.getElementById('time-select');
-	const selectedDate = dateSelect.value;
-	const selectedTime = timeSelect.value;
-	alert(`予約する日時は${selectedDate} ${selectedTime}になります。`);
-	//  選択した日時の表示
-}
-
-// カレンダー当月の年月日を取得する関数
-function getCurrentMonthDates() {
-	const monthYearText = document.getElementById('month-year').textContent;
-
-	// 月年を取得（例: "2023年8月"）
-	const [yearText, monthText] = monthYearText.match(/\d+/g);
-	const year = parseInt(yearText);
-	const month = parseInt(monthText) - 1; // JavaScriptの月は0始まり
-
-	const firstDay = new Date(year, month, 1);
-	const lastDay = new Date(year, month + 1, 0);
-
-	let dates = [];
-	for (let day = 1; day <= lastDay.getDate(); day++) {
-		const date = new Date(year, month, day);
-		dates.push(date);
-	}
-	return dates;
-
+	initialize()
 }
 
 // 関数①カレンダー表示、関数②イベント取得、2つの関数をまとめた
