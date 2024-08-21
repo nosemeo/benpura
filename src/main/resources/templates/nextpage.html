@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
 
-<html>
 
 <head>
 	<meta charset="UTF-8">
 	<title>仮のページ / 表示確認用</title>
+
+	<!-- 共通ヘッダー読み込み -->
+	<link th:href="@{/css/layout.css}" rel="stylesheet">
+
 </head>
 
 <body>

@@ -57,8 +57,17 @@ public class CalenderController {
 		// usernameと合致する注文履歴のみリストに追加
 		List<Calender> newlist = new ArrayList<>();
 		for (Calender temp : list) {
-			if (temp.getUsername().equals(f.getUsername())) {
-				newlist.add(temp);
+			// ログインページから読み込んだ時、ユーザー名を受け取っているか確認
+			if(!(f.getUsername()==null)) {
+				if (temp.getUsername().equals(f.getUsername())) {
+					newlist.add(temp);
+				}				
+			}
+			// ヘッダーのログインページから読み込んだ時、セッションにあるユーザー名を受け取っているか確認
+			if(!(this.session.getAttribute("username")==null)) {
+				if (temp.getUsername().equals(this.session.getAttribute("username"))) {
+					newlist.add(temp);
+				}				
 			}
 		}
 
