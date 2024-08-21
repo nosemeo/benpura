@@ -4,12 +4,12 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	
+
 	background: url('https://www.sozailab.jp/db_img/sozai/71628/0e1d53ea1a3b4a9ecc517d6684d2f975.jpg');
 }
 
 .menu-section {
-	
+
 	padding: 30px;
 	color: white;
 	text-align: center;
@@ -19,16 +19,23 @@ body {
 	margin: 10;
 	font-size: 70px;
 	color: rgb(0, 128, 0);
-	text-align : center
+	text-align: center
 }
 
 .text-bound {
-  animation: key .5s ease infinite alternate;
+	animation: key .5s ease infinite alternate;
 }
+
 @keyframes key {
-  0% {transform: translateY(0px);}
-  100% {transform: translateY(-10px);}
+	0% {
+		transform: translateY(0px);
+	}
+
+	100% {
+		transform: translateY(-10px);
+	}
 }
+
 .new {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 30px;
@@ -114,7 +121,19 @@ body {
 	/* 可爱的字体 */
 	font-size: 25px;
 	margin: 10px;
-	color: rgb(45, 45, 45);
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	/* 增加粗体 */
+	line-height: 1.5;
+	/* 调整行高以对齐 */
+}
+
+.item-name2 {
+	font-family: 'Quicksand', sans-serif;
+	/* 可爱的字体 */
+	font-size: 25px;
+	margin: 10px;
+	color: rgb(255, 255, 255);
 	font-weight: bold;
 	/* 增加粗体 */
 	line-height: 1.5;
@@ -172,45 +191,71 @@ body {
 
 }
 
-.text-wrapper1 {
-	width: 80%;
-	background-color: rgb(36, 146, 255);
-
-	border-radius: 40px;
-	/* ボタンの角を丸くする */
+.button {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	padding: 2px 20px;
-	/* パディングを追加して、ボタンに余白を作る */
-	margin: 20px auto;
-	/* 上下のマージンを追加 */
-	text-align: center;
-
-}
-
-.text-wrapper1 .icon-circle {
-	background-color: rgb(255, 255, 255);
-	color: rgb(0, 128, 255);
-	border-radius: 50%;
-	/* 丸くする */
-	width: 24px;
-	height: 24px;
-	display: flex;
 	justify-content: center;
-	align-items: center;
-	font-weight: bold;
-}
-
-.text-wrapper1 a {
+	/* テキストとアイコンをスペースを空けて配置 */
 	text-decoration: none;
-	/* 下線を削除 */
-	color: rgb(255, 255, 255);
+	/* リンクの下線を消す */
+	background: linear-gradient(45deg, rgb(23, 134, 255), rgb(55, 210, 255));
+	padding: 10px 20px;
+	/* ボタンの内側の余白 */
+	border-radius: 50px;
+	/* ボタンの角を丸める */
+	font-size: 18px;
+	/* ボタン内のテキストサイズ */
+	font-weight: bold;
+	/* テキストを太字に */
+	transition: background-color 0.3s;
+	/* ホバー時の背景色の遷移 */
+	width: 100%;
+	/* ボタンの幅を親要素に合わせる（必要に応じて調整） */
+	max-width: 400px;
+	/* ボタンの最大幅 */
+	box-sizing: border-box;
+	/* パディングとボーダーを含めたサイズ計算 */
+	
 }
 
-.text-wrapper1 a:hover {
-	color: rgb(0, 0, 0);
-	/* ホバー時のリンクの色 */
+.button:before,
+.button:after {
+	content: "";
+	position: absolute;
+	z-index: -10;
+	width: 100%;
+	/* 幅をボタンの幅に合わせる */
+	height: 100%;
+	/* 高さをボタンの高さに合わせる */
+	top: 0;
+	left: 0;
+	border-radius: 50px;
+	background: #a6f9ff;
+	transform: translate3d(0, 0, 0);
+}
+
+@keyframes anime {
+	0% {
+		transform: scale(0.95);
+		opacity: 1;
+	}
+
+	90% {
+		opacity: 0.1;
+	}
+
+	to {
+		transform: scale(1.2, 1.2);
+		opacity: 0;
+	}
+}
+
+.button:before {
+	animation: anime 1s ease-out infinite;
+}
+
+.button:after {
+	animation: anime 1s ease-out 1s infinite;
 }
 
 .size-wrapper {
@@ -265,16 +310,24 @@ a {
 }
 
 .cursor {
-    position: absolute;
-    width: 50px; /* 円のサイズ */
-    height: 50px; /* 円のサイズ */
-    background-color: rgb(255, 128, 64, 0.3); /* 半透明な黄色 */
-    border-radius: 50%; /* 円形にする */
-    pointer-events: none; /* 要素をクリックできないようにする */
-    transform: translate(-50%, -50%); /* 円の中心をマウス位置に合わせる */
-    transition: background-color 0.3s; /* 色の遷移 */
+	position: absolute;
+	width: 50px;
+	/* 円のサイズ */
+	height: 50px;
+	/* 円のサイズ */
+	background-color: rgb(255, 128, 64, 0.3);
+	/* 半透明な黄色 */
+	border-radius: 50%;
+	/* 円形にする */
+	pointer-events: none;
+	/* 要素をクリックできないようにする */
+	transform: translate(-50%, -50%);
+	/* 円の中心をマウス位置に合わせる */
+	transition: background-color 0.3s;
+	/* 色の遷移 */
 }
 
 body:hover .cursor {
-    background-color: rgb(255, 128, 64, 0.3); /* ホバー時の色 */
+	background-color: rgb(255, 128, 64, 0.3);
+	/* ホバー時の色 */
 }
