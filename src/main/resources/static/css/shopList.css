@@ -41,7 +41,7 @@ body {
 	text-align: center;
 	/* 文字間を広げる */
 	letter-spacing: 0.5em;
-	
+
 	font-size: 20px;
 }
 
@@ -179,13 +179,86 @@ img {
 	font-size: 25px;
 	margin-left: 25%;
 	margin-top: 1%;
+	font-family: sans-serif;
+
+	/* 文字に影を入れ斜めにする */
+	font-style: italic;
+	letter-spacing: .1em;
+	color: #fff;
+	text-shadow: -4px 3px 0 rgb(0, 64, 0), -8px 6px 0 rgb(255, 128, 64);
 }
 
-.btn{
+
+@import "https://use.fontawesome.com/releases/v5.13.0/css/all.css";
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+/*html {*/
+.btn {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 62.5%;
+	width: 60%;
+	/*	padding-left: 80%;*/
+	text-align: center;
+}
+
+.btn,
+a.btn,
+button.btn {
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.5;
+	position: relative;
+	display: inline-block;
+	/** 枠のサイズ変更 **/
+	padding: 1rem 2rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+	color: #212529;
+	border-radius: 0.5rem;
+}
+
+/*その他と主な共通部分は省略*/
+a.btn-tag {
+	color: #fff;
+	border-bottom: 5px solid #db9014;
+	background: #f39800;
+}
+
+a.btn-tag:before {
+	border-right: 2px solid rgba(255, 255, 255, .5);
+}
+
+a.btn-tag:hover {
+	margin-top: 3px;
+	border-bottom: 2px solid #db9014;
+	background: #ffa50e;
+}
+
+
+
+.Information {
 	text-align: center;
 	font-size: 25px;
-	margin-left: 60%;
-/*	transform: scale(0, 1);*/
+	margin-left: 8%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	/*	transform: scale(0, 1);*/
 	display: inline-block;
 
 	position: relative;
@@ -193,28 +266,32 @@ img {
 	text-decoration: none;
 	transition: color .3s;
 }
+
 /* アニメーション */
-.btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  /* 線の長さはここで調整する */
-  width: 85%;
-  height: 3px;
-  background-color: #4c7aaf;
-  transition: transform .3s;
+.Information::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: scaleX(0);
+	transform-origin: bottom right;
+	/* 線の長さはここで調整する */
+	width: 100%;
+	height: 4px;
+	background-color: #4c7aaf;
+	transition: transform .3s;
 }
+
 @media (hover) {
-  .btn:hover {
-    color: #4c7aaf;
-  }
-  .btn:hover::after {
-    transform: scaleX(1); /* 0→1でX軸方向に100%変形 */
-    transform-origin: bottom left;
-  }
+	.Information:hover {
+		color: #4c7aaf;
+	}
+
+	.Information:hover::after {
+		transform: scaleX(1);
+		/* 0→1でX軸方向に100%変形 */
+		transform-origin: bottom left;
+	}
 }
 
 /*.btn {*/
@@ -259,12 +336,15 @@ img {
 .scroll {
 	display: inline-block;
 	padding-top: 70px;
-	position: relative;
+	/*	position: relative;*/
+	position: fixed;
 
 	font-size: 18px;
-	margin-left: 90%;
-	margin-top: -5%;
-	margin-bottom: -5%;
+	/*	margin-left: 90%;*/
+	/*	margin-top: -5%;*/
+	/*	margin-bottom: -5%;*/
+	top: 50%;
+	right: 10%;
 }
 
 .scroll::before {

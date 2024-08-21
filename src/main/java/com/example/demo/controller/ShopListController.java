@@ -64,7 +64,7 @@ public class ShopListController {
 //		List<ShopList> holidaylist = new ArrayList<>();
 //		
 //		// データベースから店休日を取得
-//		String holidays = shopListService.getShopHolidays(shopName);
+//		String holidays = shopList.getHoliday();
 //
 //		 // 店休日と選択された日付を比較
 //        boolean isHoliday = holidays != null && isHoliday(holidays, selectedDayName);
@@ -73,6 +73,7 @@ public class ShopListController {
 //        model.addAttribute("isHoliday", isHoliday); // HTMLにデータを渡す
 //        model.addAttribute("selectedDayName", selectedDayName);
 
+		// 受け取ったselectedDayを使って処理を行う
 		Iterable<ShopList> openShops = shopListService.getOpenShops(selectedDay);
 		model.addAttribute("openShops",openShops);
         return "holidays";  // 営業中の店舗一覧を表示するHTML // 表示するHTMLファイル名

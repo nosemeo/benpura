@@ -15,18 +15,18 @@
 	<div>
 		<h2><span><i class="fas fa-star">★</i></span>店舗情報</h2>
 		<div class="scroll">
-				<span class="txt">Scroll</span>
-			</div>
+			<span class="txt">Scroll</span>
+		</div>
 	</div>
 
 	<div id="main" th:each="shop : ${shopLists2}">
 
 		<div class="image">
 			<a href="/cookCategory" target="_blank">
-			<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana"></a>
+				<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana"></a>
 		</div>
 
-		<h1 class="shopName" ><span th:text="${shop.shopName}">name</span></h1>
+		<h1 class="shopName"><span th:text="${shop.shopName}">name</span></h1>
 
 		<p class="item"><span>01</span>住所</p>
 		<p class="shopAddress" th:text="${shop.shopAddress}"></p>
@@ -48,12 +48,16 @@
 		<p class="item"><span>04</span>連絡先</p>
 		<!--		<a class="shopTel" href="tel:/012011222">671828288</a>-->
 		<a class="shopTel" href="/shopList" th:text="${shop.shopTel}"></a>
-<!--		<p class="shopTel" th:text="${shop.shopTel}"></p>-->
+		<!--		<p class="shopTel" th:text="${shop.shopTel}"></p>-->
+	</div>
+
+	<div>
+		<!--		<button class="fixed_btn">ボタン</button>-->
+		<a th:href="@{/cookCategory}" class="btn" >注文はこちら</a>
 	</div>
 
 
-	<body>
 
-	</body>
+</body>
 
 </html>
