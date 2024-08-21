@@ -18,6 +18,7 @@ header {
 .title {
     font-family: 'RocknRoll One', sans-serif;
     font-size: 2.5rem;
+    text-align: center;
     color: #ff9800; /* オレンジ */
 }
 
@@ -72,6 +73,11 @@ header {
     border-radius: 5px;
     margin: 0 5px;
 }
+.quantity button:hover{
+	background-color: #7cb342; /* 黄緑の暗い色 */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 30%), 0 0 5px rgb(0 0 0 / 30%);
+}
 
 .quantity input {
     width: 50px;
@@ -110,11 +116,14 @@ header {
 
 .add-to-cart:hover, .confirm-reservation:hover {
     background-color: #7cb342; /* 黄緑の暗い色 */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 30%), 0 0 5px rgb(0 0 0 / 30%);
 }
 .return {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 5%;
 }
 .return a{
 	
@@ -132,6 +141,8 @@ header {
 
 .return a:hover {
 	background-color: #7cb342; /* 黄緑の暗い色 */
+	transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 30%), 0 0 5px rgb(0 0 0 / 30%);
 }
 .popup {
     display: none;
