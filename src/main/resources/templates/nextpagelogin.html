@@ -3,6 +3,7 @@
 	layout:decorate="~{commons/layout}">
 
 
+
 <head>
 	<meta charset="UTF-8">
 	<title>仮のページ / 表示確認用</title>
@@ -13,13 +14,16 @@
 </head>
 
 <body>
-	<h1>無事、表示されました！</h1>
-
-	<ul>
-		<li>注文曜日：[[${dayofweek}]]</li>
-		<li>セッションに保存したusernameは：[[${username}]]</li>
-		<li>セッションに保存したorderdatetimeは：[[${orderdatetime}]]</li>
-	</ul>
+	<h1>仮のログイン画面です。</h1>
+	<form th:action="@{/calender}" method="get">
+		<table>
+			<tr>
+				<th>username</th>
+				<td><input type="text" name="username"></td>
+			</tr>
+		</table>
+		<input type="submit" value="username飛ばします">
+	</form>
 
 </body>
 
