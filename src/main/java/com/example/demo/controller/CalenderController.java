@@ -21,12 +21,12 @@ import com.example.demo.service.CalenderService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-//@RequestMapping() なくても動くのでコメントアウト
+//@RequestMapping("/calender2")
 public class CalenderController {
 
 	// セッション準備 HttpSession型のフィールドを定義する
 	private HttpSession session;
-
+	
 	@Autowired
 	CalenderService service;
 
@@ -34,6 +34,17 @@ public class CalenderController {
 	public void SessionController(HttpSession session) {
 		// フィールドに代入する
 		this.session = session;
+	}
+	
+	// ただのカレンダーの読み込み
+	@GetMapping()
+	public String calenderShowList(Model model) {
+		//注文履歴を全件取得
+		Iterable<Calender> list = service.selectAll();
+		//表示用「Model」への格納
+		model.addAttribute("list", list);
+		//calender.htmlのカレンダー、注文履歴の表示
+		return "calender";
 	}
 	
 	// ユーザーネームをセッションに保存
@@ -106,16 +117,6 @@ public class CalenderController {
 		return "nextpage";
 	}
 	
-	// 変更前の記述
-//	@GetMapping("/calender2")
-//	public String calenderShowList(Model model) {
-//		//注文履歴を全件取得
-//		Iterable<Calender> list = service.selectAll();
-//		//表示用「Model」への格納
-//		model.addAttribute("list", list);
-//		//calender.htmlのカレンダー、注文履歴の表示
-//		return "calender";
-//	}
 	
 	// ログインページに戻るだけ
 	@GetMapping("/nextpagelogin")
@@ -123,5 +124,5 @@ public class CalenderController {
 		// nextpage2.htmlを表示
 		return "nextpagelogin";
 	}
-
+	
 }
