@@ -215,6 +215,7 @@ body {
 	/* ボタンの最大幅 */
 	box-sizing: border-box;
 	/* パディングとボーダーを含めたサイズ計算 */
+	
 }
 
 .button:before,
