@@ -82,27 +82,28 @@
 
 		<!-- 日時選択部分 -->
 		<div class="datetime-container">
-			
+
 			<!-- 山口さんのファイル名を記載 -->
 			<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
-			<form method="get" action="/_nextpage">
+<!--			<form method="get" action="/_nextpage">-->
+				<form method="get" action="/shopList">
 
 
-				<label for="date-select">日付:</label>
-				<!-- ↓ データ名"orderdate"にて日付を-->
-				<!-- ↓action先のページにsubmit/送信-->
-				<select id="date-select" name="orderdate">
-				</select>
+					<label for="date-select">日付:</label>
+					<!-- ↓ データ名"orderdate"にて日付を-->
+					<!-- ↓action先のページにsubmit/送信-->
+					 <select id="date-select" name="orderdate">
+					</select>
 
 
-				<label for="time-select">時間:</label>
-				<select id="time-select" name="ordertime">
-				</select>
+					<label for="time-select">時間:</label>
+					<select id="time-select" name="ordertime">
+					</select>
 
-				<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
-				<button type="submit">決定</button>
-				<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
-			</form>
+					<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
+					<button type="submit">決定</button>
+					<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
+				</form>
 		</div>
 		<h0>受け取るに日付と時間を選んで決定ボタンを押してください。</h0>
 	</div>
@@ -123,7 +124,7 @@
 				<tbody>
 					<tr th:each="obj : ${list}" align="center">
 						<td th:text="${obj.date}"></td>
-						<td th:text="${obj.name}"></td>
+						<td th:text="${obj.shopname}"></td>
 						<td th:text="${obj.item}"></td>
 						<td th:text="${obj.price}"></td>
 					</tr>

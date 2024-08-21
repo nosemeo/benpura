@@ -28,7 +28,7 @@ public class Calender {
 	private String username;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate date;
-	private String name;
+	private String shopname;
 	private String item;
 	private Integer price;
 	
