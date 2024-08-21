@@ -34,7 +34,7 @@
 								<span class="item-size">Mサイズ </span>
 								<span class="item-price" th:text="${hamburgerMPrice} + '円'"></span>
 							</label>
-							
+
 							<div class="button-style">
 								<input type="hidden" name="image" th:value="${hamburger}">
 								<input type="hidden" name="name" th:value="${hamburgerName}">
@@ -68,7 +68,7 @@
 								<span class="item-size">Mサイズ </span>
 								<span class="item-price" th:text="${yakinikuMPrice} + '円'"></span>
 							</label>
-						
+
 							<div class="button-style">
 								<input type="hidden" name="image" th:value="${yakiniku}">
 								<input type="hidden" name="name" th:value="${yakinikuName}">
@@ -102,7 +102,7 @@
 								<span class="item-size">Mサイズ </span>
 								<span class="item-price" th:text="${chickenMPrice} + '円'"></span>
 							</label>
-						
+
 							<div class="button-style">
 								<input type="hidden" name="image" th:value="${chicken}">
 								<input type="hidden" name="name" th:value="${chickenName}">
@@ -117,4 +117,14 @@
 		<div class="box4">
 			<h1><a href="/cookCategory">カテゴリへ戻る</a></h1>
 		</div>
+		<div class="cursor"></div>
+		<script>
+			document.addEventListener('mousemove', function (event) {
+				const cursor = document.querySelector('.cursor');
+				cursor.style.left = `${event.pageX}px`;
+				cursor.style.top = `${event.pageY}px`;
+			});
+		</script>
 </body>
+
+</html>

@@ -4,13 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>カテゴリ</title>
+	<title>弁ぷらカテゴリ</title>
 	<link rel="stylesheet" th:href="@{/css/cookCategory.css}">
 </head>
 
 <body>
 	<div class="menu-section">
-		<h1> BANPURA MENU 弁ぷら</h1>
+		<div class="text-bound">
+			<h1> BANPURA MENU 弁ぷら</h1>
+		</div>
 		<div class="menu-items">
 			<div class="menu-item">
 				<div>
@@ -123,36 +125,50 @@
 				</div>
 			</div>
 
-
 			<div class="menu-item">
 				<img th:src="'data:image/png;base64,'+${nikubentou}" alt="肉弁当">
-				<div class="text-wrapper">
+				<div class="text-wrapper1">
 					<div class="item-name">
-						<a href="/cookCategory/niku">肉弁当</a>
+						<a href="/cookCategory/niku" class="menu-link">肉弁当一覧</a>
+					</div>
+					<div class="icon-circle">
+						&gt;
 					</div>
 				</div>
-
 			</div>
 			<div class="menu-item">
 				<img th:src="'data:image/png;base64,'+${sakanabentou}" alt="魚弁当">
-				<div class="text-wrapper">
+				<div class="text-wrapper1">
 					<div class="item-name">
-						<a href="/cookCategory/sakana">魚弁当</a>
+						<a href="/cookCategory/sakana" class="menu-link">魚弁当一覧</a>
+					</div>
+					<div class="icon-circle">
+						&gt;
 					</div>
 				</div>
-
 			</div>
 			<div class="menu-item">
 				<img th:src="'data:image/png;base64,'+${donburi}" alt="丼ぶり">
-				<div class="text-wrapper">
+				<div class="text-wrapper1">
 					<div class="item-name">
-						<a href="/cookCategory/donburi">丼ぶり</a>
+						<a href="/cookCategory/donburi" class="menu-link">丼ぶり一覧</a>
+					</div>
+					<div class="icon-circle">
+						&gt;
 					</div>
 				</div>
 			</div>
 
 		</div>
 	</div>
+	<div class="cursor"></div>
+	<script>
+		document.addEventListener('mousemove', function (event) {
+			const cursor = document.querySelector('.cursor');
+			cursor.style.left = `${event.pageX}px`;
+			cursor.style.top = `${event.pageY}px`;
+		});
+	</script>
 </body>
 
 </html>
