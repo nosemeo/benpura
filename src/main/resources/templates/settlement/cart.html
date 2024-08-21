@@ -64,6 +64,7 @@
 						</button>
 					</form>
 					<form th:action="@{/comp}" method="post">
+						<input type="hidden" name="bn" th:value="${s.index}" />
 						<button type="submit" class="order">
 							<h3>決済</h3>
 						</button>
@@ -75,7 +76,9 @@
 		</section>
 
 	</div>
-
+	<div class="empty" 	th:if="${#lists.isEmpty(list)}">
+		<p>カートに商品がありません</p>
+	</div>
 </body>
 
 </html>

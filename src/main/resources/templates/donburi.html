@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>丼ぶり</title>
-	<link rel="stylesheet" th:href="@{/donburi.css}">
+	<link rel="stylesheet" th:href="@{/css/donburi.css}">
 </head>
 
 <body>
@@ -20,21 +20,26 @@
 						<p th:text="${katsudonIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">かつ丼</p>
+						<p class="item-name" th:text="${katsudonName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="katsudonS" name="katsudonSize" value="S">
-						<label for="katsudonS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${katsudonSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="katsudonM" name="katsudonSize" value="M">
-						<label for="katsudonM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${katsudonMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<label for="katsudonS">
+								<input type="radio" id="katsudonS" name="price" th:value="${katsudonSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${katsudonSPrice} + '円'"></span>
+							</label>
+							<label for="katsudonM">
+								<input type="radio" id="katsudonM" name="price" th:value="${katsudonMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${katsudonMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${katsudon}">
+								<input type="hidden" name="name" th:value="${katsudonName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -48,21 +53,26 @@
 						<p th:text="${yakinikubIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">焼肉ビビンバ丼</p>
+						<p class="item-name" th:text="${yakinikubName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="yakinikubS" name="yakinikubSize" value="S">
-						<label for="yakinikubS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${yakinikubSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="yakinikubM" name="yakinikubSize" value="M">
-						<label for="yakinikubM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${yakinikubMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<label for="yakinikubS">
+								<input type="radio" id="yakinikubS" name="price" th:value="${yakinikubSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${yakinikubSPrice} + '円'"></span>
+							</label>
+							<label for="yakinikubM">
+								<input type="radio" id="yakinikubM" name="price" th:value="${yakinikubMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${yakinikubMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${yakinikub}">
+								<input type="hidden" name="name" th:value="${yakinikubName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -76,21 +86,26 @@
 						<p th:text="${oyakodonIntroductions}"></p>
 					</div>
 					<div class="text-wrapper">
-						<p class="item-name">月見親子丼</p>
+						<p class="item-name" th:text="${oyakodonName}"></p>
 					</div>
 					<div class="size-wrapper">
-						<input type="radio" id="oyakodonS" name="oyakodonSize" value="S">
-						<label for="oyakodonS">
-							<span class="item-size">Sサイズ </span><span class="item-price"
-								th:text="${oyakodonSPrice} + '円'"></span>
-						</label>
-						<br />
-						<input type="radio" id="oyakodonM" name="oyakodonSize" value="M">
-						<label for="oyakodonM">
-							<span class="item-size">Mサイズ </span><span class="item-price"
-								th:text="${oyakodonMPrice} + '円'"></span>
-						</label>
-						<button class="select-button">選択</button>
+						<form th:action="@{/settlement}" method="post">
+							<label for="oyakodonS">
+								<input type="radio" id="oyakodonS" name="price" th:value="${oyakodonSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${oyakodonSPrice} + '円'"></span>
+							</label>
+							<label for="oyakodonM">
+								<input type="radio" id="oyakodonM" name="price" th:value="${oyakodonMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${oyakodonMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${oyakodon}">
+								<input type="hidden" name="name" th:value="${oyakodonName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

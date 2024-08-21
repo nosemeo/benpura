@@ -1,9 +1,31 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=RocknRoll+One&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+.empty{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 20px;
+    margin:auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.empty p{
+	font-family: 'RocknRoll One', sans-serif;
+	font-size: 1.2rem;
+	color: red;
+	
+}
+
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 .content-title {
@@ -29,6 +51,7 @@ body {
     border-radius: 7px;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .product {
@@ -48,15 +71,16 @@ body {
 }
 
 .item-name {
-	font-weight: 0.5rem;
-	font-size: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
+
 .shop-name {
-	font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .time {
-	font-size: 1.1rem;
+    font-size: 1.1rem;
     color: #888;
 }
 
@@ -67,27 +91,31 @@ footer.content {
 }
 
 footer.content table {
-	font-family: 'RocknRoll One', sans-serif;
-	font-size:1.5rem;
-	text-align: right;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.5rem;
+    text-align: right;
 }
+
 .btn {
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
 .remove {
     margin-top: 10px;
     background-color: rgb(255, 0, 0);
     border: 1px solid rgb(128, 0, 0);
     border-radius: 7px;
-    padding: 0.6rem 1rem ;
+    padding: 0.6rem 1rem;
     cursor: pointer;
 }
+
 .order {
     margin-top: 10px;
     background-color: rgb(0, 255, 64);
     border: 1px solid rgb(0, 128, 0);
     border-radius: 7px;
-    padding: 0.6rem 2.5rem ;
+    padding: 0.6rem 2.5rem;
     cursor: pointer;
 }
 
@@ -95,6 +123,7 @@ footer.content table {
     margin: 0;
     font-size: 16px;
 }
+
 .order h3 {
     margin: 0;
     font-size: 16px;
@@ -103,6 +132,7 @@ footer.content table {
 .remove:hover {
     background-color: rgb(217, 17, 17);
 }
+
 .order:hover {
     background-color: rgb(0, 255, 128);
 }
@@ -116,173 +146,4 @@ footer.content table {
     footer.content {
         align-items: flex-start;
     }
-
-
-/* 全体のスタイル設定 */
-/*body {*/
-/*	background: #a8ffa8;  背景色 */
-/*	margin: 0;*/
-/*	padding: 0;*/
-/*	overflow-x: hidden;  横スクロールを非表示 */
-/*}*/
-
-/* タイトルのスタイル設定 */
-/*.content-title {*/
-/*	text-align: center;*/
-/*	font-size: 3rem;*/
-/*	font-family: "RocknRoll One", sans-serif;*/
-/*	font-weight: 400;*/
-/*	font-style: normal;*/
-/*	color: black;*/
-/*}*/
-
-/*.content-title span {*/
-/*	background-color: #990000;  背景色 */
-/*	color: white;  文字色 */
-/*}*/
-
-/* コンテナのスタイル設定 */
-/*.container {*/
-/*	font-family: 'Open Sans', sans-serif;*/
-/*	margin: 0 auto;*/
-/*	width: 75%;  幅 */
-/*}*/
-
-/* 商品カードのスタイル設定 */
-/*.product {*/
-/*	border: 1px solid #eee;  枠線 */
-/*	margin: 20px 0;*/
-/*	width: 100%;*/
-/*	height: auto;  高さを自動に設定 */
-/*	position: relative;*/
-/*	display: flex;  フレックスボックスを使用 */
-/*	flex-direction: row;  横方向に配置 */
-/*	align-items: center;  中央揃え */
-/*	padding: 20px;*/
-/*	border-radius: 10px;  角を丸くする */
-/*	background-color: #fff;  背景色 */
-/*}*/
-
-/* 商品画像のコンテナのスタイル設定 */
-/*.product header {*/
-/*	background: #000;  背景色 */
-/*	margin: 0 20px 0 0;  右マージンを追加 */
-/*	overflow: hidden;*/
-/*	padding: 0;*/
-/*	position: relative;*/
-/*	width: 195px;  固定幅 */
-/*	height: 195px;  固定高さ */
-/*	flex-shrink: 0;  画像のサイズを固定 */
-/*}*/
-
-/* 商品画像のスタイル設定 */
-/*.product header img {*/
-/*	width: 100%;*/
-/*	height: 100%;*/
-/*}*/
-
-/* 商品情報のスタイル設定 */
-/*.product .content {*/
-/*	box-sizing: border-box;*/
-/*	width: calc(100% - 235px);  画像とパディングを除いた幅 */
-/*	display: flex;  フレックスボックスを使用 */
-/*	flex-direction: row;  横方向に配置 */
-/*	justify-content: space-between;  内容を左右に配置 */
-/*	align-items: flex-start;  上揃え */
-/*}*/
-
-/* 商品名と受け取り時間のコンテナ */
-/*.product .details {*/
-/*	display: flex;*/
-/*	flex-direction: column;*/
-/*	margin-right: 20px;  右マージンを追加 */
-/*	justify-content: flex-start;  上揃え */
-/*	align-items: flex-start;  左揃え */
-/*}*/
-
-/* 商品名のスタイル設定 */
-/*.product h1 {*/
-/*	color: #53b5aa;  文字色 */
-/*	font-size: 25px;*/
-/*	font-weight: 300;*/
-/*	margin: 0 0 10px 0;  マージン調整 */
-/*}*/
-
-/* 受け取り時間のスタイル設定 */
-/*.product .time {*/
-/*	font-size: 15px;*/
-/*	color: #000;  文字色 */
-/*	margin: 0;  マージン調整 */
-/*}*/
-
-/* 個数と合計のコンテナ */
-/*.product .quantity-price {*/
-/*	display: flex;*/
-/*	flex-direction: column;  縦方向に配置 */
-/*	justify-content: flex-start;  上揃え */
-/*	align-items: flex-start;  左揃え */
-/*	margin-right: 20px;  右マージンを追加 */
-/*}*/
-
-/* 個数のスタイル設定 */
-/*.product .quantity {*/
-/*	font-size: 18px;*/
-/*	color: #000;  文字色 */
-/*	margin: 0 0 10px 0;  マージン調整 */
-/*}*/
-
-/* 合計金額のスタイル設定 */
-/*.product .full-price {*/
-/*	background: #53b5aa;  背景色 */
-/*	color: #fff;  文字色 */
-/*	font-size: 22px;*/
-/*	font-weight: 300;*/
-/*	padding: 10px 20px;*/
-/*	border-radius: 5px;  角を丸くする */
-/*}*/
-
-/* ボタンのコンテナ */
-/*.product .button-container {*/
-/*	display: flex;*/
-/*	flex-direction: row;  横方向に配置 */
-/*	align-items: flex-end;  下揃え */
-/*	position: absolute;*/
-/*	bottom: 20px;  下からの位置 */
-/*	right: 20px;  右からの位置 */
-/*}*/
-
-/* 削除ボタンのスタイル設定 */
-/*.product .delete-btn {*/
-/*	background: #53b5aa;  背景色 */
-/*	color: #fff;  文字色 */
-/*	font-size: 1.5rem;*/
-/*	font-weight: 300;*/
-/*	font-family: "RocknRoll One", sans-serif;*/
-/*	line-height: 3rem;*/
-/*	margin-right: 10px;  右マージンを追加 */
-/*	padding: 0 20px;*/
-/*	border-radius: 5px;  角を丸くする */
-/*	cursor: pointer;*/
-/*	transition: background-color .2s linear;  ホバー時の色変化 */
-/*}*/
-
-/* 削除ボタン: ホバー時の色変化 */
-/*.product .delete-btn:hover {*/
-/*	background-color: #3d8b84;  ホバー時の背景色 */
-/*}*/
-
-/* 決済ボタンのスタイル設定 */
-/*.order {*/
-/*	background-color: #007bff;  背景色 */
-/*	color: white;  文字色 */
-/*	padding: 10px 20px;*/
-/*	text-decoration: none;*/
-/*	border-radius: 5px;  角を丸くする */
-/*	transition: background-color .2s linear;  ホバー時の色変化 */
-/*	cursor: pointer;*/
-/*}*/
-
-/* 決済ボタン: ホバー時の色変化 */
-/*.order-btn .btn:hover {*/
-/*	background-color: #0056b3;  ホバー時の背景色 */
-/*}*/
+}

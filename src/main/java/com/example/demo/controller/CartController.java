@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.dto.CartDto;
+import com.example.demo.entity.Order;
 import com.example.demo.service.SettlementServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
@@ -52,26 +54,25 @@ public class CartController {
 		model.addAttribute("dtoList",dtoList);
 		return "settlement/cart";
 	}
-	@GetMapping("/settlement")
+	@PostMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
-		
-		
-			CartDto dto1 = new CartDto();
-			dto1.setName("弁当");
-			dto1.setShopName("Hana");
-			dto1.setPrice(1000);
-			dto1.setImage(null);
-			dto1.setNumber(1);
-			dto1.setPickupTime(LocalDateTime.now());
-			model.addAttribute("dto",dto1);
-			
+		dto.setNumber(1);
+		dto.setPickupTime((LocalDateTime) this.session.getAttribute("orderdatetime"));
 		LocalDate today = LocalDate.now();
 		model.addAttribute("today", today);
 		model.addAttribute("reservations", today);
-		model.addAttribute("dto1",dto);
+		model.addAttribute("dto",dto);
 		return "settlement/settlement";
 	}
-	 @PostMapping("/delete")
+	@PostMapping("/comp")
+	public String compShow(@RequestParam int bn) {
+		List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
+		CartDto dto = list.get(bn);
+		Order orderDetails = new Order(null, (String)this.session.getAttribute("userNmae"), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
+		service.insertOrder(orderDetails);
+		return "settlement/comp";
+	}
+	@PostMapping("/delete")
 	 //delete用リクエスト受ける
 	    public String deleteItem(@RequestParam int bn) {
 	        List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
