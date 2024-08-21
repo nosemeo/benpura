@@ -23,13 +23,20 @@ body {
 
 	display: flex;
 	align-items: center;
-	justify-content: center;
+/*	justify-content: center;*/
 	/* 下線を追加 */
 	border-bottom: 3px solid rgb(0, 128, 0);
+	
+	
+}
+
+.benpuraimg{
+	height:120%;
+	margin-left: 3%;
 }
 
 .title {
-	text-align: center;
+/*	text-align: center;*/
 	color: red;
 	font-size: 30px;
 }
@@ -139,7 +146,7 @@ h2:first-letter {
 	}
 }
 
-img {
+.shopimg {
 	/* 写真の幅を30%に設定 */
 	width: 80%;
 	margin-left: 3%;

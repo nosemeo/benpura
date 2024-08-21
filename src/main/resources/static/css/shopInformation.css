@@ -335,8 +335,8 @@ h2::after {
 	margin: auto;
 	padding: 2rem 4rem;
 	font-weight: bold;
-	border: 2px solid #ffa50e;
-	background: #ffa50e;
+	border: 2px solid #db9014;
+	background: #f39800;
 	color: #fff;
 	border-radius: 5px;
 	transition: 0.5s;
@@ -348,7 +348,7 @@ h2::after {
 }
 .btn:hover {
 	color: #ffa50e;
-	background: #fff;
+	background: rgba(255, 255, 255, .5);
 }
 
 
