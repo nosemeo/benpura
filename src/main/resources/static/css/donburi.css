@@ -218,3 +218,18 @@ a {
 	transform: scale(0.95);
 	/* 押し込むような効果 */
 }
+
+.cursor {
+    position: absolute;
+    width: 50px; /* 円のサイズ */
+    height: 50px; /* 円のサイズ */
+    background-color: rgb(255, 128, 64, 0.3); /* 半透明な黄色 */
+    border-radius: 50%; /* 円形にする */
+    pointer-events: none; /* 要素をクリックできないようにする */
+    transform: translate(-50%, -50%); /* 円の中心をマウス位置に合わせる */
+    transition: background-color 0.3s; /* 色の遷移 */
+}
+
+body:hover .cursor {
+    background-color: rgb(255, 128, 64, 0.3); /* ホバー時の色 */
+}

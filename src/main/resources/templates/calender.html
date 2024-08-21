@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
 
 <head>
 	<meta charset="UTF-8">
@@ -26,9 +26,15 @@
 	<!--  メモ：obj : ${list}などのタイムリーフを使用する場合-->
 	<!--    th:ref @{/css/～.css}"の記載になる-->
 
+	<!-- 共通ヘッダー読み込み -->
+	<link th:href="@{/css/layout.css}" rel="stylesheet">
+
+
 </head>
 
 <body>
+
+
 
 	<!-- カレンダー全体を囲むコンテナ -->
 	<div class="calendar-container">
@@ -41,12 +47,13 @@
 			<button onclick="changeMonth(-1)">先月</button>
 			<span id="month-year"></span>
 			<button onclick="changeMonth(1)">来月</button>
-
-			<form method="get" action="/nextpage2">
-				<button type="submit">登録画面へ</button>
-			</form>
-
 		</div>
+
+
+		<!--ログインIDを取得するために仮のログイン画面へ飛ぶ-->
+		<form method="get" action="/_nextpagelogin">
+			<button type="submit">登録画面へ</button>
+		</form>
 
 		<!-- 注文履歴の読み込み -->
 		<div id="event-calender">
@@ -76,24 +83,29 @@
 		<!-- 日時選択部分 -->
 		<div class="datetime-container">
 
+			<!-- 山口さんのファイル名を記載 -->
 			<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
-			<form method="get" action="/nextpage">
+<!--			<form method="get" action="/_nextpage">-->
+				<form method="get" action="/shopList">
 
-				<label for="date-select">日付:</label>
-				<!-- ↓ データ名"orderdate"にて日付をaction先のページにsubmit/送信-->
-				<select id="date-select" name="orderdate">
-				</select>
 
-				<label for="time-select">時間:</label>
-				<select id="time-select">
-				</select>
+					<label for="date-select">日付:</label>
+					<!-- ↓ データ名"orderdate"にて日付を-->
+					<!-- ↓action先のページにsubmit/送信-->
+					 <select id="date-select" name="orderdate">
+					</select>
 
-				<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
-				<button type="submit" onclick="selectDateTime()">決定</button>
-				<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
-			</form>
+
+					<label for="time-select">時間:</label>
+					<select id="time-select" name="ordertime">
+					</select>
+
+					<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
+					<button type="submit">決定</button>
+					<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
+				</form>
 		</div>
-		<h0>注文するために日付と時間を選んで決定ボタンを押してください。</h0>
+		<h0>受け取るに日付と時間を選んで決定ボタンを押してください。</h0>
 	</div>
 
 	<!-- 注文履歴表示部分 -->
@@ -112,7 +124,7 @@
 				<tbody>
 					<tr th:each="obj : ${list}" align="center">
 						<td th:text="${obj.date}"></td>
-						<td th:text="${obj.name}"></td>
+						<td th:text="${obj.shopname}"></td>
 						<td th:text="${obj.item}"></td>
 						<td th:text="${obj.price}"></td>
 					</tr>

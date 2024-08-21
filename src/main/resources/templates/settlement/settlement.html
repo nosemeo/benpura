@@ -43,10 +43,13 @@
 			<input type="hidden" id="totalPriceInput" th:field="*{price}">
 		</div>
 		<div class="buttons">
-			<button type="submit">カートに追加</button>
-			<button type="button" id="openPopup">予約確認</button>
+			<button class="confirm-reservation" type="button" id="openPopup">予約確認</button>
+			<button class="add-to-cart" type="submit">カートに追加</button>
 		</div>
 	</form>
+	<div class="return">
+			<a th:href="@{cookCategory}">一覧に戻る</a>		
+	</div>
 <!--	<div class="overlay" id="overlay"></div>-->
 <!--	<div class="popup" id="popup">-->
 <!--		<h2>今週の予約</h2>-->

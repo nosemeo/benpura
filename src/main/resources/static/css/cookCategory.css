@@ -2,26 +2,33 @@
 
 body {
 	font-family: Arial, sans-serif;
-
 	margin: 0;
 	padding: 0;
+	
 	background: url('https://www.sozailab.jp/db_img/sozai/71628/0e1d53ea1a3b4a9ecc517d6684d2f975.jpg');
 }
 
 .menu-section {
-
+	
 	padding: 30px;
 	color: white;
 	text-align: center;
 }
 
 .menu-section h1 {
-	margin: 0;
-	font-size: 50px;
-	color: rgb(255, 255, 255);
-	background-color: rgb(0, 172, 0);
+	margin: 10;
+	font-size: 70px;
+	color: rgb(0, 128, 0);
+	text-align : center
 }
 
+.text-bound {
+  animation: key .5s ease infinite alternate;
+}
+@keyframes key {
+  0% {transform: translateY(0px);}
+  100% {transform: translateY(-10px);}
+}
 .new {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 30px;
@@ -165,6 +172,47 @@ body {
 
 }
 
+.text-wrapper1 {
+	width: 80%;
+	background-color: rgb(36, 146, 255);
+
+	border-radius: 40px;
+	/* ボタンの角を丸くする */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px 20px;
+	/* パディングを追加して、ボタンに余白を作る */
+	margin: 20px auto;
+	/* 上下のマージンを追加 */
+	text-align: center;
+
+}
+
+.text-wrapper1 .icon-circle {
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 128, 255);
+	border-radius: 50%;
+	/* 丸くする */
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+}
+
+.text-wrapper1 a {
+	text-decoration: none;
+	/* 下線を削除 */
+	color: rgb(255, 255, 255);
+}
+
+.text-wrapper1 a:hover {
+	color: rgb(0, 0, 0);
+	/* ホバー時のリンクの色 */
+}
+
 .size-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -200,9 +248,6 @@ a {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	/* 柔らかい影 */
 	float: center;
-
-
-
 }
 
 .select-button:hover {
@@ -217,4 +262,19 @@ a {
 	/* クリック時の色を少し濃く */
 	transform: scale(0.95);
 	/* 押し込むような効果 */
+}
+
+.cursor {
+    position: absolute;
+    width: 50px; /* 円のサイズ */
+    height: 50px; /* 円のサイズ */
+    background-color: rgb(255, 128, 64, 0.3); /* 半透明な黄色 */
+    border-radius: 50%; /* 円形にする */
+    pointer-events: none; /* 要素をクリックできないようにする */
+    transform: translate(-50%, -50%); /* 円の中心をマウス位置に合わせる */
+    transition: background-color 0.3s; /* 色の遷移 */
+}
+
+body:hover .cursor {
+    background-color: rgb(255, 128, 64, 0.3); /* ホバー時の色 */
 }

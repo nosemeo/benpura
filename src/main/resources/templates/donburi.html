@@ -114,4 +114,14 @@
 		<div class="box4">
 			<h1><a href="/cookCategory">カテゴリへ戻る</a></h1>
 		</div>
+		<div class="cursor"></div>
+		<script>
+			document.addEventListener('mousemove', function (event) {
+				const cursor = document.querySelector('.cursor');
+				cursor.style.left = `${event.pageX}px`;
+				cursor.style.top = `${event.pageY}px`;
+			});
+		</script>
 </body>
+
+</html>

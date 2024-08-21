@@ -20,11 +20,15 @@ import lombok.NoArgsConstructor;
 //
 public class Calender {
 	
+//	Idはusernameに
+//	DBも主キーをusernameに?
+	
 	@Id
-	private Integer id;	
+	private Integer id;
+	private String username;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate date;
-	private String name;
+	private String shopname;
 	private String item;
 	private Integer price;
 	
