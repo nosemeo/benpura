@@ -91,43 +91,30 @@ public class ShopListController {
 		
 		// ▼▼▼機能③▼▼▼：お店の情報を取得
 		//       getOpneShops：定休日のお店の情報は取得しない
-		Iterable<ShopList> alldata = shopListService.selectAll();
-		List<String> list = new ArrayList<>();
-		List<ShopList> list8 = new ArrayList<>();
+		Iterable<ShopList> allShops = shopListService.selectAll();
+		List<String> shopPicture = new ArrayList<>();
+		List<ShopList> openShop = new ArrayList<>();
 		
-//		for(ShopList shop : allShops) {
-//    		String holidays = shop.getHoliday();	// 店舗の休業日
-//    		String[] holidayArray = holidays.split("・");	// ・で区切って配列に分割
-//    		
-//    		boolean isOpen = true;
-//    		for(String holiday : holidayArray) {
-//    			if(holiday.equals(selectedDay)) {
-//    				isOpen = false;
-//    				break;
-//    			}
-//    		}
-//    		if(isOpen) {
-//    			openShops.add(shop);	// 休業日に選ばれた曜日が含まれていない場合のみリストに追加
-//    		}
-//    	}
-		
-		
-		// 写真の表示
-		for (ShopList shopList : alldata) {
-			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
-			if (shopList.getShopPicture() != null) {
-				String list2 = Base64.getEncoder().encodeToString(shopList.getShopPicture());
-				list.add(list2);
-				list8.add(shopList);
-			}
+		for(ShopList shop : allShops) {
+    		String holidays = shop.getHoliday();	// 店舗の休業日
+    		String[] holidayArray = holidays.split("・");	// ・で区切って配列に分割
+    		
+    		for(String temp : holidayArray) {
+    			if(!(temp==orderDayOfWeek)) {
+    				for (ShopList tempShopList : allShops) {
+        				// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
+        				if (tempShopList.getShopPicture() != null) {
+        					String pictureCode = Base64.getEncoder().encodeToString(tempShopList.getShopPicture());
+        					shopPicture.add(pictureCode);
+        					openShop.add(tempShopList);
+        				}
+        			}
+    			}
+    			
+    		}
 		}
-
-		model.addAttribute("image", list);
-		model.addAttribute("shopLists", list8); // 左はhtml側で呼び出す為の名前
-
-		
-		Iterable<ShopList> openShops = shopListService.getOpenShops(orderDayOfWeek);
-		model.addAttribute("openShops",openShops);
+		model.addAttribute("image", shopPicture);
+		model.addAttribute("shopLists", openShop); // 左はhtml側で呼び出す為の名前
 		// ▲▲▲　　　▲▲▲
 		
 		//	public String checkHoliday(@RequestParam("selectedDay") String selectedDay,
