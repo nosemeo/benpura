@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>カテゴリ</title>
+	<link rel="stylesheet" th:href="@{/css/cookCategory.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+		<h1> BANPURA MENU 弁ぷら</h1>
+		<div class="menu-items">
+			<div class="menu-item">
+				<div>
+					<p th:class="osusume">季節のおすすめ</p>
+				</div>
+				<img th:src="'data:image/png;base64,'+${osusume}" alt="オススメ">
+				<div class="name-description">
+					<p th:text="${osusumeName}"></p>
+				</div>
+				<div class="item-description">
+					<p th:text="${osusumeIntroductions} + '♪'"></p>
+				</div>
+				<div class="text-wrapper">
+					<p class="item-name">オススメ</p>
+				</div>
+				<div class="size-wrapper">
+					<form th:action="@{/settlement}" method="post">
+						<!-- Sサイズのラジオボタンと価格表示 -->
+						<label for="osusumeS">
+							<input type="radio" id="osusumeS" name="price" th:value="${osusumeSPrice}">
+							<span class="item-size">Sサイズ</span>
+							<span class="item-price" th:text="${osusumeSPrice} + '円'"></span>
+						</label>
+						<br />
+						<!-- Mサイズのラジオボタンと価格表示 -->
+						<label for="osusumeM">
+							<input type="radio" id="osusumeM" name="price" th:value="${osusumeMPrice}">
+							<span class="item-size">Mサイズ</span>
+							<span class="item-price" th:text="${osusumeMPrice} + '円'"></span>
+						</label>
+						<!-- 選択ボタン -->
+						<div class="button-style">
+							<input type="hidden" name="image" th:value="${osusume}">
+							<input type="hidden" name="name" th:value="${osusumeName}">
+							<button type="submit" class="select-button">選択</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<div>
+					<p th:class="ninki">人気NO.1</p>
+				</div>
+				<img th:src="'data:image/png;base64,'+${higawari}" alt="日替わり">
+				<div class="name-description">
+					<p th:text="${higawariName}"></p>
+				</div>
+				<div class="item-description">
+					<p th:text="${higawariIntroductions} + '☆'"></p>
+				</div>
+				<div class="text-wrapper">
+					<p class="item-name">日替わり</p>
+				</div>
+				<div class="size-wrapper">
+					<form th:action="@{/settlement}" method="post">
+						<label for="higawariS">
+							<input type="radio" id="higawariS" name="price" th:value="${higawariSPrice}">
+							<span class="item-size">Sサイズ </span>
+							<span class="item-price" th:text="${higawariSPrice} + '円'"></span>
+						</label>
+						<br />
+						<label for="higawariM">
+							<input type="radio" id="higawariM" name="price" th:value="${higawariMPrice}">
+							<span class="item-size">Mサイズ </span>
+							<span class="item-price" th:text="${higawariMPrice} + '円'"></span>
+						</label>
+						<div class="button-style">
+							<input type="hidden" name="image" th:value="${higawari}">
+							<input type="hidden" name="name" th:value="${higawariName}">
+							<button type="submit" class="select-button">選択</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<div>
+					<p th:class="new">NEW</p>
+				</div>
+				<img th:src="'data:image/png;base64,'+${omakase}" alt="おまかせ">
+				<div class="name-description">
+					<p th:text="${omakaseName}"></p>
+				</div>
+				<div class="item-description">
+					<p th:text="${omakaseIntroductions}"></p>
+				</div>
+				<div class="text-wrapper">
+					<div class="item-name">おまかせ</div>
+				</div>
+				<div class="size-wrapper">
+					<form th:action="@{/settlement}" method="post">
+						<label for="omakaseS">
+							<input type="radio" id="omakaseS" name="price" th:value="${omakaseSPrice}">
+							<span class="item-size">Sサイズ </span>
+							<span class="item-price" th:text="${omakaseSPrice} + '円'"></span>
+						</label>
+						<br />
+						<label for="omakaseM">
+							<input type="radio" id="omakaseM" name="price" th:value="${omakaseMPrice}">
+							<span class="item-size">Mサイズ </span>
+							<span class="item-price" th:text="${omakaseMPrice} + '円'"></span>
+						</label>
+						<div class="button-style">
+							<input type="hidden" name="image" th:value="${omakase}">
+							<input type="hidden" name="name" th:value="${omakaseName}">
+							<button type="submit" class="select-button">選択</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${nikubentou}" alt="肉弁当">
+				<div class="text-wrapper">
+					<div class="item-name">
+						<a href="/cookCategory/niku">肉弁当</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${sakanabentou}" alt="魚弁当">
+				<div class="text-wrapper">
+					<div class="item-name">
+						<a href="/cookCategory/sakana">魚弁当</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="menu-item">
+				<img th:src="'data:image/png;base64,'+${donburi}" alt="丼ぶり">
+				<div class="text-wrapper">
+					<div class="item-name">
+						<a href="/cookCategory/donburi">丼ぶり</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

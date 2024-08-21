@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>魚弁当</title>
+	<link rel="stylesheet" th:href="@{/css/sakana.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+		<h1>SAKANA BENTOU 魚弁当</h1>
+
+		<div class="box1">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${omakase}" alt="ザ・オマカセ弁当">
+					<div class="item-description">
+						<p th:text="${omakaseIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${omakaseName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="omakaseS">
+								<input type="radio" id="omakaseS" name="price" th:value="${omakaseSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${omakaseSPrice} + '円'"></span>
+							</label>
+
+							<label for="omakaseM">
+								<input type="radio" id="omakaseM" name="price" th:value="${omakaseMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${omakaseMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${omakase}">
+								<input type="hidden" name="name" th:value="${omakaseName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box2">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${syake}" alt="シャケデラックス弁当">
+					<div class="item-description">
+						<p th:text="${syakeIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${syakeName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="syakeS">
+								<input type="radio" id="syakeS" name="price" th:value="${syakeSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${syakeSPrice} + '円'"></span>
+							</label>
+
+							<label for="syakeM">
+								<input type="radio" id="syakeM" name="price" th:value="${syakeMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${syakeMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${syake}">
+								<input type="hidden" name="name" th:value="${syakeName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box3">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${saba}" alt="さば炭火焼デラックス弁当">
+					<div class="item-description">
+						<p th:text="${sabaIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${sabaName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="sabaS">
+								<input type="radio" id="sabaS" name="price" th:value="${sabaSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${sabaSPrice} + '円'"></span>
+							</label>
+
+							<label for="sabaM">
+								<input type="radio" id="sabaM" name="price" th:value="${sabaMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${sabaMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${saba}">
+								<input type="hidden" name="name" th:value="${sabaName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box4">
+			<h1><a href="/cookCategory">カテゴリへ戻る</a></h1>
+		</div>
+</body>

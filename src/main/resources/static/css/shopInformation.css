@@ -270,10 +270,46 @@ h2::after {
 	font-size: 30px;
 }
 
-.shopTel {
+/*.shopTel {*/
+/*	color: rgb(0, 0, 160);*/
+/*	text-align: center;*/
+/*	font-size: 30px;*/
+/*}*/
+
+.shopTel{
 	color: rgb(255, 255, 255);
 	text-align: center;
+	margin-left: 40%;
 	font-size: 30px;
+	display: inline-block;
+
+	position: relative;
+	padding-bottom: -10%;
+	text-decoration: none;
+	transition: color .3s;
+}
+/* アニメーション */
+.shopTel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  /* 線の長さはここで調整する */
+  width: 100%;
+  height: 3px;
+  background-color: #4c7aaf;
+  transition: transform .3s;
+}
+@media (hover) {
+  .shopTel:hover {
+    color: #4c7aaf;
+  }
+  .shopTel:hover::after {
+    transform: scaleX(1); /* 0→1でX軸方向に100%変形 */
+    transform-origin: bottom left;
+  }
 }
 
 /* Scrollの表示 */
@@ -284,8 +320,8 @@ h2::after {
 
 	font-size: 18px;
 	margin-left: 90%;
-	margin-top: 0.5%;
-	margin-bottom: 5%;
+	margin-top: -5%;
+	margin-bottom: -5%;
 
 }
 
