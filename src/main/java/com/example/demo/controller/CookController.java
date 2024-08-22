@@ -23,23 +23,6 @@ public class CookController {
 
 	@Autowired
 	private CookCategoryRepository repository;
-	
-//	@PostMapping("/settlement")
-//	public String settlementView(Model model,@RequestParam String image, @RequestParam String item, 
-//			@RequestParam String priceS, @RequestParam String priceM, @RequestParam String selectedSize) {
-//			
-//			String price = "";
-//			if ("S".equals(selectedSize)) {
-//				price = priceS;
-//			} else if ("M".equals(selectedSize)) {
-//				price = priceM;
-//			}
-//			model.addAttribute("image", image);
-//			model.addAttribute("name", item);
-//			model.addAttribute("price", price);
-//			
-//		return "settlement";
-//	}
 
 	@GetMapping
 	public String showList(Model model) {
@@ -55,6 +38,8 @@ public class CookController {
 		String osusumeName = "";
 		String higawariName = "";
 		String omakaseName = "";
+		String shopnameId = null;
+		
 
 		Iterable<CookCategory> imageData = repository.findAll();
 		List<String> list = new ArrayList<>();

@@ -49,11 +49,6 @@
 		</div>
 
 
-		<!--ログインIDを取得するために仮のログイン画面へ飛ぶ-->
-		<form method="get" action="/_nextpagelogin">
-			<button type="submit">登録画面へ</button>
-		</form>
-
 		<!-- 注文履歴の読み込み -->
 		<div id="event-calendar">
 			<div th:each="event : ${list}" th:attr="data-event-date=${event.date}, data-event-item=${event.item}">

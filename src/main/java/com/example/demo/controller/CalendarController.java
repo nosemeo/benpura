@@ -1,13 +1,7 @@
 package com.example.demo.controller;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,17 +17,25 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class CalendarController {
 
+	//////////////////////////////////////////////////
+	//  変数宣言                                    //
+	//////////////////////////////////////////////////
 	@Autowired
 	CalendarService service;
-	
+
 	// セッション準備 HttpSession型のフィールドを定義する
 	private HttpSession session;
+
 	@Autowired // クラスの自動生成
 	public void SessionController(HttpSession session) {
 		// フィールドに代入する
 		this.session = session;
 	}
-	
+
+	//////////////////////////////////////////////////
+	//  関数宣言                                    //
+	//////////////////////////////////////////////////
+
 	// ただのカレンダーの読み込み
 	@GetMapping()
 	public String calendarShowList(Model model) {
@@ -44,28 +46,28 @@ public class CalendarController {
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
 	}
-	
+
 	// 機能：ユーザーネームをセッションに保存
 	// 再表示用
 	@GetMapping("/calendar")
 	public String calendarShowList2(Model model, Form f) {
 		//注文履歴を全件取得
 		Iterable<Calendar> list = service.selectAll();
-		
+
 		// usernameと合致する注文履歴のみリストに追加
 		List<Calendar> newlist = new ArrayList<>();
 		for (Calendar temp : list) {
 			// ログインページから読み込んだ時、ユーザー名を受け取っているか確認
-			if(!(f.getUsername()==null)) {
+			if (!(f.getUsername() == null)) {
 				if (temp.getUsername().equals(f.getUsername())) {
 					newlist.add(temp);
-				}				
+				}
 			}
 			// ヘッダーのログインページから読み込んだ時、セッションにあるユーザー名を受け取っているか確認
-			if(!(this.session.getAttribute("username")==null)) {
+			if (!(this.session.getAttribute("username") == null)) {
 				if (temp.getUsername().equals(this.session.getAttribute("username"))) {
 					newlist.add(temp);
-				}				
+				}
 			}
 		}
 
@@ -75,47 +77,6 @@ public class CalendarController {
 		this.session.setAttribute("username", f.getUsername());
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
-	}
-
-	//機能①：注文日時の曜日を取得formクラスにて受け渡し
-	//
-	//機能②：注文日時をセッションに保存、注文日にちと時間の結合
-	//
-	//その他：日時の形式を調整
-	@GetMapping("/_nextpage") //次のサイトが完成したらこちらに記載
-	public String showNextPage(Model model, Form f) {
-
-		// 機能①：注文日時の曜日の取得と引き渡し
-		// yyyy-MM-dd 形式の日付文字列
-		LocalDate date = f.getOrderdate();
-		// 曜日を取得
-		DayOfWeek dayOfWeek = date.getDayOfWeek();
-		// 曜日を日本語で表示
-		String dayOfWeekInJapanese = dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, Locale.JAPANESE);
-		
-		//表示用「Model」への格納
-		model.addAttribute("dayofweek", dayOfWeekInJapanese);
-		
-		// 機能②：セッションに注文日時を保存 
-		// StringをLocalTimeに変換
-		LocalTime time = LocalTime.parse(f.getOrdertime(), DateTimeFormatter.ofPattern("HH:mm"));
-		// LocalDateとLocalTimeを結合してLocalDateTimeを作成
-		LocalDateTime orderdatetime = LocalDateTime.of(f.getOrderdate(), time);
-		// ★注文日時をセッションに保存★
-		this.session.setAttribute("orderdatetime", orderdatetime);
-
-		// 再確認/再表示：保存されたユーザーネームと注文日時のセッション
-		model.addAttribute("username", this.session.getAttribute("username"));
-		model.addAttribute("orderdatetime", this.session.getAttribute("orderdatetime"));
-
-		// nextpage.htmlを表示
-		return "_nextpage";
-	}
-	// ログインページに戻るだけ
-	@GetMapping("/_nextpagelogin")
-	public String showNextPageLogin() {
-		// nextpage2.htmlを表示
-		return "_nextpagelogin";
 	}
 
 }
