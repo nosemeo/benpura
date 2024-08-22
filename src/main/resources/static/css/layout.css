@@ -1,12 +1,10 @@
 @charset "UTF-8";
 
-header {
+.header {
 	position: sticky;
 	top: 0;
 	right: 0;
-	background-color: rgb(128, 255, 0);
-	padding: 10px;
-	margin: -10px;
+	background-color: rgb(128, 255, 128);
 	/*余白を消すためにmarginマイナス設定*/
 	z-index: 10;
 }
@@ -16,7 +14,7 @@ nav {
     justify-content: space-between; /* 全体を左右に分ける */
     align-items: center;
     gap: 10px; /* アイテム間のスペース（オプション） */
-    padding: 10px; /* ナビゲーション内にパディングを追加（オプション） */
+    padding: 5px; /* ナビゲーション内にパディングを追加（オプション） */
 }
 
 nav a {
@@ -37,8 +35,9 @@ nav .left-align {
 
 nav .extra-image {
     width: auto;
-    height: 30px;
+    height: 4.5rem;
     margin-right: 10px;
+    padding-left: 7%;
 }
 
 nav b {

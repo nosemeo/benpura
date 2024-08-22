@@ -8,13 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShopListDto {
-		private Integer id;
-		private String shopName;
-		private String shopAddress;
-		private Integer shopTel;
-		private String shopHour;
-		private String holiday;
-		private String image;
-	
+	private Integer id;
+	private String shopName;
+	private String shopAddress;
+	private Integer shopTel;
+	private String shopHour;
+	private String holiday;
+	private String image;
 
 }

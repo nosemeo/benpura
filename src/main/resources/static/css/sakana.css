@@ -13,8 +13,7 @@ body {
 
 .menu-section h1 {
 	margin: 10;
-	font-size: 50px;
-	background-color: rgb(255, 255, 0);
+	font-size: 70px;
 	color: rgb(0, 0, 0);
 	display: flex;
 	justify-content: center;
@@ -63,24 +62,6 @@ body {
 	width: 33.3333%;
 }
 
-.box4 {
-	text-decoration: none;
-	font-size: 20px;
-	font-weight: bold;
-	color: rgb(192, 192, 192);
-	position: fixed;
-	bottom: 20px;
-	left: 20px;
-	background-color: rgb(192, 192, 192);
-	padding: 10px 20px;
-	border-radius: 5px;
-}
-
-.menu-section .box4 h1 {
-	margin: 0;
-	font-size: 20px;
-	background: rgb(192, 192, 192);
-}
 
 .menu-item {
 	background-color: rgb(255, 255, 255);
@@ -186,49 +167,83 @@ a {
 }
 
 .select-button {
-	background-color: #ff69b4;
-	/* 可愛いピンク色 */
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	border-radius: 10px;
-	/* 丸みを強調 */
-	cursor: pointer;
-	font-size: 15px;
-	font-family: 'Quicksand', sans-serif;
-	/* 可愛いフォント */
-	transition: background-color 0.3s, transform 0.2s;
-	/* アニメーション */
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	/* 柔らかい影 */
-	float: center;
+    background-color: #ff69b4;  /* ピンク色 */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;  /* これがボタンを丸くします */
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;  /* テキストを太字に */
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60px;  /* ボタンの幅 */
+    height: 60px; /* ボタンの高さ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .select-button:hover {
-	background-color: #ff85c2;
-	/* ホバー時の色を少し明るく */
-	transform: scale(1.05);
-	/* 少し大きくなるアニメーション */
+    background-color: #ff85c2;  /* ホバー時の色 */
+    transform: scale(1.1);  /* ホバー時に少し大きく */
 }
 
 .select-button:active {
-	background-color: #ff4da6;
-	/* クリック時の色を少し濃く */
-	transform: scale(0.95);
-	/* 押し込むような効果 */
+    background-color: #ff4da6;  /* クリック時の色 */
+    transform: scale(0.95);  /* クリック時に少し小さく */
 }
-
 .cursor {
-    position: absolute;
-    width: 50px; /* 円のサイズ */
-    height: 50px; /* 円のサイズ */
-    background-color: rgb(255, 128, 64, 0.3); /* 半透明な黄色 */
-    border-radius: 50%; /* 円形にする */
-    pointer-events: none; /* 要素をクリックできないようにする */
-    transform: translate(-50%, -50%); /* 円の中心をマウス位置に合わせる */
-    transition: background-color 0.3s; /* 色の遷移 */
+	position: absolute;
+	width: 30px;
+	/* 円のサイズ */
+	height: 30px;
+	/* 円のサイズ */
+	background-color: rgb(255, 128, 0);
+	/* 半透明な黄色 */
+	border-radius: 50%;
+	/* 円形にする */
+	pointer-events: none;
+	/* 要素をクリックできないようにする */
+	transform: translate(-50%, -50%);
+	/* 円の中心をマウス位置に合わせる */
+	transition: background-color 0.3s;
+	/* 色の遷移 */
 }
 
 body:hover .cursor {
-    background-color: rgb(255, 128, 64, 0.3); /* ホバー時の色 */
+	background-color: rgb(255, 128, 64, 0.5);
+	/* ホバー時の色 */
+}
+
+.category-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px;
+	background: linear-gradient(45deg, rgb(23, 134, 255), rgb(55, 210, 255));
+	color: white;
+	border: none;
+	border-radius: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+	transition: background-color 0.3s, transform 0.3s;
+	margin: 20px; /* ボタン周りの余白 */
+}
+
+.category-button a {
+	color: white;
+	text-decoration: none;
+}
+
+.category-button:hover {
+	background: linear-gradient(45deg, rgb(55, 210, 255), rgb(23, 134, 255));
+	transform: scale(1.05);
+}
+
+.category-button:focus {
+	outline: none;
 }
