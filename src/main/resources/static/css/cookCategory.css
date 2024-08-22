@@ -88,7 +88,9 @@ body {
 	height: 80%;
 	box-sizing: border-box;
 	position: relative;
-
+	flex-direction: column; /* 使子元素垂直排列 */
+	align-items: center; /* 水平居中对齐子元素 */
+	justify-content: center; /* 垂直居中对齐子元素 */
 }
 
 .menu-item img {
@@ -209,53 +211,13 @@ body {
 	/* テキストを太字に */
 	transition: background-color 0.3s;
 	/* ホバー時の背景色の遷移 */
-	width: 100%;
-	/* ボタンの幅を親要素に合わせる（必要に応じて調整） */
 	max-width: 400px;
 	/* ボタンの最大幅 */
 	box-sizing: border-box;
 	/* パディングとボーダーを含めたサイズ計算 */
+	width: auto;
+	margin: 0 auto; 
 	
-}
-
-.button:before,
-.button:after {
-	content: "";
-	position: absolute;
-	z-index: -10;
-	width: 100%;
-	/* 幅をボタンの幅に合わせる */
-	height: 100%;
-	/* 高さをボタンの高さに合わせる */
-	top: 0;
-	left: 0;
-	border-radius: 50px;
-	background: #a6f9ff;
-	transform: translate3d(0, 0, 0);
-}
-
-@keyframes anime {
-	0% {
-		transform: scale(0.95);
-		opacity: 1;
-	}
-
-	90% {
-		opacity: 0.1;
-	}
-
-	to {
-		transform: scale(1.2, 1.2);
-		opacity: 0;
-	}
-}
-
-.button:before {
-	animation: anime 1s ease-out infinite;
-}
-
-.button:after {
-	animation: anime 1s ease-out 1s infinite;
 }
 
 .size-wrapper {
@@ -277,45 +239,41 @@ a {
 }
 
 .select-button {
-	background-color: #ff69b4;
-	/* 可愛いピンク色 */
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	border-radius: 10px;
-	/* 丸みを強調 */
-	cursor: pointer;
-	font-size: 15px;
-	font-family: 'Quicksand', sans-serif;
-	/* 可愛いフォント */
-	transition: background-color 0.3s, transform 0.2s;
-	/* アニメーション */
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	/* 柔らかい影 */
-	float: center;
+    background-color: #ff69b4;  /* ピンク色 */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;  /* これがボタンを丸くします */
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;  /* テキストを太字に */
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60px;  /* ボタンの幅 */
+    height: 60px; /* ボタンの高さ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .select-button:hover {
-	background-color: #ff85c2;
-	/* ホバー時の色を少し明るく */
-	transform: scale(1.05);
-	/* 少し大きくなるアニメーション */
+    background-color: #ff85c2;  /* ホバー時の色 */
+    transform: scale(1.1);  /* ホバー時に少し大きく */
 }
 
 .select-button:active {
-	background-color: #ff4da6;
-	/* クリック時の色を少し濃く */
-	transform: scale(0.95);
-	/* 押し込むような効果 */
+    background-color: #ff4da6;  /* クリック時の色 */
+    transform: scale(0.95);  /* クリック時に少し小さく */
 }
 
 .cursor {
 	position: absolute;
-	width: 50px;
+	width: 30px;
 	/* 円のサイズ */
-	height: 50px;
+	height: 30px;
 	/* 円のサイズ */
-	background-color: rgb(255, 128, 64, 0.3);
+	background-color: rgb(255, 128, 0);
 	/* 半透明な黄色 */
 	border-radius: 50%;
 	/* 円形にする */
@@ -328,6 +286,6 @@ a {
 }
 
 body:hover .cursor {
-	background-color: rgb(255, 128, 64, 0.3);
+	background-color: rgb(255, 128, 64, 0.5);
 	/* ホバー時の色 */
 }
