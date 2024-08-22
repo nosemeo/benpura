@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>肉弁当</title>
+	<link rel="stylesheet" th:href="@{/css/niku.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+		<h1>NIKU BENTOU 肉弁当</h1>
+
+		<div class="box1">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${hamburger}" alt="おろしハンバーグ弁当">
+					<div class="item-description">
+						<p th:text="${hamburgerIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${hamburgerName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="hamburgerS">
+								<input type="radio" id="hamburgerS" name="price" th:value="${hamburgerSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${hamburgerSPrice} + '円'"></span>
+							</label>
+							<label for="hamburgerM">
+								<input type="radio" id="hamburgerM" name="price" th:value="${hamburgerMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${hamburgerMPrice} + '円'"></span>
+							</label>
+
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${hamburger}">
+								<input type="hidden" name="name" th:value="${hamburgerName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box2">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${yakiniku}" alt="焼肉弁当">
+					<div class="item-description">
+						<p th:text="${yakinikuIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${yakinikuName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="yakinikuS">
+								<input type="radio" id="yakinikuS" name="price" th:value="${yakinikuSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${yakinikuSPrice} + '円'"></span>
+							</label>
+							<label for="yakinikuM">
+								<input type="radio" id="yakinikuM" name="price" th:value="${yakinikuMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${yakinikuMPrice} + '円'"></span>
+							</label>
+
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${yakiniku}">
+								<input type="hidden" name="name" th:value="${yakinikuName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box3">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${chicken}" alt="ねぎ塩チキン竜田弁当">
+					<div class="item-description">
+						<p th:text="${chickenIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${chickenName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="chickenS">
+								<input type="radio" id="chickenS" name="price" th:value="${chickenSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${chickenSPrice} + '円'"></span>
+							</label>
+							<label for="chickenM">
+								<input type="radio" id="chickenM" name="price" th:value="${chickenMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${chickenMPrice} + '円'"></span>
+							</label>
+
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${chicken}">
+								<input type="hidden" name="name" th:value="${chickenName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box4">
+		    <a href="/cookCategory" class="category-button">カテゴリへ戻る</a>
+		</div>
+		<div class="cursor"></div>
+		<script>
+			document.addEventListener('mousemove', function (event) {
+				const cursor = document.querySelector('.cursor');
+				cursor.style.left = `${event.pageX}px`;
+				cursor.style.top = `${event.pageY}px`;
+			});
+		</script>
+</body>
+
+</html>

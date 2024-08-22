@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+
+	background: url('https://www.sozailab.jp/db_img/sozai/71628/0e1d53ea1a3b4a9ecc517d6684d2f975.jpg');
+}
+
+.menu-section {
+
+	padding: 30px;
+	color: white;
+	text-align: center;
+}
+
+.menu-section h1 {
+	margin: 10;
+	font-size: 70px;
+	color: rgb(0, 128, 0);
+	text-align: center
+}
+
+.text-bound {
+	animation: key .5s ease infinite alternate;
+}
+
+@keyframes key {
+	0% {
+		transform: translateY(0px);
+	}
+
+	100% {
+		transform: translateY(-10px);
+	}
+}
+
+.new {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 30px;
+	color: rgb(255, 0, 0);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: left;
+	font-weight: bold;
+	/* 增加粗体 */
+}
+
+.osusume {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 30px;
+	color: rgb(57, 57, 57);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: left;
+	font-weight: bold;
+	/* 增加粗体 */
+}
+
+.ninki {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 30px;
+	color: rgb(57, 57, 57);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: left;
+	font-weight: bold;
+	/* 增加粗体 */
+}
+
+.menu-items {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.menu-item {
+	background-color: rgb(255, 255, 255);
+	border: rgb(255, 255, 255) 5px solid;
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: calc(33.333% - 20px);
+	height: 80%;
+	box-sizing: border-box;
+	position: relative;
+	flex-direction: column; /* 使子元素垂直排列 */
+	align-items: center; /* 水平居中对齐子元素 */
+	justify-content: center; /* 垂直居中对齐子元素 */
+	
+}
+
+.menu-item img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.name-description {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: center;
+	font-weight: bold;
+}
+
+.item-description {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 18px;
+	color: rgb(0, 0, 0);
+	margin-top: 10px;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.item-name {
+	font-family: 'Quicksand', sans-serif;
+	/* 可爱的字体 */
+	font-size: 25px;
+	margin: 10px;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	/* 增加粗体 */
+	line-height: 1.5;
+	/* 调整行高以对齐 */
+}
+
+.item-name2 {
+	font-family: 'Quicksand', sans-serif;
+	/* 可爱的字体 */
+	font-size: 25px;
+	margin: 10px;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	/* 增加粗体 */
+	line-height: 1.5;
+	/* 调整行高以对齐 */
+}
+
+.item-size {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(45, 45, 45);
+	font-weight: bold;
+
+
+}
+
+.item-price {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 15px;
+	color: rgb(255, 0, 0);
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+.button-style {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	/* 追加: select-buttomの上に余白を追加 */
+
+}
+
+.size-wrapper input[type="radio"] {
+	margin-right: 10px;
+
+}
+
+.size-wrapper label {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.text-wrapper {
+	width: auto;
+	background: rgb(255, 255, 0);
+	/* 这里的 alpha 值 (0.7) 控制透明度 */
+	padding: 3px;
+	/* 可以添加一些内边距，使文字更突出 */
+	border-radius: 5px;
+	/* 可选：添加圆角以匹配样式 */
+	align-items: flex-start;
+	/* ラベルを左に寄せる */
+	position: relative;
+	margin-bottom: 20px;
+
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, rgb(0, 128, 255), rgb(83, 169, 255));
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 20px; /* ボタン周りの余白 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 80%; /* 親要素に対して幅を100%にする */
+    max-width: 400px; /* 最大幅を設定して、広すぎないように調整 */
+    box-sizing: border-box; /* パディングやボーダーを含むサイズ計算 */
+}
+
+.button:hover {
+    background: linear-gradient(45deg, rgb(83, 169, 255), rgb(0, 128, 255));
+    transform: scale(1.05);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.size-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* ラジオボタンとラベルを中央揃え */
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+a {
+	text-decoration: none;
+	/* 去掉下划线 */
+	color: rgb(45, 45, 45);
+	/* 设置链接的颜色 */
+	font-weight: bold;
+	/* 可选：设置链接文字加粗 */
+}
+
+.select-button {
+    background-color: #ff69b4;  /* ピンク色 */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;  /* これがボタンを丸くします */
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;  /* テキストを太字に */
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60px;  /* ボタンの幅 */
+    height: 60px; /* ボタンの高さ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-button:hover {
+    background-color: #ff85c2;  /* ホバー時の色 */
+    transform: scale(1.1);  /* ホバー時に少し大きく */
+}
+
+.select-button:active {
+    background-color: #ff4da6;  /* クリック時の色 */
+    transform: scale(0.95);  /* クリック時に少し小さく */
+}
+
+.cursor {
+	position: absolute;
+	width: 30px;
+	/* 円のサイズ */
+	height: 30px;
+	/* 円のサイズ */
+	background-color: rgb(255, 128, 0);
+	/* 半透明な黄色 */
+	border-radius: 50%;
+	/* 円形にする */
+	pointer-events: none;
+	/* 要素をクリックできないようにする */
+	transform: translate(-50%, -50%);
+	/* 円の中心をマウス位置に合わせる */
+	transition: background-color 0.3s;
+	/* 色の遷移 */
+}
+
+body:hover .cursor {
+	background-color: rgb(255, 128, 64, 0.5);
+	/* ホバー時の色 */
+}

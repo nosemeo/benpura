@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>注文確認</title>
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/settlement.css}">
+	<script th:inline="javascript">
+		const initialPrice = /*[[${dto.price}]]*/1;
+	</script>
+	<script th:src="@{/js/settlement.js}" defer></script>
+</head>
+
+<body>
+	<h1 class="title">注文確認</h1>
+	<div class="contens">
+		<div class="form-wrapper">
+		<div class="product">
+			<img class="image" th:src="'data:image/png;base64,'+${dto.image}" alt="商品名">
+			<div class="details">
+				<h2 th:text="${dto.name}">商品名</h2>
+				<h3 th:text="'店名：'+${dto.shopName}">店名</h3>
+				<p>受け取り日時<spna th:text="${#temporals.format(dto.pickupTime, 'yyyy年MM月dd日 HH:mm')}"></spna>
+				</p>
+			</div>
+		</div>
+		<!-- 個数選択機能 -->
+			<form th:action="@{/cart}" th:object="${dto}" method="post">
+				<div class="quantity">
+					<label for="quantity">個数:</label>
+					<button type="button" onclick="decreaseQuantity()">-</button>
+					<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()" th:field="*{number}">
+					<button type="button" onclick="increaseQuantity()">+</button>
+					<input type="hidden" th:field="*{name}">
+					<input type="hidden" th:field="*{shopName}">
+					<input type="hidden" th:field="*{pickupTime}">
+					<input type="hidden" th:field="*{image}">
+				</div>
+
+				<div class="total">
+					合計: <span id="totalPrice" onchange></span>
+					<input type="hidden" id="totalPriceInput" th:field="*{price}">
+				</div>
+				<div class="buttons">
+					<button class="confirm-reservation" type="button" id="openPopup">予約確認</button>
+					<button class="add-to-cart" type="submit">カートに追加</button>
+				</div>
+			</form>
+		</div>
+		<div class="return">
+			<a th:href="@{cookCategory}">一覧に戻る</a>
+		</div>
+	</div>
+	<!--	<div class="overlay" id="overlay"></div>-->
+	<!--	<div class="popup" id="popup">-->
+	<!--		<h2>今週の予約</h2>-->
+	<!--		<div class="calendar" id="calendar">-->
+	<!--			 日付がここに表示されます -->
+	<!--			<div th:each="i : ${#numbers.sequence(0, 6)}">-->
+	<!--				<div th:with="day = ${today.plusDays(i)}" th:class="day"-->
+	<!--					th:classappend="${day == today} ? ' today' : ''">-->
+	<!--					<div th:text="${#dates.format(day, 'E', 'ja')}">月</div>-->
+	<!--					<div th:text="${day.getDayOfMonth()}">1</div>-->
+	<!--					<div th:text="${reservations[day] ?: '予約なし'}">予約なし</div>-->
+	<!--				</div>-->
+	<!--			</div>-->
+	<!--		</div>-->
+	<!--		<button id="closePopup">閉じる</button>-->
+	<!--	</div>-->
+
+
+</body>
+
+</html>

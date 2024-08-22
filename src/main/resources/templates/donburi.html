@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>丼ぶり</title>
+	<link rel="stylesheet" th:href="@{/css/donburi.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+		<h1>DONBURI 丼ぶり</h1>
+
+		<div class="box1">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${katsudon}" alt="かつ丼">
+					<div class="item-description">
+						<p th:text="${katsudonIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${katsudonName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="katsudonS">
+								<input type="radio" id="katsudonS" name="price" th:value="${katsudonSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${katsudonSPrice} + '円'"></span>
+							</label>
+							<label for="katsudonM">
+								<input type="radio" id="katsudonM" name="price" th:value="${katsudonMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${katsudonMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${katsudon}">
+								<input type="hidden" name="name" th:value="${katsudonName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box2">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${yakinikub}" alt="焼肉ビビンバ丼">
+					<div class="item-description">
+						<p th:text="${yakinikubIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${yakinikubName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="yakinikubS">
+								<input type="radio" id="yakinikubS" name="price" th:value="${yakinikubSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${yakinikubSPrice} + '円'"></span>
+							</label>
+							<label for="yakinikubM">
+								<input type="radio" id="yakinikubM" name="price" th:value="${yakinikubMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${yakinikubMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${yakinikub}">
+								<input type="hidden" name="name" th:value="${yakinikubName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box3">
+			<div class="menu-items">
+				<div class="menu-item">
+					<img th:src="'data:image/png;base64,'+${oyakodon}" alt="月見親子丼">
+					<div class="item-description">
+						<p th:text="${oyakodonIntroductions}"></p>
+					</div>
+					<div class="text-wrapper">
+						<p class="item-name" th:text="${oyakodonName}"></p>
+					</div>
+					<div class="size-wrapper">
+						<form th:action="@{/settlement}" method="post">
+							<label for="oyakodonS">
+								<input type="radio" id="oyakodonS" name="price" th:value="${oyakodonSPrice}">
+								<span class="item-size">Sサイズ </span>
+								<span class="item-price" th:text="${oyakodonSPrice} + '円'"></span>
+							</label>
+							<label for="oyakodonM">
+								<input type="radio" id="oyakodonM" name="price" th:value="${oyakodonMPrice}">
+								<span class="item-size">Mサイズ </span>
+								<span class="item-price" th:text="${oyakodonMPrice} + '円'"></span>
+							</label>
+							<div class="button-style">
+								<input type="hidden" name="image" th:value="${oyakodon}">
+								<input type="hidden" name="name" th:value="${oyakodonName}">
+								<button type="submit" class="select-button">選択</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="box4">
+			<button class="category-button"><a href="/cookCategory">カテゴリへ戻る</a></button>
+		</div>
+		<div class="cursor"></div>
+		<script>
+			document.addEventListener('mousemove', function (event) {
+				const cursor = document.querySelector('.cursor');
+				cursor.style.left = `${event.pageX}px`;
+				cursor.style.top = `${event.pageY}px`;
+			});
+		</script>
+</body>
+
+</html>

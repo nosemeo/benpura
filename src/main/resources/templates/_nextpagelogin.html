@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>仮のページ / 表示確認用</title>
+
+	<!-- 共通ヘッダー読み込み -->
+	<link th:href="@{/css/layout.css}" rel="stylesheet">
+
+</head>
+
+<body>
+	<h1>仮のログイン画面です。</h1>
+	<form th:action="@{/calender}" method="get">
+		<table>
+			<tr>
+				<th>username</th>
+				<td><input type="text" name="username"></td>
+			</tr>
+		</table>
+		<input type="submit" value="username飛ばします">
+	</form>
+
+</body>
+
+</html>

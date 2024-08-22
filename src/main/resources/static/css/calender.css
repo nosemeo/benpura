@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+
+/* ページ全体の中央寄せ設定 */
+.calendar-container {
+	text-align: center;
+}
+
+/* カレンダーの全体のスタイル設定 */
+table {
+	width: 90%;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+/* 曜日のスタイル設定 */
+th {
+	background-color: #f2f2f2;
+	height: 50px;
+	border: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px;
+	width: 14.28%;
+	/* 7列で均等になるように幅を設定 */
+}
+
+/* 日付のスタイル設定 */
+td {
+	height: 100px;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 10px;
+	vertical-align: top;
+	width: 14.28%;
+	position: relative;
+	/* 擬似要素の位置を相対的に設定 */
+}
+
+/* 今日の日付を目立たせるスタイル */
+.today {
+	background-color: #ffeb3b;
+	font-weight: bold;
+	color: #d32f2f;
+	position: relative;
+}
+
+/* 今日の日付の位置関係 */
+.today::after {
+	content: "今日";
+	position: absolute;
+	/* 絶対位置に設定 */
+	top: 30%;
+	/* 垂直位置を30%に設定 */
+	left: 50%;
+	/* 水平中央に配置 */
+	transform: translate(-50%, -30%);
+	/* 垂直中央寄せを30%に設定 */
+	font-size: 15px;
+	/* 文字サイズを15pxに設定 */
+	color: #d32f2f;
+}
+
+/* 日曜日のテキスト色を赤に設定 */
+.sunday {
+	color: red;
+}
+
+/* 土曜日のテキスト色を青に設定 */
+.saturday {
+	color: blue;
+}
+
+/* 先月/来月のスタイル設定 */
+.navigation {
+	text-align: center;
+	margin: 20px 0;
+}
+
+.navigation button {
+	padding: 10px;
+	font-size: 16px;
+}
+
+/* イベント表示部分のスタイル設定 */
+.event {
+	background-color: #90ee90;
+	margin-top: 5px;
+	padding: 2px;
+	font-size: 12px;
+	width: 80%;
+	margin: 5px auto;
+	/* 上下に余白を持たせ、中央寄せ */
+	text-align: center;/
+}
+
+/* タイトルのスタイル */
+h1 {
+	text-align: center;
+}
+
+/* 日時選択のスタイル設定 */
+.datetime-container {
+	margin: 30px;
+	display: flex;
+	/* 要素を横に並べるためにフレックスボックスを使用 */
+	justify-content: center;
+	align-items: center;
+}
+
+.datetime-container label {
+	margin-right: 10px;
+}
+
+/* 日時選択の設定 */
+.datetime-container select {
+	padding: 5px;
+	font-size: 20px;
+	margin-right: 10px;
+	/* ボタンとの間にスペースを追加 */
+}
+
+/* "決定"ボタンの文字サイズ */
+.datetime-container button {
+	padding: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/*日時を選んでくださいのコメント*/
+h0 {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/*注文履歴のタイトル*/
+h2 {
+	text-align: center;
+	font-size: 25px;
+}
+
+/* 注文履歴部分のスタイル設定 */
+.order-history-container {
+	margin-top: 50px;
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+.order-history {
+	width: 80%;
+	margin: 0 auto;
+	max-height: 400px;
+	/* 最大高さを指定して、スクロールバーを出す */
+	overflow-y: auto;
+	/* 垂直方向のスクロールバーを追加 */
+}
+
+.order-history table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+/* 注文履歴の項目 */
+.order-history th {
+	height: 50px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* 注文履歴の内容 */
+.order-history td {
+	height: 200px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* 履歴のスクロール固定 */
+.order-history thead th {
+	position: -webkit-sticky;
+	/* Safari */
+	position: sticky;
+	top: 0;
+	background-color: #f2f2f2;
+	z-index: 1;
+}

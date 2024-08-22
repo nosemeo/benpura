@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.header {
+	position: sticky;
+	top: 0;
+	right: 0;
+	background-color: rgb(128, 255, 128);
+	/*余白を消すためにmarginマイナス設定*/
+	z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* 全体を左右に分ける */
+    align-items: center;
+    gap: 10px; /* アイテム間のスペース（オプション） */
+    padding: 5px; /* ナビゲーション内にパディングを追加（オプション） */
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-right: 3%;
+}
+
+nav img {
+    width: 25px;
+    height: auto;
+}
+
+nav .left-align {
+    margin-right: auto;
+}
+
+nav .extra-image {
+    width: auto;
+    height: 4.5rem;
+    padding-left: 10%;
+}
+
+nav b {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 25px;
+}
