@@ -101,13 +101,14 @@ public class ShopListController {
 		// いったんすべての店舗情報と写真情報を取得
 		for (ShopList tempShopList : allShops) {
 			if (tempShopList.getShopPicture() != null) {
-				String pictureCode = Base64.getEncoder().encodeToString(tempShopList.getShopPicture());
+				String pictureString = Base64
+						.getEncoder().encodeToString(tempShopList.getShopPicture());
 				tempOpenShop.add(new ShopListDto(tempShopList.getId(),
 						tempShopList.getShopName(),
 						tempShopList.getShopAddress(),
 						tempShopList.getShopTel(),
 						tempShopList.getShopHour(),
-						tempShopList.getHoliday(), pictureCode));
+						tempShopList.getHoliday(),pictureString));
 			}
 		}
 		
