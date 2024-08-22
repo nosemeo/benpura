@@ -157,73 +157,11 @@ public class ShopListController {
 		model.addAttribute("shopLists", openShop); // 左はhtml側で呼び出す為の名前
 		// ▲▲▲　　　▲▲▲
 
-		//	public String checkHoliday(@RequestParam("selectedDay") String selectedDay,
-		//								/*@RequestParam("shopName") String shopName,*/  Model model) {
-		//		// 受け取った日付をパースする
-		//		LocalDate date = LocalDate.parse(selectedDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		//		DayOfWeek dayOfWeek = date.getDayOfWeek();
-		//		String selectedDayName = dayOfWeek.name().toLowerCase(); // 曜日名を小文字で取得
-		//
-		//		// 店休日データの例
-		//		Iterable<ShopList> alldata = shopListService.selectAll();
-		//		List<ShopList> holidaylist = new ArrayList<>();
-		//		
-		//		// データベースから店休日を取得
-		//		String holidays = shopList.getHoliday();
-		//
-		//		 // 店休日と選択された日付を比較
-		//        boolean isHoliday = holidays != null && isHoliday(holidays, selectedDayName);
-		//
-		//        // モデルに結果を追加
-		//        model.addAttribute("isHoliday", isHoliday); // HTMLにデータを渡す
-		//        model.addAttribute("selectedDayName", selectedDayName);
-
-		// 受け取ったselectedDayを使って処理を行う
-		//		Iterable<ShopList> openShops = shopListService.getOpenShops(selectedDay);
-		//		model.addAttribute("openShops",openShops);
 		return "shopList";// 若松
 		//        return "holidays";  // 営業中の店舗一覧を表示するHTML // 表示するHTMLファイル名
 	}
-
-	//	private boolean isHoliday(String holidays, String selectedDayName) {
-	//		String[] holidayArray = holidays.split("・");
-	//		for (String holiday : holidayArray) {
-	//			String holidayInEnglish = convertToEnglish(holiday);
-	//			if (holidayInEnglish.equalsIgnoreCase(selectedDayName)) {
-	//				return true;
-	//			}
-	//		}
-	//		return false;
-	//	}
-	//
-	//	private String convertToEnglish(String day) {
-	//		switch (day) {
-	//		case "月曜":
-	//			return "monday";
-	//		case "火曜":
-	//			return "tuesday";
-	//		case "水曜":
-	//			return "wednesday";
-	//		case "木曜":
-	//			return "thursday";
-	//		case "金曜":
-	//			return "friday";
-	//		case "土曜":
-	//			return "saturday";
-	//		case "日曜":
-	//			return "sunday";
-	//		default:
-	//			return "";
-	//		}
-	//	}
-
-	//	@GetMapping("/cookCategory")
-	//	public String cookCategoryshow(Model model) {
-	//		CookCategory cookCategory = new CookCategory();
-	////		cookCategory.showList();
-	//		return "cookCategory";
-	//	}
-
+	
+	
 	@GetMapping("/shopInformation")
 	public String shopInformationShow(Model model) {
 		Iterable<ShopList> alldata2 = repository.findAll();
