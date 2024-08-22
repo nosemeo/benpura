@@ -18,37 +18,39 @@
 <body>
 	<h1 class="title">注文確認</h1>
 	<div class="contens">
+		<div class="form-wrapper">
 		<div class="product">
 			<img class="image" th:src="'data:image/png;base64,'+${dto.image}" alt="商品名">
 			<div class="details">
 				<h2 th:text="${dto.name}">商品名</h2>
-				<h3 th:text="${dto.shopName}">店名</h3>
+				<h3 th:text="'店名：'+${dto.shopName}">店名</h3>
 				<p>受け取り日時<spna th:text="${#temporals.format(dto.pickupTime, 'yyyy年MM月dd日 HH:mm')}"></spna>
 				</p>
 			</div>
 		</div>
 		<!-- 個数選択機能 -->
-		<form th:action="@{/cart}" th:object="${dto}" method="post">
-			<div class="quantity">
-				<label for="quantity">個数:</label>
-				<button type="button" onclick="decreaseQuantity()">-</button>
-				<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()" th:field="*{number}">
-				<button type="button" onclick="increaseQuantity()">+</button>
-				<input type="hidden" th:field="*{name}">
-				<input type="hidden" th:field="*{shopName}">
-				<input type="hidden" th:field="*{pickupTime}">
-				<input type="hidden" th:field="*{image}">
-			</div>
+			<form th:action="@{/cart}" th:object="${dto}" method="post">
+				<div class="quantity">
+					<label for="quantity">個数:</label>
+					<button type="button" onclick="decreaseQuantity()">-</button>
+					<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()" th:field="*{number}">
+					<button type="button" onclick="increaseQuantity()">+</button>
+					<input type="hidden" th:field="*{name}">
+					<input type="hidden" th:field="*{shopName}">
+					<input type="hidden" th:field="*{pickupTime}">
+					<input type="hidden" th:field="*{image}">
+				</div>
 
-			<div class="total">
-				合計: <span id="totalPrice" onchange></span>
-				<input type="hidden" id="totalPriceInput" th:field="*{price}">
-			</div>
-			<div class="buttons">
-				<button class="confirm-reservation" type="button" id="openPopup">予約確認</button>
-				<button class="add-to-cart" type="submit">カートに追加</button>
-			</div>
-		</form>
+				<div class="total">
+					合計: <span id="totalPrice" onchange></span>
+					<input type="hidden" id="totalPriceInput" th:field="*{price}">
+				</div>
+				<div class="buttons">
+					<button class="confirm-reservation" type="button" id="openPopup">予約確認</button>
+					<button class="add-to-cart" type="submit">カートに追加</button>
+				</div>
+			</form>
+		</div>
 		<div class="return">
 			<a th:href="@{cookCategory}">一覧に戻る</a>
 		</div>
