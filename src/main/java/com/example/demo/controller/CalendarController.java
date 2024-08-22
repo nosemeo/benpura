@@ -53,7 +53,12 @@ public class CalendarController {
 	public String calendarShowList2(Model model, Form f) {
 		//注文履歴を全件取得
 		Iterable<Calendar> list = service.selectAll();
-
+		
+		//
+		// ★①serviceでメソッド作成  ★②注文履歴のserviceを作る
+		// メソッド名sortOrder listでそんなことできるのか
+		// メソッド名matchLoginidOrderlist
+		//
 		// usernameと合致する注文履歴のみリストに追加
 		List<Calendar> newlist = new ArrayList<>();
 		for (Calendar temp : list) {

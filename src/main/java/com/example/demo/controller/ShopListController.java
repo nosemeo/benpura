@@ -70,6 +70,9 @@ public class ShopListController {
 	public String shopListCheckHoliday(Model model, Form f) {
 		
 		//
+		// ★serviceでメソッド作成
+		// メソッド名：getDayOfWeek
+		//
 		// 機能①：注文日時の曜日の取得と引き渡し
 		// yyyy-MM-dd 形式の日付文字列
 		LocalDate date = f.getOrderdate();
@@ -79,24 +82,28 @@ public class ShopListController {
 		String orderDayOfWeek = dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, Locale.JAPANESE);
 		
 		//
-		// 機能②：セッションに注文日時を保存 
+		// 機能②：注文の日にちと時間を結合してセッションに注文日時を保存
+		//
+		// メソッド名 combineDateTime
+		//
 		// StringをLocalTimeに変換
 		LocalTime time = LocalTime.parse(f.getOrdertime(), DateTimeFormatter.ofPattern("HH:mm"));
 		// LocalDateとLocalTimeを結合してLocalDateTimeを作成
 		LocalDateTime orderdatetime = LocalDateTime.of(f.getOrderdate(), time);
 		// ★注文日時をセッションに保存★
 		this.session.setAttribute("orderdatetime", orderdatetime);
-		// 再確認/再表示：保存されたユーザーネームと注文日時のセッション
-		model.addAttribute("username", this.session.getAttribute("username"));
-		model.addAttribute("orderdatetime", this.session.getAttribute("orderdatetime"));
 
 		//
 		// 機能③：お店の情報を取得
+		//
 		Iterable<ShopList> allShops = shopListService.selectAll();
 		// お店のidをキーとして各店舗ごとに定休日を保存
 		Map<Integer, String[]> storeHolidays = new HashMap<>();
 		List<ShopListDto> tempOpenShop = new ArrayList<>();
 		
+		//
+		// メソッド名：getPictureShopList
+		//
 		// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
 		// いったんすべての店舗情報と写真情報を取得
 		for (ShopList tempShopList : allShops) {
@@ -112,6 +119,9 @@ public class ShopListController {
 			}
 		}
 		
+		//
+		// メソッド名：getHolidayShop
+		//
 		// 店舗idをキーとして各店舗の定休日を保存
 		for (ShopList shop : allShops) {
 			Integer shopId = shop.getId();// 店舗idを取得
@@ -119,7 +129,10 @@ public class ShopListController {
 			String[] holidayArray = holidays.split("・");// 定休日を・で区切って配列に分割
 			storeHolidays.put(shopId, holidayArray);
 		}
-
+		
+		//
+		// メソッド名：getIDHolidayShop
+		//
 		// 店舗idごとに定休日判定する
 		// 定休日でない店舗idを保存する
 		List<Integer> storeIdList = new ArrayList<>();
@@ -141,7 +154,9 @@ public class ShopListController {
 				storeIdList.add(entry.getKey());				
 			}
 		}
-
+		//
+		// メソッド名：getOpenShopList
+		//
 		// 定休日の店舗情報idを使って定休日の店舗は格納しない
 		List<ShopListDto> openShop = new ArrayList<>();
 		for (Integer tempStoreId : storeIdList) {
