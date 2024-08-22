@@ -38,9 +38,9 @@ public class ShopListController {
 		for (ShopList shopList : alldata) {
 			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
 			if (shopList.getShopPicture() != null) {
-				String list2 = Base64.getEncoder().encodeToString(shopList.getShopPicture());
-				list.add(list2);
-				list8.add(new ShopListDto(shopList.getId(),shopList.getShopName(),shopList.getShopAddress(),shopList.getShopTel(),shopList.getShopHour(),shopList.getHoliday(),list2));
+				String pictureString = Base64.getEncoder().encodeToString(shopList.getShopPicture());
+				list.add(pictureString);
+				list8.add(new ShopListDto(shopList.getId(),shopList.getShopName(),shopList.getShopAddress(),shopList.getShopTel(),shopList.getShopHour(),shopList.getHoliday(),pictureString));
 			}
 		}
 		model.addAttribute("shopLists", list8); // 左はhtml側で呼び出す為の名前
