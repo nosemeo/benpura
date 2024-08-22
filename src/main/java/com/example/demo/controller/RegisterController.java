@@ -71,7 +71,7 @@ public class RegisterController {
 			e.printStackTrace();
 		}
 
-		return "calendar";//el nombre del archivo html
+		return "redirect:/calendar";//el nombre del archivo html
 	}
 
 	public String getMaskedPassword(String password) {
