@@ -68,17 +68,18 @@ public class ShopListController {
 	@GetMapping("/check-holiday")
 	// selectDateは送られてきた曜日情報が入る場所
 	public String shopListCheckHoliday(Model model, Form f) {
-
-		// ▼▼▼機能①▼▼▼：注文日時の曜日の取得と引き渡し
+		
+		//
+		// 機能①：注文日時の曜日の取得と引き渡し
 		// yyyy-MM-dd 形式の日付文字列
 		LocalDate date = f.getOrderdate();
 		// 取得：注文日時の曜日
 		DayOfWeek dayOfWeek = date.getDayOfWeek();
 		// 変換：注文日時の曜日をString型へ
 		String orderDayOfWeek = dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, Locale.JAPANESE);
-		// ▲▲▲　　　▲▲▲		
-
-		// ▼▼▼機能②▼▼▼：セッションに注文日時を保存 
+		
+		//
+		// 機能②：セッションに注文日時を保存 
 		// StringをLocalTimeに変換
 		LocalTime time = LocalTime.parse(f.getOrdertime(), DateTimeFormatter.ofPattern("HH:mm"));
 		// LocalDateとLocalTimeを結合してLocalDateTimeを作成
@@ -88,10 +89,9 @@ public class ShopListController {
 		// 再確認/再表示：保存されたユーザーネームと注文日時のセッション
 		model.addAttribute("username", this.session.getAttribute("username"));
 		model.addAttribute("orderdatetime", this.session.getAttribute("orderdatetime"));
-		// ▲▲▲　　　▲▲▲
 
-		// ▼▼▼機能③▼▼▼：お店の情報を取得
-		//       getOpneShops：定休日のお店の情報は取得しない
+		//
+		// 機能③：お店の情報を取得
 		Iterable<ShopList> allShops = shopListService.selectAll();
 		// お店のidをキーとして各店舗ごとに定休日を保存
 		Map<Integer, String[]> storeHolidays = new HashMap<>();
@@ -136,14 +136,13 @@ public class ShopListController {
 					break;
 				}
 			}
-			// 定休日判定後、trueのままであれば店舗idを取得
+			// すべての定休日を判定後、trueのままであれば店舗idを取得
 			if(boolholiday) {
 				storeIdList.add(entry.getKey());				
 			}
 		}
 
-		// 定休日でない店舗情報idを使って店舗情報を取得する
-		// すでに取得した店舗情報で定休日でない情報だけ保存する
+		// 定休日の店舗情報idを使って定休日の店舗は格納しない
 		List<ShopListDto> openShop = new ArrayList<>();
 		for (Integer tempStoreId : storeIdList) {
 			for (ShopListDto temp : tempOpenShop) {
@@ -152,13 +151,12 @@ public class ShopListController {
 				}
 			}
 		}
-
-		//	model.addAttribute("image", shopPicture);
+		
+		// 定休日を除いた店舗情報を格納
 		model.addAttribute("shopLists", openShop); // 左はhtml側で呼び出す為の名前
-		// ▲▲▲　　　▲▲▲
-
-		return "shopList";// 若松
-		//        return "holidays";  // 営業中の店舗一覧を表示するHTML // 表示するHTMLファイル名
+		
+		return "shopList";
+		
 	}
 	
 	
