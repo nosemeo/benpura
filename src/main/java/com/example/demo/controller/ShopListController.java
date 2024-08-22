@@ -49,7 +49,7 @@ public class ShopListController {
 		//		 EntityのデータベースのデータをRepositoryでゲットして、Serviceでどのメソッドを使うか定めて、
 		//		Implで内容を書く。それをControllerで反映
 		Iterable<ShopList> alldata = shopListService.selectAll();// すべての店舗情報を取得
-		List<String> list = new ArrayList<>();
+//		List<String> list = new ArrayList<>();
 		List<ShopListDto> shopDtoList = new ArrayList<>();
 
 		// 写真の表示
