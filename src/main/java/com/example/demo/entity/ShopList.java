@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShopList {
+
 	private Integer id;
 	private String shopName;
 	private String shopAddress;

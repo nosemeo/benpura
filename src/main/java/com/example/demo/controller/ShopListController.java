@@ -7,8 +7,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,7 +68,7 @@ public class ShopListController {
 	@GetMapping("/check-holiday")
 	// selectDateは送られてきた曜日情報が入る場所
 	public String shopListCheckHoliday(Model model, Form f) {
-		
+
 		// ▼▼▼機能①▼▼▼：注文日時の曜日の取得と引き渡し
 		// yyyy-MM-dd 形式の日付文字列
 		LocalDate date = f.getOrderdate();
@@ -87,35 +89,73 @@ public class ShopListController {
 		model.addAttribute("username", this.session.getAttribute("username"));
 		model.addAttribute("orderdatetime", this.session.getAttribute("orderdatetime"));
 		// ▲▲▲　　　▲▲▲
-		
+
 		// ▼▼▼機能③▼▼▼：お店の情報を取得
 		//       getOpneShops：定休日のお店の情報は取得しない
 		Iterable<ShopList> allShops = shopListService.selectAll();
-		List<String> shopPicture = new ArrayList<>();
-		List<ShopList> openShop = new ArrayList<>();
+		// お店のidをキーとして各店舗ごとに定休日を保存
+		Map<Integer, String[]> storeHolidays = new HashMap<>();
+		List<ShopListDto> tempOpenShop = new ArrayList<>();
 		
-		for(ShopList shop : allShops) {
-    		String holidays = shop.getHoliday();	// 店舗の休業日
-    		String[] holidayArray = holidays.split("・");	// ・で区切って配列に分割
-    		
-    		for(String temp : holidayArray) {
-    			if(!(temp==orderDayOfWeek)) {
-    				for (ShopList tempShopList : allShops) {
-        				// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
-        				if (tempShopList.getShopPicture() != null) {
-        					String pictureCode = Base64.getEncoder().encodeToString(tempShopList.getShopPicture());
-        					shopPicture.add(pictureCode);
-        					openShop.add(tempShopList);
-        				}
-        			}
-    			}
-    			
-    		}
+		// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
+		// いったんすべての店舗情報と写真情報を取得
+		for (ShopList tempShopList : allShops) {
+			if (tempShopList.getShopPicture() != null) {
+				String pictureCode = Base64.getEncoder().encodeToString(tempShopList.getShopPicture());
+				tempOpenShop.add(new ShopListDto(tempShopList.getId(),
+						tempShopList.getShopName(),
+						tempShopList.getShopAddress(),
+						tempShopList.getShopTel(),
+						tempShopList.getShopHour(),
+						tempShopList.getHoliday(), pictureCode));
+			}
 		}
-		model.addAttribute("image", shopPicture);
+		
+		// 店舗idをキーとして各店舗の定休日を保存
+		for (ShopList shop : allShops) {
+			Integer shopId = shop.getId();// 店舗idを取得
+			String holidays = shop.getHoliday();// 店舗の定休日１列を取得
+			String[] holidayArray = holidays.split("・");// 定休日を・で区切って配列に分割
+			storeHolidays.put(shopId, holidayArray);
+		}
+
+		// 店舗idごとに定休日判定する
+		// 定休日でない店舗idを保存する
+		List<Integer> storeIdList = new ArrayList<>();
+		for (Map.Entry<Integer, String[]> entry : storeHolidays.entrySet()) {
+
+			// 店舗idごとの定休日を取得して繰り返す
+			String[] holidayList = entry.getValue();
+			boolean boolholiday=true;
+			for (String tempholiday : holidayList) {
+				// 店舗の定休日判定  最初の１文字目だけで取得
+				// 注文日の曜日が定休日のひとつでも一致すればOUT判定&breakStop
+				if (tempholiday.charAt(0) == orderDayOfWeek.charAt(0)) {
+					boolholiday=false;
+					break;
+				}
+			}
+			// 定休日判定後、trueのままであれば店舗idを取得
+			if(boolholiday) {
+				storeIdList.add(entry.getKey());				
+			}
+		}
+
+		// 定休日でない店舗情報idを使って店舗情報を取得する
+		// すでに取得した店舗情報で定休日でない情報だけ保存する
+		List<ShopListDto> openShop = new ArrayList<>();
+		for (Integer tempStoreId : storeIdList) {
+			for (ShopListDto temp : tempOpenShop) {
+				if (temp.getId() != tempStoreId) {
+					openShop.add(temp);
+				}
+			}
+		}
+
+		//	model.addAttribute("image", shopPicture);
 		model.addAttribute("shopLists", openShop); // 左はhtml側で呼び出す為の名前
 		// ▲▲▲　　　▲▲▲
-		
+
 		//	public String checkHoliday(@RequestParam("selectedDay") String selectedDay,
 		//								/*@RequestParam("shopName") String shopName,*/  Model model) {
 		//		// 受け取った日付をパースする
