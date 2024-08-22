@@ -37,7 +37,7 @@ public class SecurityConfig {
 				.requestMatchers("/register").permitAll()// url
 				.requestMatchers("/confirm").permitAll()// url
 				.requestMatchers("/videos/**").permitAll()// url
-				.requestMatchers("/images/**").permitAll()// url
+				.requestMatchers("/image/**").permitAll()// url
 				.requestMatchers("/success").permitAll()// url
 				.anyRequest().authenticated() // 他のURLはログイン後のみアクセス可能
 
