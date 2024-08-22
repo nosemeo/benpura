@@ -5,8 +5,8 @@ body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
     background-image:url('../image/背景のたまごちゃん.png') ;
+    background-size: cover;
     color: #333;
 }
 
@@ -28,6 +28,15 @@ header {
 .product {
     display: flex;
     align-items: center;
+    flex-direction: row;
+/*    margin-bottom: 3%;*/
+/*    background-color:rgba(166,255,128,0.7);*/
+/*    padding: 2%;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+}
+.form-wrapper {
+/*	display: flex;*/
     margin-bottom: 3%;
     background-color:rgba(166,255,128,0.7);
     padding: 2%;
@@ -36,10 +45,10 @@ header {
 }
 
 .image {
-    width: 100px;
-    height: 100px;
+    width: 15rem;
+    height: auto;
     object-fit: cover;
-    margin-right: 20px;
+    margin:auto;
     border-radius: 10px;
 }
 
@@ -47,10 +56,14 @@ header {
     flex-grow: 1;
 }
 
-.details h2, .details h3 {
+.details h2 {
     margin: 0;
+    font-size: 2.5rem;
 }
-
+ .details h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
 .details p {
     margin-top: 10px;
     color: #777;

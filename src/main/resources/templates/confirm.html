@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title> 確認画面</title>
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<!-- Custom CSS -->
+	<style>
+		/* Ensure this style matches the width of the input fields in .flex-row */
+		input.shorter {
+			width: calc(50% - 27px);
+			/* Adjust the percentage as needed to match the width of the other fields */
+			padding: 10px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			box-sizing: border-box;
+		}
+
+		h4 {
+			color: rgb(255, 128, 64);
+			font-size: 14px;
+			margin-bottom: 20px;
+			text-align: center;
+			/* Add this line to center the text */
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background: url('/image/obento_tegaki_frame_7253.png') no-repeat center center fixed;
+			/* Add your cartoon-like background image here */
+			background-size: 50%;
+			/* Ensures the image covers the entire page */
+			color: #333;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+
+		form {
+			background-color: rgb(238, 238, 238, 0.8);
+			/* Slightly transparent white background to show the cartoon background */
+			border-radius: 8px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			max-width: 650px;
+			width: 100%;
+			position: relative;
+		}
+
+		h1 {
+			color: #2c3e50;
+			font-size: 28px;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		h3 {
+			color: #34495e;
+			font-size: 22px;
+			margin-bottom: 8px;
+		}
+
+		h5 {
+			color: rgb(255, 128, 64);
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+
+
+
+		label {
+			font-size: 14px;
+			font-weight: bold;
+			display: block;
+			margin-bottom: 5px;
+			color: #2c3e50;
+		}
+
+		input.name {
+			width: calc(100% - 20px);
+			/* Adjusted width for text inputs */
+			padding: 10px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			box-sizing: border-box;
+		}
+
+
+		input.email-field,
+		input.password-field {
+			width: calc(100% - 100px);
+			/* Adjusted width for text inputs */
+			padding: 10px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			box-sizing: border-box;
+		}
+
+		input[type="password"] {
+			width: calc(100% - 100px);
+			/* Adjusted width for text inputs */
+			padding: 10px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			box-sizing: border-box;
+		}
+
+		select {
+			width: calc(100% - 20px);
+			/* Adjusted width for text inputs */
+			padding: 10px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			box-sizing: border-box;
+		}
+
+
+		.email-field,
+		.password-field {
+			width: 100%;
+			/* Default width for email and password fields */
+		}
+
+		.email-field {
+			width: 80%;
+			/* Adjust this percentage to change the width of the email field */
+		}
+
+		.password-field {
+			width: calc(100% - 40px);
+			/* Adjust the width to account for the padding */
+			padding: 10px;
+			padding-right: 40px;
+			/* Ensure padding for the eye icon */
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			box-sizing: border-box;
+			position: relative;
+			/* Ensure that the icon is positioned correctly */
+		}
+
+		.password-container {
+			position: relative;
+			width: 100%;
+		}
+
+		.eye-icon {
+			position: absolute;
+			right: 110px;
+			/* Adjust to position the eye icon correctly */
+			top: 55%;
+			transform: translateY(-50%);
+			color: #aaa;
+			cursor: pointer;
+			visibility: hidden;
+			/* Hidden by default */
+		}
+
+		input[type="password"]:focus+.eye-icon,
+		input[type="password"]:not(:placeholder-shown)+.eye-icon {
+			visibility: visible;
+			/* Show icon when the input is focused or has text */
+		}
+
+		.gender-options {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			/* Adjust the spacing between the options as needed */
+		}
+
+		input[type="submit"] {
+			background-color: #3498db;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			display: inline-block;
+			/* Ensure the button is inline for centering */
+		}
+
+		input[type="submit"]:hover {
+			background-color: #2980b9;
+		}
+
+		button {
+			background-color: #3498db;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			display: inline-block;
+			/* Ensure the button is inline for centering */
+		}
+
+		button :hover {
+			background-color: #2980b9;
+		}
+
+		.error {
+			color: red;
+			font-size: 12px;
+			margin-top: -10px;
+			margin-bottom: 10px;
+		}
+
+		hr {
+			border: none;
+			height: 1px;
+			background-color: #ccc;
+			margin: 20px 0;
+		}
+
+		.gender-options input[type="radio"] {
+			margin: 0;
+			/* Space between radio button and label */
+			padding-top: 10px;
+			/* Adjust this value as needed */
+		}
+
+		.gender-options label {
+			margin: 0;
+			/* Remove margin from labels to ensure alignment with the radio buttons */
+		}
+
+		.gender-container {
+			margin-bottom: 20px;
+			/* Adjust this value to control the space */
+		}
+
+		.flex-row {
+			display: flex;
+			gap: 15px;
+			/* Adjust spacing between input fields */
+		}
+
+		.flex-row>div {
+			flex: 1;
+		}
+
+		.form-footer {
+
+			display: flex;
+			text-align: center;
+			/* Center-align the button */
+			margin-top: 20px;
+			/* Space above the button */
+			gap: 15px;
+			justify-content: center;
+		}
+
+		.date-selectors {
+			display: flex;
+			gap: 15px;
+			/* Adjust spacing between select fields */
+		}
+
+		.date-selectors select {
+			width: 100%;
+			/* Set width of select fields to fill the container */
+		}
+
+
+		.back-button {
+			background-color: #e74c3c;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			display: inline-block;
+			margin-right: 10px;
+			/* Space between the two buttons */
+		}
+
+		.back-button:hover {
+			background-color: #c0392b;
+		}
+	</style>
+</head>
+
+<body>
+	<form th:action="@{/success}" method="post" th:object="${registerForm}">
+		<h1>確認画面</h1>
+		<hr>
+		<h4>入力したデータご確認の上で「登録」ボタンを押してください。</h4>
+
+		<div>
+			<hr>
+			<h3> ログイン情報</h3>
+			<label for="mailAddress">メールアドレス</label>
+			<input type="text" id="mailAddress" class="email-field" th:field="*{mailAddress}" disabled>
+			<div th:if="${#fields.hasErrors('mailAddress')}" th:errors="*{mailAddress}" class="error"></div>
+		</div>
+
+		<div class="password-container">
+			<label for="password">パスワード</label>
+			<input type="text" id="password" class="password-field" th:value="${passwordMasked}" disabled>
+			<i id="eyeIcon" class="fa fa-eye eye-icon"></i>
+			<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
+		</div>
+
+
+		<hr>
+		<h3> お客様情報</h3>
+
+		<div class="flex-row">
+			<div>
+				<label for="famNameKanji">姓</label>
+				<input type="text" th:field="*{famNameKanji}" class="name" disabled>
+				<div th:if="${#fields.hasErrors('famNameKanji')}" th:errors="*{famNameKanji}" class="error"></div>
+			</div>
+
+			<div>
+				<label for="nameKanji">名</label>
+				<input type="text" th:field="*{nameKanji}" class="name" disabled>
+				<div th:if="${#fields.hasErrors('nameKanji')}" th:errors="*{nameKanji}" class="error"></div>
+			</div>
+		</div>
+
+		<div class="flex-row">
+			<div>
+				<label for="famNameFurigana">セイ</label>
+				<input type="text" th:field="*{famNameFurigana}" class="name" disabled>
+				<div th:if="${#fields.hasErrors('famNameFurigana')}" th:errors="*{famNameFurigana}" class="error"></div>
+			</div>
+
+			<div>
+				<label for="nameFurigana">メイ</label>
+				<input type="text" th:field="*{nameFurigana}" class="name" disabled>
+				<div th:if="${#fields.hasErrors('nameFurigana')}" th:errors="*{nameFurigana}" class="error"></div>
+			</div>
+		</div>
+
+		<div class="gender-container">
+			<label for="gender">性別</label>
+			<div class="gender-options">
+				<input type="radio" id="male" th:field="*{gender}" value="false" disabled>
+				<label for="male">男性</label>
+
+				<input type="radio" id="female" th:field="*{gender}" value="true" disabled>
+				<label for="female">女性</label>
+			</div>
+			<div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error"></div>
+		</div>
+
+		<div>
+			<label for="birth">生年月日</label>
+			<div class="date-selectors">
+				<div>
+					<label for="year">Year:</label>
+					<select th:field="*{year}" disabled>
+						<option value="">Year</option>
+						<th:block th:each="year : ${#numbers.sequence(1945, 2024)}">
+							<option th:value="${year}" th:text="${year}"></option>
+						</th:block>
+					</select>
+					<div th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="error"></div>
+				</div>
+				<div>
+					<label for="month">Month:</label>
+					<select th:field="*{month}" disabled>
+						<option value="">Month</option>
+						<th:block th:each="month : ${#numbers.sequence(1, 12)}">
+							<option th:value="${month}" th:text="${month}"></option>
+						</th:block>
+					</select>
+					<div th:if="${#fields.hasErrors('month')}" th:errors="*{month}" class="error"></div>
+				</div>
+				<div>
+					<label for="day">Day:</label>
+					<select th:field="*{day}" disabled>
+						<option value="">Day</option>
+						<th:block th:each="day : ${#numbers.sequence(1, 31)}">
+							<option th:value="${day}" th:text="${day}"></option>
+						</th:block>
+					</select>
+					<div th:if="${#fields.hasErrors('day')}" th:errors="*{day}" class="error"></div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<label for="tel">電話番号</label>
+			<input type="text" th:field="*{tel}" class="shorter" disabled>
+			<div th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="error"></div>
+		</div>
+
+		<input type="hidden" th:field="*{mailAddress}">
+		<input type="hidden" th:field="*{password}">
+		<input type="hidden" th:field="*{famNameKanji}">
+		<input type="hidden" th:field="*{nameKanji}">
+		<input type="hidden" th:field="*{famNameFurigana}">
+		<input type="hidden" th:field="*{nameFurigana}">
+		<input type="hidden" th:field="*{gender}">
+		<input type="hidden" th:field="*{year}">
+		<input type="hidden" th:field="*{month}">
+		<input type="hidden" th:field="*{day}">
+		<input type="hidden" th:field="*{tel}">
+
+
+		<hr>
+
+		<div class="form-footer">
+			<button class="back-button" formaction="/register"> 戻る</button>
+			<input type="submit" value="登録">
+
+		</div>
+
+	</form>
+</body>
+
+<!-- JavaScript at the end of the body -->
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const eyeIcon = document.getElementById('eyeIcon');
+		const passwordField = document.getElementById('password');
+
+		if (eyeIcon && passwordField) {
+			// Show the eye icon when the password field is focused
+			passwordField.addEventListener('focus', function () {
+				eyeIcon.style.visibility = 'visible';
+			});
+
+			// Hide the eye icon when the password field loses focus
+			passwordField.addEventListener('blur', function () {
+				if (passwordField.value === '') {
+					eyeIcon.style.visibility = 'hidden';
+				}
+			});
+
+			eyeIcon.addEventListener('click', function () {
+				if (passwordField.type === 'password') {
+					passwordField.type = 'text';
+					eyeIcon.classList.remove('fa-eye');
+					eyeIcon.classList.add('fa-eye-slash');
+				} else {
+					passwordField.type = 'password';
+					eyeIcon.classList.remove('fa-eye-slash');
+					eyeIcon.classList.add('fa-eye');
+				}
+			});
+		} else {
+			console.error("Eye icon or password field not found");
+		}
+	});
+</script>
+
+</body>
+
+</html>

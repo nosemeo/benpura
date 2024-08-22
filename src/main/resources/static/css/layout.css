@@ -21,12 +21,12 @@ nav a {
     display: flex;
     align-items: center;
     color: black;
+    margin-right: 3%;
 }
 
 nav img {
     width: 25px;
     height: auto;
-    margin-right: 5px;
 }
 
 nav .left-align {
@@ -36,8 +36,7 @@ nav .left-align {
 nav .extra-image {
     width: auto;
     height: 4.5rem;
-    margin-right: 10px;
-    padding-left: 7%;
+    padding-left: 10%;
 }
 
 nav b {
