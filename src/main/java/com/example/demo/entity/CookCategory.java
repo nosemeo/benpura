@@ -18,5 +18,6 @@ public class CookCategory {
 	private String priceM;
 	private String introductions;
 	private byte[] imagePath;
+	private Integer shopnameId;
 	
 }
