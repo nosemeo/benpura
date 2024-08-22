@@ -55,7 +55,6 @@ public class ShopListController {
 		// 写真の表示
 		for (ShopList shop : alldata) {
 			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
-
 			if (shop.getShopPicture() != null) {
 				String pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
 				shopDtoList.add(new ShopListDto(shop.getId(),shop.getShopName(),shop.getShopAddress(),shop.getShopTel(),shop.getShopHour(),shop.getHoliday(),pictureString));
