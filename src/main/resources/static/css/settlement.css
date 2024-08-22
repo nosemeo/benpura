@@ -6,7 +6,7 @@ body {
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-image:url('../image/背景のたまごちゃん.png') ;
     color: #333;
 }
 
@@ -29,7 +29,7 @@ header {
     display: flex;
     align-items: center;
     margin-bottom: 3%;
-    background-color: #fff;
+    background-color:rgba(166,255,128,0.7);
     padding: 2%;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -58,11 +58,13 @@ header {
 
 .quantity {
     display: flex;
+    padding-left: 10%;
     align-items: center;
     margin-top: 20px;
 }
 
 .quantity label {
+	font-size: 1.5rem;
     margin-right: 10px;
 }
 
@@ -71,7 +73,7 @@ header {
     border: none;
     color: white;
     padding: 10px;
-    font-size: 16px;
+    font-size: 0.8rem;
     cursor: pointer;
     border-radius: 5px;
     margin: 0 5px;
@@ -92,8 +94,9 @@ header {
 
 .total {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 2.5rem;
     margin-top: 20px;
+    padding-right: 20%;
     text-align: right;
     color: #ff9800; /* オレンジ */
 }

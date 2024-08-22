@@ -24,6 +24,7 @@
 
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    max-width: 100%;
     margin: 0;
     padding: 0;
 }

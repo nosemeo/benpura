@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
-header {
+.header {
 	position: sticky;
 	top: 0;
 	right: 0;
 	background-color: rgb(128, 255, 128);
 	padding: 10px;
-	margin: -2.5%;
+	margin: -2%;
 	/*余白を消すためにmarginマイナス設定*/
 	z-index: 10;
 }
