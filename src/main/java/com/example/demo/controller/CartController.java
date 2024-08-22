@@ -82,6 +82,11 @@ public class CartController {
 	        return "settlement/deleteSuccess";
 	    }
 	
+	@GetMapping("comp")
+	public String showComp() {
+		return "settlement/comp";
+	}
+	
 //	@GetMapping("/reservations")
 //    public String getReservations(Model model) {
 //        Map<LocalDate, String> reservations = new HashMap<>();

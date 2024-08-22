@@ -101,6 +101,7 @@ public class ShopListController {
 		Map<Integer, String[]> storeHolidays = new HashMap<>();
 		List<ShopListDto> tempOpenShop = new ArrayList<>();
 		
+
 		//
 		// メソッド名：getPictureShopList
 		//
@@ -117,6 +118,7 @@ public class ShopListController {
 						tempShopList.getShopHour(),
 						tempShopList.getHoliday(),pictureString));
 			}
+
 		}
 		
 		//
@@ -177,19 +179,19 @@ public class ShopListController {
 	
 	@GetMapping("/shopInformation")
 	public String shopInformationShow(Model model) {
-		Iterable<ShopList> alldata2 = repository.findAll();
+		Iterable<ShopList> alldata2 = repository.findAll(); // すべての店舗情報を取得
 		List<String> list = new ArrayList<>();
-		List<ShopList> list8 = new ArrayList<>();
+		List<ShopListDto> shopDtoList = new ArrayList<>();
 
-		for (ShopList shopList : alldata2) {
-			if (shopList.getShopPicture() != null) {
-				String list2 = Base64.getEncoder().encodeToString(shopList.getShopPicture());
-				list.add(list2);
-				list8.add(shopList);
+		// 写真の表示
+		for (ShopList shop : alldata2) {
+			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
+			if (shop.getShopPicture() != null) {
+				String pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
+				shopDtoList.add(new ShopListDto(shop.getId(),shop.getShopName(),shop.getShopAddress(),shop.getShopTel(),shop.getShopHour(),shop.getHoliday(),pictureString));
 			}
 		}
-		model.addAttribute("image", list);
-		model.addAttribute("shopLists2", list8);
+		model.addAttribute("shopLists", shopDtoList);
 
 		return "shopInformation";
 		//		return "redirect:/cookCategory";

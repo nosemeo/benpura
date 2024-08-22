@@ -5,43 +5,196 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>注文完了</title>
+
+	<!-- threejs.org canvas lines example -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
+
+
 	<style>
 		body {
-			font-family: Arial, sans-serif;
-			text-align: center;
-			margin-top: 50px;
-		}
+		     /* font-family: Arial, sans-serif;
+		      text-align: center;
+		      margin-top: 50px;
+		      background-color: rgb(128, 255, 0);
+		      background-image: linear-gradient(to right, rgb(128, 255, 0), #f06d06);
+		      margin: 0px;
+		      overflow: hidden;*/
+			  font-family: Arial, sans-serif;
+			   margin: 0;
+			   padding: 0;
+			   height: 100vh;
+			   background-color: rgb(128, 255, 0);
+			   background-image: linear-gradient(to right, rgb(128, 255, 0), #f06d06);
+			   overflow: hidden;
+		    }
+		
+		    .container {
+		      /*display: inline-block;
+		      padding: 20px;
+		      border: 1px solid #ccc;
+		      border-radius: 10px;
+		      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		      background-color: rgba(255, 255, 255, 0.8);
+		      z-index: 10; /* 3Dアニメーションの上に表示されるようにする */
+		      position: relative; /* z-indexが適用されるように */
+			  
+			  z-index: 10; /* Three.jsのアニメーションより前に表示 */
+			   padding: 20px;
+			   border: 1px solid #ccc;
+			   border-radius: 10px;
+			   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			   background-color: rgba(255, 255, 255, 0.8);
+			   margin: 0 auto; /* 中央揃え */
+			   top: 20px; /* 上部に少し余白をつける */
+			   width: 50%; /* 適度な幅に調整 */
+		    }
+		
+		    .button {
+		      display: inline-block;
+		      margin-top: 20px;
+		      padding: 10px 20px;
+		      background-color: #007BFF;
+		      color: white;
+		      text-decoration: none;
+		      border-radius: 5px;
+		    }
+		
+		    .button:hover {
+		      background-color: #0056b3;
+		    }
+		  </style>
+		</head>
+		<body>
+			<div id="three-container"></div> <!-- Three.jsのアニメーション用コンテナ -->
+			
+		  <div class="container">
+		    <h1>注文が完了しました</h1>
+		    <p>ご注文ありがとうございます。</p>
+		    <a href="cart.html" class="button">カートに戻る</a>
+		  </div>
+		
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
+		  <script>
+		    var mouseX = 0,
+		        mouseY = 0,
+		        windowHalfX = window.innerWidth / 2,
+		        windowHalfY = window.innerHeight / 2,
+		        SEPARATION = 200,
+		        AMOUNTX = 10,
+		        AMOUNTY = 10,
+		        camera,
+		        scene,
+		        renderer;
+		    
+		    init();
+		    animate();
+		
+		    function init() {
+		     /* var container,
+		          separation = 100,
+		          amountX = 50,
+		          amountY = 50,
+		          particle;
+		      
+		      container = document.createElement('div');
+		      document.body.appendChild(container);*/
+			  var container = document.getElementById('three-container'); // 特定のコンテナにThree.jsを追加
+		
+		      scene = new THREE.Scene();
+		
+		      renderer = new THREE.CanvasRenderer({ alpha: true });
+		      renderer.setSize(window.innerWidth, window.innerHeight);
+		      container.appendChild(renderer.domElement);
+		      
+		      camera = new THREE.PerspectiveCamera(
+		        75,
+		        window.innerWidth / window.innerHeight,
+		        1,
+		        10000
+		      );
+		      camera.position.z = 100;
+		
+		      var PI2 = Math.PI * 2;
+		      var material = new THREE.SpriteCanvasMaterial({
+		        color: 0xffffff,
+		        program: function (context) {
+		          context.beginPath();
+		          context.arc(0, 0, 0.5, 0, PI2, true);
+		          context.fill();
+		        }
+		      });
+		      
+		      var geometry = new THREE.Geometry();
+		
+		      for (var i = 0; i < 100; i++) {
+		        particle = new THREE.Sprite(material);
+		        particle.position.x = Math.random() * 2 - 1;
+		        particle.position.y = Math.random() * 2 - 1;
+		        particle.position.z = Math.random() * 2 - 1;
+		        particle.position.normalize();
+		        particle.position.multiplyScalar(Math.random() * 10 + 450);
+		        particle.scale.x = particle.scale.y = 10;
+		        scene.add(particle);
+		        geometry.vertices.push(particle.position);
+		      }
+		
+		      var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.5 }));
+		      scene.add(line);
+		
+		      document.addEventListener('mousemove', onDocumentMouseMove, false);
+		      document.addEventListener('touchstart', onDocumentTouchStart, false);
+		      document.addEventListener('touchmove', onDocumentTouchMove, false);
+		      
+		      window.addEventListener('resize', onWindowResize, false);
+		    }
+		
+		    function onWindowResize() {
+		      windowHalfX = window.innerWidth / 2;
+		      windowHalfY = window.innerHeight / 2;
+		
+		      camera.aspect = window.innerWidth / window.innerHeight;
+		      camera.updateProjectionMatrix();
+		
+		      renderer.setSize(window.innerWidth, window.innerHeight);
+		    }
+		
+		    function onDocumentMouseMove(event) {
+		      mouseX = event.clientX - windowHalfX;
+		      mouseY = event.clientY - windowHalfY;
+		    }
+		
+		    function onDocumentTouchStart(event) {
+		      if (event.touches.length > 1) {
+		        event.preventDefault();
+		        mouseX = event.touches[0].pageX - windowHalfX;
+		        mouseY = event.touches[0].pageY - windowHalfY;
+		      }
+		    }
+		
+		    function onDocumentTouchMove(event) {
+		      if (event.touches.length == 1) {
+		        event.preventDefault();
+		        mouseX = event.touches[0].pageX - windowHalfX;
+		        mouseY = event.touches[0].pageY - windowHalfY;
+		      }
+		    }
+		
+		    function animate() {
+		      requestAnimationFrame(animate);
+		      render();
+		    }
+		
+		    function render() {
+		      camera.position.x += (mouseX - camera.position.x) * .05;
+		      camera.position.y += (- mouseY + 200 - camera.position.y) * .05;
+		      camera.lookAt(scene.position);
+		
+		      renderer.render(scene, camera);
+		    }
+		  </script>
 
-		.container {
-			display: inline-block;
-			padding: 20px;
-			border: 1px solid #ccc;
-			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		}
-
-		.button {
-			display: inline-block;
-			margin-top: 20px;
-			padding: 10px 20px;
-			background-color: #007BFF;
-			color: white;
-			text-decoration: none;
-			border-radius: 5px;
-		}
-
-		.button:hover {
-			background-color: #0056b3;
-		}
-	</style>
-</head>
-
-<body>
-	<div class="container">
-		<h1>注文が完了しました</h1>
-		<p>ご注文ありがとうございます。</p>
-		<a href="cart.html" class="button">カートに戻る</a>
-	</div>
 </body>
+
+
 
 </html>
