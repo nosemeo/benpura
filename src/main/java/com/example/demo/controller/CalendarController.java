@@ -14,21 +14,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.entity.Calender;
+import com.example.demo.entity.Calendar;
 import com.example.demo.form.Form;
-import com.example.demo.service.CalenderService;
+import com.example.demo.service.CalendarService;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class CalenderController {
+public class CalendarController {
 
+	@Autowired
+	CalendarService service;
+	
 	// セッション準備 HttpSession型のフィールドを定義する
 	private HttpSession session;
-	
-	@Autowired
-	CalenderService service;
-
 	@Autowired // クラスの自動生成
 	public void SessionController(HttpSession session) {
 		// フィールドに代入する
@@ -37,25 +36,25 @@ public class CalenderController {
 	
 	// ただのカレンダーの読み込み
 	@GetMapping()
-	public String calenderShowList(Model model) {
+	public String calendarShowList(Model model) {
 		//注文履歴を全件取得
-		Iterable<Calender> list = service.selectAll();
+		Iterable<Calendar> list = service.selectAll();
 		//表示用「Model」への格納
 		model.addAttribute("list", list);
-		//calender.htmlのカレンダー、注文履歴の表示
-		return "calender";
+		//calendar.htmlのカレンダー、注文履歴の表示
+		return "calendar";
 	}
 	
-	// ユーザーネームをセッションに保存
+	// 機能：ユーザーネームをセッションに保存
 	// 再表示用
-	@GetMapping("/calender")
-	public String calenderShowList2(Model model, Form f) {
+	@GetMapping("/calendar")
+	public String calendarShowList2(Model model, Form f) {
 		//注文履歴を全件取得
-		Iterable<Calender> list = service.selectAll();
-
+		Iterable<Calendar> list = service.selectAll();
+		
 		// usernameと合致する注文履歴のみリストに追加
-		List<Calender> newlist = new ArrayList<>();
-		for (Calender temp : list) {
+		List<Calendar> newlist = new ArrayList<>();
+		for (Calendar temp : list) {
 			// ログインページから読み込んだ時、ユーザー名を受け取っているか確認
 			if(!(f.getUsername()==null)) {
 				if (temp.getUsername().equals(f.getUsername())) {
@@ -72,12 +71,10 @@ public class CalenderController {
 
 		//表示用「Model」への格納
 		model.addAttribute("list", newlist);
-
 		// ユーザーネームをセッションに保存
 		this.session.setAttribute("username", f.getUsername());
-
-		//calender.htmlのカレンダー、注文履歴の表示
-		return "calender";
+		//calendar.htmlのカレンダー、注文履歴の表示
+		return "calendar";
 	}
 
 	//機能①：注文日時の曜日を取得formクラスにて受け渡し
@@ -114,14 +111,11 @@ public class CalenderController {
 		// nextpage.htmlを表示
 		return "_nextpage";
 	}
-	
-	
 	// ログインページに戻るだけ
 	@GetMapping("/_nextpagelogin")
 	public String showNextPageLogin() {
 		// nextpage2.htmlを表示
 		return "_nextpagelogin";
 	}
-	
-	
+
 }

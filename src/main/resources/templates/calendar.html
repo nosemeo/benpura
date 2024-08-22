@@ -8,21 +8,21 @@
 	<title>★本番★マイページ/カレンダー</title>
 
 	<!--  方法①  htmlを右クリックで直接webブラウザにて開く場合-->
-	<!--	<link href="../static/css/calender.css" rel="stylesheet">-->
-	<!--	<script src="../static/js/calender.js"></script>-->
+	<!--	<link href="../static/css/calendar.css" rel="stylesheet">-->
+	<!--	<script src="../static/js/calendar.js"></script>-->
 	<!--  メモ：..//はひとつ上のフォルダに戻るという意味-->
 
 	<!--  方法②  htmlをSpring Bootにて開く場合-->
-	<link href="/css/calender.css" rel="stylesheet">
-	<script src="/js/calender.js"></script>
+	<link href="/css/calendar.css" rel="stylesheet">
+	<script src="/js/calendar.js"></script>
 	<!--  メモ：Spring Bootはデフォルトで、-->
 	<!--    静的なリソース（CSS、JavaScript、画像など）を-->
 	<!--    特定のディレクトリに配置することを期待しています。-->
 	<!--    記載方法は直接的に"/css/～.css" のように指定してOK-->
 
 	<!--  方法③  Thymeleafを使用する場合-->
-	<!--	<link th:href="@{/css/calender.css}" rel="stylesheet">-->
-	<!--	<script th:src="@{/js/calender.js}"></script>-->
+	<!--	<link th:href="@{/css/calendar.css}" rel="stylesheet">-->
+	<!--	<script th:src="@{/js/calendar.js}"></script>-->
 	<!--  メモ：obj : ${list}などのタイムリーフを使用する場合-->
 	<!--    th:ref @{/css/～.css}"の記載になる-->
 
@@ -55,7 +55,7 @@
 		</form>
 
 		<!-- 注文履歴の読み込み -->
-		<div id="event-calender">
+		<div id="event-calendar">
 			<div th:each="event : ${list}" th:attr="data-event-date=${event.date}, data-event-item=${event.item}">
 			</div>
 		</div>

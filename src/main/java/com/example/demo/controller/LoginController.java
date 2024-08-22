@@ -42,11 +42,11 @@ public class LoginController {
 		return "login";
 	}
 
-	// SecurityConfigのdefaultSuccessUrlで指定したURL
-	@GetMapping("calendar") //local host url
-	public String loginSuccess() {
-		// ログインに成功したら表示するURL
-		return "calendar";//html file
-	}
+//	// SecurityConfigのdefaultSuccessUrlで指定したURL
+//	@GetMapping("calendar") //local host url
+//	public String loginSuccess() {
+//		// ログインに成功したら表示するURL
+//		return "calendar";//html file
+//	}
 
 }

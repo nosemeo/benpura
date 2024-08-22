@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Calender;
+import com.example.demo.entity.Calendar;
 
-public interface CalenderService {
+public interface CalendarService {
 	
-	Iterable<Calender>selectAll();
+	Iterable<Calendar>selectAll();
 	
 	
 }

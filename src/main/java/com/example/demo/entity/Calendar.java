@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 //  entityパッケージ
 //  Calenderクラスの生成
 //
-public class Calender {
+public class Calendar {
 	
 //	Idはusernameに
 //	DBも主キーをusernameに?
