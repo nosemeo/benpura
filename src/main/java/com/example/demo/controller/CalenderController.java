@@ -21,7 +21,6 @@ import com.example.demo.service.CalenderService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-//@RequestMapping("/calender")
 public class CalenderController {
 
 	// セッション準備 HttpSession型のフィールドを定義する
@@ -105,8 +104,7 @@ public class CalenderController {
 		LocalTime time = LocalTime.parse(f.getOrdertime(), DateTimeFormatter.ofPattern("HH:mm"));
 		// LocalDateとLocalTimeを結合してLocalDateTimeを作成
 		LocalDateTime orderdatetime = LocalDateTime.of(f.getOrderdate(), time);
-
-		// 注文日時をセッションに保存
+		// ★注文日時をセッションに保存★
 		this.session.setAttribute("orderdatetime", orderdatetime);
 
 		// 再確認/再表示：保存されたユーザーネームと注文日時のセッション
@@ -124,5 +122,6 @@ public class CalenderController {
 		// nextpage2.htmlを表示
 		return "_nextpagelogin";
 	}
+	
 	
 }
