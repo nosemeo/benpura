@@ -19,5 +19,6 @@ public class CookCategory {
 	private String introductions;
 	private byte[] imagePath;
 	private Integer shopnameId;
+	private boolean osusume;
 	
 }
