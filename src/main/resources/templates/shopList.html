@@ -32,6 +32,7 @@
 		<a th:href="@{/cookCategory}" target="_blank">
 			<img class="shopimg" th:src="'data:image/png;base64,'+${shop.image}" alt="picture" />
 		</a>
+		
 		<div class="text">
 			<h1 class="shopName" th:text="${shop.shopName}"></h1>
 			<p class="shopAddress" th:text="${shop.shopAddress}"></p>
@@ -50,7 +51,7 @@
 
 	<div id="content2" th:each="shop2 : ${shopLists2}">
 		<br>
-		<!--<img th:src="'data:image/jpg:base64,'+${list[1]}" alt="おいしいごはん"></img>-->
+		<img class="shopimg" th:src="'data:image/png;base64,'+${image[1]}" alt="oishii"></img>
 		<div class="text">
 			<h1 class="shopName" th:text="${shop2.shopName}"></h1>
 			<p class="shopAddress" th:text="${shop2.shopAddress}"></p>

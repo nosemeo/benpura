@@ -46,15 +46,16 @@ public class ShopListController {
 		//		Iterable<ShopList> imagedata = repository.findAll(); ↓に変更！
 		//		 EntityのデータベースのデータをRepositoryでゲットして、Serviceでどのメソッドを使うか定めて、
 		//		Implで内容を書く。それをControllerで反映
-		Iterable<ShopList> alldata = shopListService.selectAll();
+		Iterable<ShopList> alldata = shopListService.selectAll();// すべての店舗情報を取得
+		List<String> list = new ArrayList<>();
 		List<ShopListDto> shopDtoList = new ArrayList<>();
 
 		// 写真の表示
-		for (ShopList shopList : alldata) {
+		for (ShopList shop : alldata) {
 			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
-			if (shopList.getShopPicture() != null) {
-				String pictureString = Base64.getEncoder().encodeToString(shopList.getShopPicture());
-				shopDtoList.add(new ShopListDto(shopList.getId(),shopList.getShopName(),shopList.getShopAddress(),shopList.getShopTel(),shopList.getShopHour(),shopList.getHoliday(),pictureString));
+			if (shop.getShopPicture() != null) {
+				String pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
+				shopDtoList.add(new ShopListDto(shop.getId(),shop.getShopName(),shop.getShopAddress(),shop.getShopTel(),shop.getShopHour(),shop.getHoliday(),pictureString));
 			}
 		}
 		model.addAttribute("shopLists", shopDtoList); // 左はhtml側で呼び出す為の名前
