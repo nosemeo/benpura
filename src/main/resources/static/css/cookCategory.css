@@ -91,6 +91,7 @@ body {
 	flex-direction: column; /* 使子元素垂直排列 */
 	align-items: center; /* 水平居中对齐子元素 */
 	justify-content: center; /* 垂直居中对齐子元素 */
+	
 }
 
 .menu-item img {
@@ -194,30 +195,35 @@ body {
 }
 
 .button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	/* テキストとアイコンをスペースを空けて配置 */
-	text-decoration: none;
-	/* リンクの下線を消す */
-	background: linear-gradient(45deg, rgb(23, 134, 255), rgb(55, 210, 255));
-	padding: 10px 20px;
-	/* ボタンの内側の余白 */
-	border-radius: 50px;
-	/* ボタンの角を丸める */
-	font-size: 18px;
-	/* ボタン内のテキストサイズ */
-	font-weight: bold;
-	/* テキストを太字に */
-	transition: background-color 0.3s;
-	/* ホバー時の背景色の遷移 */
-	max-width: 400px;
-	/* ボタンの最大幅 */
-	box-sizing: border-box;
-	/* パディングとボーダーを含めたサイズ計算 */
-	width: auto;
-	margin: 0 auto; 
-	
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, rgb(0, 128, 255), rgb(83, 169, 255));
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 20px; /* ボタン周りの余白 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 80%; /* 親要素に対して幅を100%にする */
+    max-width: 400px; /* 最大幅を設定して、広すぎないように調整 */
+    box-sizing: border-box; /* パディングやボーダーを含むサイズ計算 */
+}
+
+.button:hover {
+    background: linear-gradient(45deg, rgb(83, 169, 255), rgb(0, 128, 255));
+    transform: scale(1.05);
+}
+
+.button:focus {
+    outline: none;
 }
 
 .size-wrapper {

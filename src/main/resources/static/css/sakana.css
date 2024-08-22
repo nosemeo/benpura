@@ -62,7 +62,6 @@ body {
 	width: 33.3333%;
 }
 
-
 .menu-item {
 	background-color: rgb(255, 255, 255);
 	border: rgb(255, 255, 255) 5px solid;
@@ -216,34 +215,29 @@ body:hover .cursor {
 	background-color: rgb(255, 128, 64, 0.5);
 	/* ホバー時の色 */
 }
-
 .category-button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px 20px;
-	background: linear-gradient(45deg, rgb(23, 134, 255), rgb(55, 210, 255));
-	color: white;
-	border: none;
-	border-radius: 50px;
-	font-size: 18px;
-	font-weight: bold;
-	cursor: pointer;
-	text-decoration: none;
-	transition: background-color 0.3s, transform 0.3s;
-	margin: 20px; /* ボタン周りの余白 */
-}
-
-.category-button a {
-	color: white;
-	text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, rgb(255, 128, 0), rgb(255, 176, 98));
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 20px; /* ボタン周りの余白 */
 }
 
 .category-button:hover {
-	background: linear-gradient(45deg, rgb(55, 210, 255), rgb(23, 134, 255));
-	transform: scale(1.05);
+    background: linear-gradient(45deg, rgb(255, 176, 98), rgb(255, 128, 0));
+    transform: scale(1.05);
 }
 
 .category-button:focus {
-	outline: none;
+    outline: none;
 }
