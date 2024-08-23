@@ -29,7 +29,7 @@
 	<div id="content1" th:each="shop : ${shopLists}">
 		<br>
 		<!--		target="_blank"は別タブでリンク開く-->
-		<a th:href="@{/cookCategory}" target="_blank">
+		<a th:href="@{/cookCategory(shopName=${shop.shopName})}" target="_blank">
 			<img class="shopimg" th:src="'data:image/png;base64,'+${shop.image}" alt="picture" />
 		</a>
 
@@ -43,7 +43,7 @@
 				}
 			</style>
 			<div class="example">
-				<a th:href="@{/cookCategory}" class="btn btn-tag"><i class="fas fa-shopping-cart"></i>注文はこちら</a>
+				<a th:href="@{/cookCategory(shopName=${shop.shopName})}" class="btn btn-tag"><i class="fas fa-shopping-cart"></i>注文はこちら</a>
 <!--				<a class="Information" href="/shopInformation">店舗情報を見る</a>-->
 
 <a class="Information" th:href="@{/shopInformation(id=${shop.id})}">店舗情報を見る</a>

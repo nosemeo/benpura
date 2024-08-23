@@ -12,7 +12,7 @@ import lombok.Data;
 public class Order {
 	@Id
 	private Integer id;
-	private String username;
+	private String mailaddress;
 	private String shopname;
 	private String item;
 	private Integer price;

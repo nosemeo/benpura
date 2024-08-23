@@ -47,7 +47,7 @@ public class CartController {
 		if(dtoList == null) {
 			dtoList = new ArrayList<>();
 		}
-		dto.setShopName(this.session.getAttribute("shopName").toString());
+		
 		dtoList.add(dto);
 		this.session.setAttribute("dtoList", dtoList);
 			
@@ -58,6 +58,7 @@ public class CartController {
 	@PostMapping("/settlement")
 	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
 		dto.setNumber(1);
+		dto.setShopName(this.session.getAttribute("shopName").toString());
 		dto.setPickupTime((LocalDateTime) this.session.getAttribute("orderdatetime"));
 		LocalDate today = LocalDate.now();
 		model.addAttribute("today", today);
@@ -69,7 +70,7 @@ public class CartController {
 	public String compShow(@RequestParam int bn) {
 		List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
 		CartDto dto = list.get(bn);
-		Order orderDetails = new Order(null, (String)this.session.getAttribute("userNmae"), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
+		Order orderDetails = new Order(null,this.session.getAttribute("mailaddress").toString(), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
 		service.insertOrder(orderDetails);
 		return "settlement/comp";
 	}

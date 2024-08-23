@@ -9,23 +9,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.CookCategory;
 import com.example.demo.repository.CookCategoryRepository;
 import com.example.demo.service.CookCategoryService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("cookCategory")
 public class CookController {
+	private HttpSession session;
 
 	@Autowired
 	private CookCategoryService cookCategoryService;
 
 	@Autowired
 	private CookCategoryRepository repository;
-
+	@Autowired //若松：注文日時を保存するために必要
+	public void SessionController(HttpSession session) {
+		// フィールドに代入する
+		this.session = session;
+	}
 	@GetMapping
-	public String showList(Model model) {
+	public String showList(@RequestParam("shopName") String shopName, Model model) {
 		String osusumeSPrice = null;
 		String osusumeMPrice = null;
 		String higawariSPrice = null;
@@ -39,7 +47,7 @@ public class CookController {
 		String higawariName = "";
 		String omakaseName = "";
 		String shopnameId = null;
-		
+		this.session.setAttribute("shopName", shopName);
 
 		Iterable<CookCategory> imageData = repository.findAll();
 		List<String> list = new ArrayList<>();
