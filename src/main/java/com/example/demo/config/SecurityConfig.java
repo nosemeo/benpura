@@ -22,7 +22,6 @@ import jakarta.servlet.http.HttpSession;
 
 public class SecurityConfig {
 	
-	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.formLogin(form -> form

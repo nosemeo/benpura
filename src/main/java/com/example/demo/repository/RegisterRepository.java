@@ -17,5 +17,7 @@ public interface RegisterRepository extends CrudRepository<PersonalData, String>
 	Integer getRandomId();
 	
 	PersonalData findByUsername(String username);
+	
+	
 
 }

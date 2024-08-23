@@ -37,19 +37,13 @@ public class RegisterController {
 
 	@GetMapping("/register")
 	public String register(RegisterForm registerForm) {
-		
-		System.out.println("mailaddress regi 1：  "+registerForm.getMailAddress());
-		this.session.setAttribute("mailaddress",registerForm.getMailAddress());
-		
+
 		return "register";
 	}
 
 	@PostMapping("/register")
 	public String showRegisterForm(RegisterForm registerForm) {
-		
-		System.out.println("mailaddress regi 1：  "+registerForm.getMailAddress());
-		this.session.setAttribute("mailaddress",registerForm.getMailAddress());
-		
+
 		return "register";
 	}
 
@@ -66,11 +60,7 @@ public class RegisterController {
 		String password = registerForm.getPassword();
 		String passwordMasked = getMaskedPassword(password);
 		model.addAttribute("passwordMasked", passwordMasked);
-		
-		// 若松：セッションの保存
-		System.out.println("mailaddress regi 1：  "+registerForm.getMailAddress());
-		this.session.setAttribute("mailaddress",registerForm.getMailAddress());
-		
+
 		return "confirm";//html file
 	}
 
@@ -92,11 +82,10 @@ public class RegisterController {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		
+
 		// 若松：セッションの保存
-		System.out.println("mailaddress regi 2：  "+registerForm.getMailAddress());
-		this.session.setAttribute("mailaddress",registerForm.getMailAddress());
-		
+		this.session.setAttribute("mailaddress", registerForm.getMailAddress());
+
 		return "redirect:/calendar";//el nombre del archivo html
 	}
 

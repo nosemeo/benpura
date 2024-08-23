@@ -54,10 +54,10 @@ public class CalendarController {
 	public String calendarShowList2(Model model) {
 		System.out.println("メールアドレスで判別します。");
 		
-//		String mailaddress = (String) this.session.getAttribute("mailaddress");
-//		System.out.println("mailaddress controller：  " + mailaddress);
-				
-		String mailaddress=null;
+		// セッションでメールアドレス/ユーザ名を受け取り
+		String mailaddress=(String) this.session.getAttribute("mailaddress");
+		System.out.println("確認：セッション受け取り："+this.session.getAttribute("mailaddress"));
+		
 		
 		//注文履歴を全件取得
 		Iterable<Calendar> list = service.selectAll();
@@ -72,6 +72,7 @@ public class CalendarController {
 		for (Calendar temp : list) {
 			// ログインページから読み込んだ時
 			// ユーザー名を受け取っているか確認
+			System.out.println("temp.getMailaddress："+temp.getMailaddress());
 			if (!(mailaddress == null)) {
 				if (temp.getMailaddress().equals(mailaddress)) {
 					newlist.add(temp);
@@ -79,17 +80,16 @@ public class CalendarController {
 			}
 			// ヘッダーのログインページから読み込んだ時
 			// セッションにあるユーザー名を受け取っているか確認
-			if (!(this.session.getAttribute("mailaddress") == null)) {
-				if (temp.getMailaddress().equals(mailaddress)) {
-					newlist.add(temp);
-				}
-			}
+//			if (!(this.session.getAttribute("mailaddress") == null)) {
+//				if (temp.getMailaddress().equals(mailaddress)) {
+//					newlist.add(temp);
+//				}
+//			}
 		}
 
 		//表示用「Model」への格納
 		model.addAttribute("list", newlist);
-		// ユーザーネームをセッションに保存
-		this.session.setAttribute("mailaddress", mailaddress);
+
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
 	}
