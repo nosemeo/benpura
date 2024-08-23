@@ -9,7 +9,8 @@
 
 <body>
 	<div id="headline">
-		<p class="title">ここにロゴとマイページを挿入</p>
+		<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			layout:decorate="~{commons/layout}">
 	</div>
 
 	<div>
@@ -19,11 +20,11 @@
 		</div>
 	</div>
 
-	<div id="main" th:each="shop : ${shopLists2}">
+	<div id="main" th:each="shop : ${shopLists}">
 
 		<div class="image">
-			<a href="/cookCategory" target="_blank">
-				<img th:src="'data:image/png;base64,'+${image[0]}" alt="Hana"></a>
+			<a href="@{/cookCategory}" target="_blank">
+				<img th:src="'data:image/png;base64,'+${shop.image}" alt="picture"></a>
 		</div>
 
 		<h1 class="shopName"><span th:text="${shop.shopName}">name</span></h1>
@@ -37,7 +38,6 @@
 				width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
-		<!--		{"text":"benpura","cur":{"from":7,"to":7}}-->
 
 		<p class="item"><span>02</span>営業時間</p>
 		<p class="shopHour" th:text="${shop.shopHour}"></p>

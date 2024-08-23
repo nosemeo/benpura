@@ -47,6 +47,7 @@ public class CartController {
 		if(dtoList == null) {
 			dtoList = new ArrayList<>();
 		}
+		dto.setShopName(this.session.getAttribute("shopName").toString());
 		dtoList.add(dto);
 		this.session.setAttribute("dtoList", dtoList);
 			
@@ -81,6 +82,11 @@ public class CartController {
 	        
 	        return "settlement/deleteSuccess";
 	    }
+	
+	@GetMapping("comp")
+	public String showComp() {
+		return "settlement/comp";
+	}
 	
 //	@GetMapping("/reservations")
 //    public String getReservations(Model model) {

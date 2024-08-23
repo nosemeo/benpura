@@ -9,6 +9,7 @@
 	flex-direction: column;
 	align-items: center;
 	width: 80%;
+	background-color:rgba(166,255,128,0.7);
     border: 1px solid #ccc;
     border-radius: 7px;
     padding: 20px;
@@ -24,6 +25,8 @@
 
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-image: url(../image/背景のたまごちゃん.png);
+    background-size: cover;
     max-width: 100%;
     margin: 0;
     padding: 0;
@@ -52,6 +55,7 @@ body {
     border-radius: 7px;
     padding: 20px;
     margin-bottom: 20px;
+    background-color:rgba(166,255,128,0.7);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -137,8 +141,32 @@ footer.content table {
 .order:hover {
     background-color: rgb(0, 255, 128);
 }
+.return {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2%;
+}
+.return a{
+	
+	background-color: #8bc34a; /* 黄緑 */
+    border: none;
+    color: white;
+    padding: 1.2rem 3.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-@media (max-width: 768px) {
+.return a:hover {
+	background-color: #7cb342; /* 黄緑の暗い色 */
+	transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 30%), 0 0 5px rgb(0 0 0 / 30%);
+}
+@media (max-width: 100%) {
     .product {
         flex-direction: column;
         align-items: flex-start;
