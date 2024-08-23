@@ -59,18 +59,18 @@ public class CalendarController {
 		// メソッド名sortOrder listでそんなことできるのか
 		// メソッド名matchLoginidOrderlist
 		//
-		// usernameと合致する注文履歴のみリストに追加
+		// mailaddressと合致する注文履歴のみリストに追加
 		List<Calendar> newlist = new ArrayList<>();
 		for (Calendar temp : list) {
 			// ログインページから読み込んだ時、ユーザー名を受け取っているか確認
-			if (!(f.getUsername() == null)) {
-				if (temp.getUsername().equals(f.getUsername())) {
+			if (!(f.getMailaddress() == null)) {
+				if (temp.getMailaddress().equals(f.getMailaddress())) {
 					newlist.add(temp);
 				}
 			}
 			// ヘッダーのログインページから読み込んだ時、セッションにあるユーザー名を受け取っているか確認
-			if (!(this.session.getAttribute("username") == null)) {
-				if (temp.getUsername().equals(this.session.getAttribute("username"))) {
+			if (!(this.session.getAttribute("mailaddress") == null)) {
+				if (temp.getMailaddress().equals(this.session.getAttribute("mailaddress"))) {
 					newlist.add(temp);
 				}
 			}
@@ -79,7 +79,7 @@ public class CalendarController {
 		//表示用「Model」への格納
 		model.addAttribute("list", newlist);
 		// ユーザーネームをセッションに保存
-		this.session.setAttribute("username", f.getUsername());
+		this.session.setAttribute("mailaddress", f.getMailaddress());
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
 	}
