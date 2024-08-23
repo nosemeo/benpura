@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +40,7 @@ public class CalendarController {
 	@GetMapping()
 	public String calendarShowList(Model model) {
 		System.out.println("すべてのカレンダーの読み込み");
-		
+
 		//注文履歴を全件取得
 		Iterable<Calendar> list = service.selectAll();
 		//表示用「Model」への格納
@@ -51,14 +52,15 @@ public class CalendarController {
 	// 機能：ユーザーネームをセッションに保存
 	// 再表示用
 	@GetMapping("/calendar")
-	public String calendarShowList2(Model model) {
+	public String calendarShowList2(Model model, Authentication authentication) {
 		System.out.println("メールアドレスで判別します。");
-		
+
+		String mailaddress = authentication.getName();
+
+		System.out.println("新規" + mailaddress);
 		// セッションでメールアドレス/ユーザ名を受け取り
-		String mailaddress=(String) this.session.getAttribute("mailaddress");
-		System.out.println("確認：セッション受け取り："+this.session.getAttribute("mailaddress"));
-		
-		
+		//		String mailaddress=(String) this.session.getAttribute("mailaddress");
+
 		//注文履歴を全件取得
 		Iterable<Calendar> list = service.selectAll();
 
@@ -72,7 +74,6 @@ public class CalendarController {
 		for (Calendar temp : list) {
 			// ログインページから読み込んだ時
 			// ユーザー名を受け取っているか確認
-			System.out.println("temp.getMailaddress："+temp.getMailaddress());
 			if (!(mailaddress == null)) {
 				if (temp.getMailaddress().equals(mailaddress)) {
 					newlist.add(temp);
@@ -80,13 +81,16 @@ public class CalendarController {
 			}
 			// ヘッダーのログインページから読み込んだ時
 			// セッションにあるユーザー名を受け取っているか確認
-//			if (!(this.session.getAttribute("mailaddress") == null)) {
-//				if (temp.getMailaddress().equals(mailaddress)) {
-//					newlist.add(temp);
-//				}
-//			}
+			//			if (!(this.session.getAttribute("mailaddress") == null)) {
+			//				if (temp.getMailaddress().equals(mailaddress)) {
+			//					newlist.add(temp);
+			//				}
+			//			}
 		}
 
+		// 若松：セッションの保存
+		this.session.setAttribute("mailaddress", mailaddress);
+		
 		//表示用「Model」への格納
 		model.addAttribute("list", newlist);
 
