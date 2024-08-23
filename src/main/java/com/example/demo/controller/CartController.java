@@ -47,6 +47,7 @@ public class CartController {
 		if(dtoList == null) {
 			dtoList = new ArrayList<>();
 		}
+		dto.setShopName(this.session.getAttribute("shopName").toString());
 		dtoList.add(dto);
 		this.session.setAttribute("dtoList", dtoList);
 			
