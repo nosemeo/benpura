@@ -11,11 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dto.ShopListDto;
 import com.example.demo.entity.ShopList;
@@ -176,25 +178,59 @@ public class ShopListController {
 		
 	}
 	
-	
 	@GetMapping("/shopInformation")
-	public String shopInformationShow(Model model) {
-		Iterable<ShopList> alldata2 = repository.findAll(); // すべての店舗情報を取得
-		List<String> list = new ArrayList<>();
-		List<ShopListDto> shopDtoList = new ArrayList<>();
+	public String shopInformationShow(@RequestParam("id") Integer id, Model model) {
+	    // IDで店舗情報を取得
+	    Optional<ShopList> optionalShop = repository.findById(id);
+	    
+	    // 店舗情報が存在する場合
+	    if (optionalShop.isPresent()) {
+	        ShopList shop = optionalShop.get();
+	        // 店舗情報から写真を取得し、Base64にエンコード
+	        String pictureString = null;
+	        if (shop.getShopPicture() != null) {
+	            pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
+	        }
+	        
+	        // DTOを作成
+	        ShopListDto shopDto = new ShopListDto(
+	            shop.getId(),
+	            shop.getShopName(),
+	            shop.getShopAddress(),
+	            shop.getShopTel(),
+	            shop.getShopHour(),
+	            shop.getHoliday(),
+	            pictureString
+	        );
+	        
+	        // モデルにDTOを追加
+	        model.addAttribute("shop", shopDto);
+	    } else {
+	        // 店舗が見つからない場合の処理
+	        return "redirect:/errorPage"; // エラーページにリダイレクト
+	    }
 
-		// 写真の表示
-		for (ShopList shop : alldata2) {
-			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
-			if (shop.getShopPicture() != null) {
-				String pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
-				shopDtoList.add(new ShopListDto(shop.getId(),shop.getShopName(),shop.getShopAddress(),shop.getShopTel(),shop.getShopHour(),shop.getHoliday(),pictureString));
-			}
-		}
-		model.addAttribute("shopLists", shopDtoList);
-
-		return "shopInformation";
-		//		return "redirect:/cookCategory";
+	    return "shopInformation";
 	}
+	
+	
+//	@GetMapping("/shopInformation")
+//	public String shopInformationShow(Model model) {
+//		Iterable<ShopList> alldata2 = repository.findAll(); // すべての店舗情報を取得
+//		List<String> list = new ArrayList<>();
+//		List<ShopListDto> shopDtoList = new ArrayList<>();
+//
+//		// 写真の表示
+//		for (ShopList shop : alldata2) {
+//			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
+//			if (shop.getShopPicture() != null) {
+//				String pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
+//				shopDtoList.add(new ShopListDto(shop.getId(),shop.getShopName(),shop.getShopAddress(),shop.getShopTel(),shop.getShopHour(),shop.getHoliday(),pictureString));
+//			}
+//		}
+//		model.addAttribute("shopLists", shopDtoList);
+//
+//		return "shopInformation";
+//	}
 
 }

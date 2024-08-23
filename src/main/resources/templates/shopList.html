@@ -44,8 +44,11 @@
 			</style>
 			<div class="example">
 				<a th:href="@{/cookCategory}" class="btn btn-tag"><i class="fas fa-shopping-cart"></i>注文はこちら</a>
-				<a class="Information" href="/shopInformation">店舗情報を見る</a>
-			</div>
+<!--				<a class="Information" href="/shopInformation">店舗情報を見る</a>-->
+
+<a class="Information" th:href="@{/shopInformation(id=${shop.id})}">店舗情報を見る</a>
+		
+	</div>
 		</div>
 	</div>
 

@@ -75,8 +75,8 @@ h2:first-letter {
 	color: #eb6100;
 }
 
-#content1,
-#content2 {
+#content1
+{
 	/* 写真を枠内に入れる処理 */
 	display: flex;
 	align-items: center;
@@ -101,8 +101,8 @@ h2:first-letter {
 }
 
 /* 枠をずらしている処理 */
-#content1:before,
-#content2:before {
+#content1:before
+:before {
 	position: absolute;
 	top: -7px;
 	left: -7px;
@@ -113,8 +113,8 @@ h2:first-letter {
 }
 
 /* アニメーション*/
-#content1,
-#content2 {
+#content1
+ {
 	/* 「s」がかかる時間 */
 	animation: slideIn 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
