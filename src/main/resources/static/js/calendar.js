@@ -3,6 +3,7 @@ let currentDate = new Date();
 
 // 今日の日付を取得
 const today = new Date().toDateString();
+
 //
 // 注文履歴を取得する関数
 //
@@ -53,6 +54,29 @@ function updateCalendar() {
 	// 最初の日の曜日を取得
 	const startDay = (firstDay.getDay() + 6) % 7; // 月曜始まりに修正
 
+	//
+	//１週間先の日付を定義
+	//
+	const today2 = new Date();
+	const endDate = new Date(today2);
+	endDate.setDate(today2.getDate() + 7);
+	// 来月の最初の日
+	const nextMonth = new Date(today2.getFullYear(), today2.getMonth() + 1, 1);
+	// 日付の範囲を決定
+	const maxDate = endDate > nextMonth ? endDate : nextMonth;
+
+	// 今日から最大日付までのオプションを追加
+	for (let date = today2; date <= maxDate; date.setDate(date.getDate() + 1)) {
+		const option = document.createElement('option');
+		option.value = formatDateToString(date);
+		option.textContent = formatDateToString(date)+ ' (' + getDayName(date) + ')';
+		dateSelect.appendChild(option);
+	}
+	// 曜日の追加関数
+	function getDayName(date) {
+    const days = ['日', '月', '火', '水', '木', '金', '土'];
+    return days[date.getDay()];
+}
 	// カレンダーの日付を埋める
 	let row = document.createElement('tr');
 	for (let i = 0; i < startDay; i++) {
@@ -63,7 +87,6 @@ function updateCalendar() {
 	for (let day = 1; day <= lastDay.getDate(); day++) {
 		const cell = document.createElement('td');
 		const cellDate = new Date(year, month, day);
-		const cellDateString = formatDateToString(cellDate);
 		// 関数 formatDateToStirng：日時から時間をなくして日付のみにする
 
 		cell.textContent = day;
@@ -100,12 +123,6 @@ function updateCalendar() {
 			row = document.createElement('tr');
 		}
 
-		// 日付の選択肢を追加
-		const option = document.createElement('option');
-		option.value = cellDateString;
-		option.textContent = `${cellDateString}
-		(${['日', '月', '火', '水', '木', '金', '土'][cellDate.getDay()]})`;
-		dateSelect.appendChild(option);
 	}
 
 
