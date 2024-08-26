@@ -73,6 +73,8 @@ public class CookController {
 	
 			}
 		}
+		
+		
 		model.addAttribute("recommendList", list);
 		model.addAttribute("categoryList", list2);
 		return "cookCategory";
@@ -93,6 +95,10 @@ public class CookController {
 						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 			}
 		}
+		int id=(int) this.session.getAttribute("shopId");
+		String shopName=(String) this.session.getAttribute("shopName");
+		model.addAttribute("shopId", id);
+		model.addAttribute("shopName", shopName);
 		model.addAttribute("nikuList", list);
 		return "niku";
 	}
@@ -112,6 +118,10 @@ public class CookController {
 						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 			}
 		}
+		int id=(int) this.session.getAttribute("shopId");
+		String shopName=(String) this.session.getAttribute("shopName");
+		model.addAttribute("shopId", id);
+		model.addAttribute("shopName", shopName);
 		model.addAttribute("sakanaList", list);
 		return "sakana";
 	}
@@ -131,6 +141,10 @@ public class CookController {
 						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 			}
 		}
+		int id=(int) this.session.getAttribute("shopId");
+		String shopName=(String) this.session.getAttribute("shopName");
+		model.addAttribute("shopId", id);
+		model.addAttribute("shopName", shopName);
 		model.addAttribute("donburiList", list);
 		return "donburi";
 	}
