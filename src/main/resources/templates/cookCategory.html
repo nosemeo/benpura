@@ -19,7 +19,7 @@
 			<div class="container" >
 				<div class="menu-item" th:each="obj,s:${recommendList}">
 					<div>
-						<p th:class="osusume" th:text="${obj.comments1}"></p>
+						<p th:class="${obj.comments1Color}" th:text="${obj.comments1}"></p>
 					</div>
 					<img th:src="'data:image/png;base64,'+${obj.image}" alt="オススメ弁当">
 					<div class="name-description">

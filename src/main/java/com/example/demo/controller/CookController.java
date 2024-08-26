@@ -21,6 +21,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("cookCategory")
 public class CookController {
+	
 	private HttpSession session;
 
 	@Autowired
@@ -28,6 +29,7 @@ public class CookController {
 
 	@Autowired
 	private CookCategoryRepository repository;
+	
 	@Autowired //若松：注文日時を保存するために必要
 	public void SessionController(HttpSession session) {
 		// フィールドに代入する
@@ -35,29 +37,25 @@ public class CookController {
 	}
 	
 	@GetMapping
-	public String showList(@RequestParam("shopName") String shopName, @RequestParam("id") Integer id, Model model) {
-		/*-----------------------------------*/
-		
-		this.session.setAttribute("shopId", id);
-		this.session.setAttribute("shopName", shopName);
-		/*-----------------------------------*/
+
+	public String showList(@RequestParam("shopName") String shopName, @RequestParam("id") Integer id, Model model){
 		Iterable<CookCategory> recommendList = repository.findAll();
 		List<CategoryDto> list = new ArrayList<>();
+		this.session.setAttribute("shopId", id);
+		this.session.setAttribute("shopName", shopName);
 		
 		for (CookCategory cookCategory : recommendList) {
 			String imageString = Base64.getEncoder().encodeToString(cookCategory.getImage());
 			
 			if (cookCategory.getShopId() == 1) {
 				
+				if (cookCategory.getRecommend().equals("true")) {
+					
+					list.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
+							, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
+							, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
+				}
 			}
-			
-			if (cookCategory.getRecommend().equals("true")) {
-				
-				list.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
-						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
-						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM()));
-			}
-			
 		}
 		
 		List<CategoryDto> list2 = new ArrayList<>();
@@ -68,7 +66,7 @@ public class CookController {
 			if (cookCategory.getTypeComments() != null) {
 				list2.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
 						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
-						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM()));
+						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 	
 			}
 		}
@@ -89,7 +87,7 @@ public class CookController {
 				
 				list.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
 						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
-						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM()));
+						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 			}
 		}
 		model.addAttribute("nikuList", list);
@@ -108,7 +106,7 @@ public class CookController {
 				
 				list.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
 						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
-						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM()));
+						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 			}
 		}
 		model.addAttribute("sakanaList", list);
@@ -127,7 +125,7 @@ public class CookController {
 				
 				list.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
 						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
-						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM()));
+						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
 			}
 		}
 		model.addAttribute("donburiList", list);
