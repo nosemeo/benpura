@@ -24,6 +24,12 @@ public class CalendarServiceImpl implements CalendarService {
 		return repository.selectAll();
 	}
 
+	@Override
+	public Iterable<Calendar> selectById(String mailaddress) {
+		// TODO 自動生成されたメソッド・スタブ
+		return repository.findById(mailaddress);
+	}
+	
 	// mailaddressと合致する注文履歴のみリストに追加
 	@Override
 	public List<Calendar> matchLoginidOrderlist(String mailaddress, Iterable<Calendar> list) {
@@ -39,6 +45,7 @@ public class CalendarServiceImpl implements CalendarService {
 		}
 		return matchlist;
 	}
+
 
 
 	

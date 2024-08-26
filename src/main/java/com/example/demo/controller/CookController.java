@@ -35,12 +35,13 @@ public class CookController {
 		// フィールドに代入する
 		this.session = session;
 	}
+	
 	@GetMapping
+
 	public String showList(@RequestParam("shopName") String shopName, @RequestParam("id") Integer id, Model model){
 		Iterable<CookCategory> recommendList = repository.findAll();
 		List<CategoryDto> list = new ArrayList<>();
-		this.session.setAttribute("shopId", id);
-		this.session.setAttribute("shopName", shopName);
+		
 		
 		for (CookCategory cookCategory : recommendList) {
 			String imageString = Base64.getEncoder().encodeToString(cookCategory.getImage());
