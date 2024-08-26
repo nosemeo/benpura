@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,26 +36,27 @@ public class CalendarController {
 	//////////////////////////////////////////////////
 
 	// ただのカレンダーの読み込み
-	@GetMapping()
-	public String calendarShowList(Model model) {
-		System.out.println("すべてのカレンダーの読み込み");
-
-		//注文履歴を全件取得
-		Iterable<Calendar> list = service.selectAll();
-		//表示用「Model」への格納
-		model.addAttribute("list", list);
-		//calendar.htmlのカレンダー、注文履歴の表示
-		return "calendar";
-	}
+//	@GetMapping()
+//	public String calendarShowList(Model model) {
+//		System.out.println("すべてのカレンダーの読み込み");
+//
+//		//注文履歴を全件取得
+//		Iterable<Calendar> list = service.selectAll();
+//		//表示用「Model」への格納
+//		model.addAttribute("list", list);
+//		//calendar.htmlのカレンダー、注文履歴の表示
+//		return "calendar";
+//	}
 
 	// 機能：ユーザーネームをセッションに保存
 	// 再表示用
 	@GetMapping("/calendar")
-	public String calendarShowList2(Model model, Authentication authentication) {
+	public String calendarShowList2(Model model) {
 		System.out.println("メールアドレスで判別します。");
 
-		String mailaddress = authentication.getName();
-
+//		String mailaddress = authentication.getName();
+		String mailaddress=null;
+		
 		System.out.println("新規" + mailaddress);
 		// セッションでメールアドレス/ユーザ名を受け取り
 		//		String mailaddress=(String) this.session.getAttribute("mailaddress");
@@ -96,6 +96,11 @@ public class CalendarController {
 
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
+	}
+	
+	@GetMapping("/AAA")
+	public String show() {
+		return "AAA";
 	}
 
 }

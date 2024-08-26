@@ -165,7 +165,7 @@ public class ShopListController {
 		List<ShopListDto> openShop = new ArrayList<>();
 		for (Integer tempStoreId : storeIdList) {
 			for (ShopListDto temp : tempOpenShop) {
-				if (temp.getId() != tempStoreId) {
+				if (temp.getId() == tempStoreId) {
 					openShop.add(temp);
 				}
 			}
