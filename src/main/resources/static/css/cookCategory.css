@@ -9,7 +9,6 @@ body {
 }
 
 .menu-section {
-
 	padding: 30px;
 	color: white;
 	text-align: center;
@@ -35,7 +34,11 @@ body {
 		transform: translateY(-10px);
 	}
 }
-
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
 .new {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 30px;
@@ -69,29 +72,31 @@ body {
 	/* 增加粗体 */
 }
 
-.menu-items {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top: 50px;
-}
-
 .menu-item {
+	flex:1;
 	background-color: rgb(255, 255, 255);
 	border: rgb(255, 255, 255) 5px solid;
 	margin: 10px;
-	padding: 20px;
+	padding: 15px;
 	text-align: center;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	width: calc(33.333% - 20px);
 	height: 80%;
-	box-sizing: border-box;
 	position: relative;
-	flex-direction: column; /* 使子元素垂直排列 */
-	align-items: center; /* 水平居中对齐子元素 */
-	justify-content: center; /* 垂直居中对齐子元素 */
-	
+	flex-direction: column;
+	/* 使子元素垂直排列 */
+	align-items: center;
+	/* 水平居中对齐子元素 */
+	justify-content: center;
+	/* 垂直居中对齐子元素 */
+	margin: auto;
+	width: calc(33.333% - 20px);
+	/* 3列に分割するための幅を指定 */
+	margin-bottom: 20px;
+	/* 各行の間にスペースを追加 */
+	box-sizing: border-box;
+	/* パディングやボーダーを含むサイズ計算 */
+
 }
 
 .menu-item img {
@@ -195,35 +200,39 @@ body {
 }
 
 .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    background: linear-gradient(45deg, rgb(0, 128, 255), rgb(83, 169, 255));
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    margin: 20px; /* ボタン周りの余白 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    width: 80%; /* 親要素に対して幅を100%にする */
-    max-width: 400px; /* 最大幅を設定して、広すぎないように調整 */
-    box-sizing: border-box; /* パディングやボーダーを含むサイズ計算 */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px;
+	background: linear-gradient(45deg, rgb(0, 128, 255), rgb(83, 169, 255));
+	color: rgb(0, 0, 0);
+	border: none;
+	border-radius: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.3s;
+	margin: 20px;
+	/* ボタン周りの余白 */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	position: relative;
+	width: 80%;
+	/* 親要素に対して幅を100%にする */
+	max-width: 400px;
+	/* 最大幅を設定して、広すぎないように調整 */
+	box-sizing: border-box;
+	/* パディングやボーダーを含むサイズ計算 */
 }
 
 .button:hover {
-    background: linear-gradient(45deg, rgb(83, 169, 255), rgb(0, 128, 255));
-    transform: scale(1.05);
+	background: linear-gradient(45deg, rgb(83, 169, 255), rgb(0, 128, 255));
+	transform: scale(1.05);
 }
 
 .button:focus {
-    outline: none;
+	outline: none;
 }
 
 .size-wrapper {
@@ -245,32 +254,41 @@ a {
 }
 
 .select-button {
-    background-color: #ff69b4;  /* ピンク色 */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;  /* これがボタンを丸くします */
-    cursor: pointer;
-    font-size: 15px;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;  /* テキストを太字に */
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 60px;  /* ボタンの幅 */
-    height: 60px; /* ボタンの高さ */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	background-color: #ff69b4;
+	/* ピンク色 */
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 50%;
+	/* これがボタンを丸くします */
+	cursor: pointer;
+	font-size: 15px;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: bold;
+	/* テキストを太字に */
+	transition: background-color 0.3s, transform 0.2s;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	width: 60px;
+	/* ボタンの幅 */
+	height: 60px;
+	/* ボタンの高さ */
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .select-button:hover {
-    background-color: #ff85c2;  /* ホバー時の色 */
-    transform: scale(1.1);  /* ホバー時に少し大きく */
+	background-color: #ff85c2;
+	/* ホバー時の色 */
+	transform: scale(1.1);
+	/* ホバー時に少し大きく */
 }
 
 .select-button:active {
-    background-color: #ff4da6;  /* クリック時の色 */
-    transform: scale(0.95);  /* クリック時に少し小さく */
+	background-color: #ff4da6;
+	/* クリック時の色 */
+	transform: scale(0.95);
+	/* クリック時に少し小さく */
 }
 
 .cursor {
