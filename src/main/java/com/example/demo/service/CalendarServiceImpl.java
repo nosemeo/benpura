@@ -20,6 +20,13 @@ public class CalendarServiceImpl implements CalendarService {
 		//全てのデータをDBから取得
 		return repository.findAll();
 	}
+
+	@Override
+	public Iterable<Calendar> selectById(String mailaddress) {
+		// TODO 自動生成されたメソッド・スタブ
+		return repository.findById(mailaddress);
+	}
+	
 	
 	
 	

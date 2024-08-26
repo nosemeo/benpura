@@ -11,6 +11,49 @@
 	<link rel="stylesheet" th:href="@{/css/settlement.css}">
 	<script th:inline="javascript">
 		const initialPrice = /*[[${dto.price}]]*/1;
+		document.addEventListener('DOMContentLoaded', () => {
+		            document.getElementById('openPopup').addEventListener('click', openPopup);
+		        });
+		
+		        function openPopup() {
+		            // ここでサーバーから注文情報を取得します
+		            fetch('/api/orders/week')
+		                .then(response => response.json())
+		                .then(data => {
+		                    // ポップアップの内容を設定します
+		                    let popupContent = '<h2>週間注文内容</h2><ul>';
+		                    data.forEach(order => {
+		                        popupContent += `<li>${order.date} - ${order.details}</li>`;
+		                    });
+		                    popupContent += '</ul>';
+		
+		                    // ポップアップ要素に内容を設定して表示します
+		                    const popup = document.createElement('div');
+		                    popup.classList.add('popup');
+		                    popup.innerHTML = popupContent + '<button onclick="closePopup()">閉じる</button>';
+		                    document.body.appendChild(popup);
+		                });
+		        }
+		
+		        function closePopup() {
+		            const popup = document.querySelector('.popup');
+		            if (popup) {
+		                document.body.removeChild(popup);
+		            }
+		        }
+		    </script>
+		    <style>
+		        .popup {
+		            position: fixed;
+		            top: 50%;
+		            left: 50%;
+		            transform: translate(-50%, -50%);
+		            background-color: white;
+		            padding: 20px;
+		            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		            z-index: 1000;
+		        }
+		    </style>
 	</script>
 	<script th:src="@{/js/settlement.js}" defer></script>
 </head>
@@ -55,23 +98,6 @@
 			<a th:href="@{cookCategory}">一覧に戻る</a>
 		</div>
 	</div>
-	<!--	<div class="overlay" id="overlay"></div>-->
-	<!--	<div class="popup" id="popup">-->
-	<!--		<h2>今週の予約</h2>-->
-	<!--		<div class="calendar" id="calendar">-->
-	<!--			 日付がここに表示されます -->
-	<!--			<div th:each="i : ${#numbers.sequence(0, 6)}">-->
-	<!--				<div th:with="day = ${today.plusDays(i)}" th:class="day"-->
-	<!--					th:classappend="${day == today} ? ' today' : ''">-->
-	<!--					<div th:text="${#dates.format(day, 'E', 'ja')}">月</div>-->
-	<!--					<div th:text="${day.getDayOfMonth()}">1</div>-->
-	<!--					<div th:text="${reservations[day] ?: '予約なし'}">予約なし</div>-->
-	<!--				</div>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!--		<button id="closePopup">閉じる</button>-->
-	<!--	</div>-->
-
 
 </body>
 

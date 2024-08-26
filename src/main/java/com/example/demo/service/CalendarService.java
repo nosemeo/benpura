@@ -4,7 +4,7 @@ import com.example.demo.entity.Calendar;
 
 public interface CalendarService {
 	
-	Iterable<Calendar>selectAll();
-	
+	Iterable<Calendar> selectAll();
+	Iterable<Calendar> selectById(String mailaddress);
 	
 }

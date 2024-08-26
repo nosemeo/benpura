@@ -8,3 +8,4 @@ import com.example.demo.entity.Order;
 public interface SettlementService {
 	void insertOrder(Order order);
 }
+
