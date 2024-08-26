@@ -15,16 +15,23 @@ import com.example.demo.entity.CookCategory;
 import com.example.demo.repository.CookCategoryRepository;
 import com.example.demo.service.CookCategoryService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("cookCategory")
 public class CookController {
+	private HttpSession session;
 
 	@Autowired
 	private CookCategoryService cookCategoryService;
 
 	@Autowired
 	private CookCategoryRepository repository;
-
+	@Autowired //若松：注文日時を保存するために必要
+	public void SessionController(HttpSession session) {
+		// フィールドに代入する
+		this.session = session;
+	}
 	@GetMapping
 	public String showList(Model model) {
 		Iterable<CookCategory> recommendList = repository.findAll();
@@ -55,6 +62,7 @@ public class CookController {
 				list2.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
 						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
 						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM()));
+	
 			}
 		}
 		model.addAttribute("recommendList", list);
@@ -78,7 +86,6 @@ public class CookController {
 			}
 		}
 		model.addAttribute("nikuList", list);
-
 		return "niku";
 	}
 

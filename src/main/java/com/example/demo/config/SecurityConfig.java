@@ -21,6 +21,7 @@ import jakarta.servlet.http.HttpSession;
 @EnableWebSecurity
 
 public class SecurityConfig {
+	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.formLogin(form -> form
@@ -28,7 +29,7 @@ public class SecurityConfig {
 				.loginProcessingUrl("/authenticate")// ユーザー名・パスワードの送信先URL
 				.defaultSuccessUrl("/calendar") // ログイン成功後のリダイレクト先URL
 				.failureUrl("/login?failure") // ログイン失敗後のリダイレクト先URL
-				.usernameParameter("mailAddress")		// ログイン画面のユーザー名のフィールド
+				.usernameParameter("mailAddress") // ログイン画面のユーザー名のフィールド
 				.permitAll() // ログイン画面は未ログインでもアクセス可能
 		).logout(logout -> logout
 				.logoutSuccessUrl("/login?logout") // ログアウト成功後のリダイレクト先URL
@@ -37,7 +38,7 @@ public class SecurityConfig {
 				.requestMatchers("/register").permitAll()// url
 				.requestMatchers("/confirm").permitAll()// url
 				.requestMatchers("/videos/**").permitAll()// url
-				.requestMatchers("/images/**").permitAll()// url
+				.requestMatchers("/image/**").permitAll()// url
 				.requestMatchers("/success").permitAll()// url
 				.anyRequest().authenticated() // 他のURLはログイン後のみアクセス可能
 

@@ -21,6 +21,7 @@ public class LoginController {
 	@GetMapping("/login") //local host url
 	public String loginForm(LoginForm loginForm) {
 		// ログイン画面を表示
+		
 		return "login";//html file
 	}
 
@@ -37,16 +38,16 @@ public class LoginController {
 		loginForm.setPassword(userPass);
 
 		validator.validate(loginForm, result);
-
+		
 		// ログイン画面を表示
 		return "login";
 	}
 
-//	// SecurityConfigのdefaultSuccessUrlで指定したURL
-//	@GetMapping("calendar") //local host url
-//	public String loginSuccess() {
-//		// ログインに成功したら表示するURL
-//		return "calendar";//html file
-//	}
+	//	// SecurityConfigのdefaultSuccessUrlで指定したURL
+	//	@GetMapping("calendar") //local host url
+	//	public String loginSuccess() {
+	//		// ログインに成功したら表示するURL
+	//		return "calendar";//html file
+	//	}
 
 }

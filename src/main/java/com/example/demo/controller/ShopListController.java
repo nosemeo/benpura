@@ -11,11 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dto.ShopListDto;
 import com.example.demo.entity.ShopList;
@@ -70,6 +72,9 @@ public class ShopListController {
 	public String shopListCheckHoliday(Model model, Form f) {
 		
 		//
+		// ★serviceでメソッド作成
+		// メソッド名：getDayOfWeek
+		//
 		// 機能①：注文日時の曜日の取得と引き渡し
 		// yyyy-MM-dd 形式の日付文字列
 		LocalDate date = f.getOrderdate();
@@ -79,24 +84,29 @@ public class ShopListController {
 		String orderDayOfWeek = dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, Locale.JAPANESE);
 		
 		//
-		// 機能②：セッションに注文日時を保存 
+		// 機能②：注文の日にちと時間を結合してセッションに注文日時を保存
+		//
+		// メソッド名 combineDateTime
+		//
 		// StringをLocalTimeに変換
 		LocalTime time = LocalTime.parse(f.getOrdertime(), DateTimeFormatter.ofPattern("HH:mm"));
 		// LocalDateとLocalTimeを結合してLocalDateTimeを作成
 		LocalDateTime orderdatetime = LocalDateTime.of(f.getOrderdate(), time);
 		// ★注文日時をセッションに保存★
 		this.session.setAttribute("orderdatetime", orderdatetime);
-		// 再確認/再表示：保存されたユーザーネームと注文日時のセッション
-		model.addAttribute("username", this.session.getAttribute("username"));
-		model.addAttribute("orderdatetime", this.session.getAttribute("orderdatetime"));
 
 		//
 		// 機能③：お店の情報を取得
+		//
 		Iterable<ShopList> allShops = shopListService.selectAll();
 		// お店のidをキーとして各店舗ごとに定休日を保存
 		Map<Integer, String[]> storeHolidays = new HashMap<>();
 		List<ShopListDto> tempOpenShop = new ArrayList<>();
 		
+
+		//
+		// メソッド名：getPictureShopList
+		//
 		// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
 		// いったんすべての店舗情報と写真情報を取得
 		for (ShopList tempShopList : allShops) {
@@ -110,8 +120,12 @@ public class ShopListController {
 						tempShopList.getShopHour(),
 						tempShopList.getHoliday(),pictureString));
 			}
+
 		}
 		
+		//
+		// メソッド名：getHolidayShop
+		//
 		// 店舗idをキーとして各店舗の定休日を保存
 		for (ShopList shop : allShops) {
 			Integer shopId = shop.getId();// 店舗idを取得
@@ -119,7 +133,10 @@ public class ShopListController {
 			String[] holidayArray = holidays.split("・");// 定休日を・で区切って配列に分割
 			storeHolidays.put(shopId, holidayArray);
 		}
-
+		
+		//
+		// メソッド名：getIDHolidayShop
+		//
 		// 店舗idごとに定休日判定する
 		// 定休日でない店舗idを保存する
 		List<Integer> storeIdList = new ArrayList<>();
@@ -141,12 +158,14 @@ public class ShopListController {
 				storeIdList.add(entry.getKey());				
 			}
 		}
-
+		//
+		// メソッド名：getOpenShopList
+		//
 		// 定休日の店舗情報idを使って定休日の店舗は格納しない
 		List<ShopListDto> openShop = new ArrayList<>();
 		for (Integer tempStoreId : storeIdList) {
 			for (ShopListDto temp : tempOpenShop) {
-				if (temp.getId() != tempStoreId) {
+				if (temp.getId() == tempStoreId) {
 					openShop.add(temp);
 				}
 			}
@@ -159,25 +178,59 @@ public class ShopListController {
 		
 	}
 	
-	
 	@GetMapping("/shopInformation")
-	public String shopInformationShow(Model model) {
-		Iterable<ShopList> alldata2 = repository.findAll();
-		List<String> list = new ArrayList<>();
-		List<ShopList> list8 = new ArrayList<>();
+	public String shopInformationShow(@RequestParam("id") Integer id, Model model) {
+	    // IDで店舗情報を取得
+	    Optional<ShopList> optionalShop = repository.findById(id);
+	    
+	    // 店舗情報が存在する場合
+	    if (optionalShop.isPresent()) {
+	        ShopList shop = optionalShop.get();
+	        // 店舗情報から写真を取得し、Base64にエンコード
+	        String pictureString = null;
+	        if (shop.getShopPicture() != null) {
+	            pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
+	        }
+	        
+	        // DTOを作成
+	        ShopListDto shopDto = new ShopListDto(
+	            shop.getId(),
+	            shop.getShopName(),
+	            shop.getShopAddress(),
+	            shop.getShopTel(),
+	            shop.getShopHour(),
+	            shop.getHoliday(),
+	            pictureString
+	        );
+	        
+	        // モデルにDTOを追加
+	        model.addAttribute("shop", shopDto);
+	    } else {
+	        // 店舗が見つからない場合の処理
+	        return "redirect:/errorPage"; // エラーページにリダイレクト
+	    }
 
-		for (ShopList shopList : alldata2) {
-			if (shopList.getShopPicture() != null) {
-				String list2 = Base64.getEncoder().encodeToString(shopList.getShopPicture());
-				list.add(list2);
-				list8.add(shopList);
-			}
-		}
-		model.addAttribute("image", list);
-		model.addAttribute("shopLists2", list8);
-
-		return "shopInformation";
-		//		return "redirect:/cookCategory";
+	    return "shopInformation";
 	}
+	
+	
+//	@GetMapping("/shopInformation")
+//	public String shopInformationShow(Model model) {
+//		Iterable<ShopList> alldata2 = repository.findAll(); // すべての店舗情報を取得
+//		List<String> list = new ArrayList<>();
+//		List<ShopListDto> shopDtoList = new ArrayList<>();
+//
+//		// 写真の表示
+//		for (ShopList shop : alldata2) {
+//			// nullのデータがデータベースにあったらエラーでるのでif分でnull大丈夫にしたげる
+//			if (shop.getShopPicture() != null) {
+//				String pictureString = Base64.getEncoder().encodeToString(shop.getShopPicture());
+//				shopDtoList.add(new ShopListDto(shop.getId(),shop.getShopName(),shop.getShopAddress(),shop.getShopTel(),shop.getShopHour(),shop.getHoliday(),pictureString));
+//			}
+//		}
+//		model.addAttribute("shopLists", shopDtoList);
+//
+//		return "shopInformation";
+//	}
 
 }

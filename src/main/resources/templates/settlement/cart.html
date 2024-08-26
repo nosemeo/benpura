@@ -34,7 +34,7 @@
 							<td class="item-name" th:text="${obj.name}"></td>
 						</tr>
 						<tr>
-							<td class="shop-name" th:text="${obj.shopName}"></td>
+							<td class="shop-name" th:text="'店名：' + ${obj.shopName}"></td>
 						</tr>
 						<tr>
 							<td class="time"
@@ -79,6 +79,9 @@
 	<div class="empty" 	th:if="${#lists.isEmpty(dtoList)}">
 		<p>カートに商品がありません</p>
 	</div>
+	<div class="return">
+				<a th:href="@{cookCategory}">一覧に戻る</a>
+			</div>
 </body>
 
 </html>

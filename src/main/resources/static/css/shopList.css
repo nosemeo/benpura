@@ -17,26 +17,14 @@ body {
 }
 
 #headline {
-	/* ヘッドラインの背景色 */
-	height: 100px;
-	background-color: chartreuse;
-
-	display: flex;
-	align-items: center;
-/*	justify-content: center;*/
-	/* 下線を追加 */
+	/*	position: fixed;*/
+	/*	 下線を追加 */
 	border-bottom: 3px solid rgb(0, 128, 0);
-	
-	
 }
 
-.benpuraimg{
-	height:120%;
-	margin-left: 3%;
-}
 
 .title {
-/*	text-align: center;*/
+	/*	text-align: center;*/
 	color: red;
 	font-size: 30px;
 }
@@ -87,8 +75,7 @@ h2:first-letter {
 	color: #eb6100;
 }
 
-#content1,
-#content2 {
+#content1 {
 	/* 写真を枠内に入れる処理 */
 	display: flex;
 	align-items: center;
@@ -101,6 +88,7 @@ h2:first-letter {
 	position: relative;
 	padding: 1rem 2rem calc(1rem + 10px);
 
+	/** お店同士の隙間 **/
 	margin: 50px;
 
 	margin-left: 20%;
@@ -112,8 +100,7 @@ h2:first-letter {
 }
 
 /* 枠をずらしている処理 */
-#content1:before,
-#content2:before {
+#content1:before:before {
 	position: absolute;
 	top: -7px;
 	left: -7px;
@@ -124,8 +111,7 @@ h2:first-letter {
 }
 
 /* アニメーション*/
-#content1,
-#content2 {
+#content1 {
 	/* 「s」がかかる時間 */
 	animation: slideIn 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
@@ -148,11 +134,21 @@ h2:first-letter {
 
 .shopimg {
 	/* 写真の幅を30%に設定 */
-	width: 30%;
+	width: 80%;
 	margin-left: 3%;
 	margin-right: 3%;
 	margin-top: 3%;
 	/* 写真とテキストの間に余白を設定 */
+	/* 画像の角が丸くなるアニメーション */
+	border-radius: 6px;
+	transition-duration: .5s
+}
+
+.shopimg:hover {
+	/* 画像の角が丸くなるアニメーション */
+	border-radius: 50%;
+	box-shadow: 0px 0px 16px -6px rgba(0, 0, 0, 0.6);
+
 }
 
 .text {

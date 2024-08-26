@@ -16,13 +16,6 @@ body {
 }
 
 #headline {
-	/* ヘッドラインの背景色 */
-	height: 100px;
-	background-color: chartreuse;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	/* 下線を追加 */
 	border-bottom: 3px solid rgb(0, 128, 0);
 }

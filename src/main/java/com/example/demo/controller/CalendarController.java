@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.entity.Calendar;
-import com.example.demo.form.Form;
 import com.example.demo.service.CalendarService;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,46 +36,71 @@ public class CalendarController {
 	//////////////////////////////////////////////////
 
 	// ただのカレンダーの読み込み
-	@GetMapping()
-	public String calendarShowList(Model model) {
-		//注文履歴を全件取得
-		Iterable<Calendar> list = service.selectAll();
-		//表示用「Model」への格納
-		model.addAttribute("list", list);
-		//calendar.htmlのカレンダー、注文履歴の表示
-		return "calendar";
-	}
+//	@GetMapping()
+//	public String calendarShowList(Model model) {
+//		System.out.println("すべてのカレンダーの読み込み");
+//
+//		//注文履歴を全件取得
+//		Iterable<Calendar> list = service.selectAll();
+//		//表示用「Model」への格納
+//		model.addAttribute("list", list);
+//		//calendar.htmlのカレンダー、注文履歴の表示
+//		return "calendar";
+//	}
 
 	// 機能：ユーザーネームをセッションに保存
 	// 再表示用
 	@GetMapping("/calendar")
-	public String calendarShowList2(Model model, Form f) {
+	public String calendarShowList2(Model model) {
+		System.out.println("メールアドレスで判別します。");
+
+//		String mailaddress = authentication.getName();
+		String mailaddress=null;
+		
+		System.out.println("新規" + mailaddress);
+		// セッションでメールアドレス/ユーザ名を受け取り
+		//		String mailaddress=(String) this.session.getAttribute("mailaddress");
+
 		//注文履歴を全件取得
 		Iterable<Calendar> list = service.selectAll();
 
-		// usernameと合致する注文履歴のみリストに追加
+		//
+		// ★①serviceでメソッド作成  ★②注文履歴のserviceを作る
+		// メソッド名sortOrder listでそんなことできるのか
+		// メソッド名matchLoginidOrderlist
+		//
+		// mailaddressと合致する注文履歴のみリストに追加
 		List<Calendar> newlist = new ArrayList<>();
 		for (Calendar temp : list) {
-			// ログインページから読み込んだ時、ユーザー名を受け取っているか確認
-			if (!(f.getUsername() == null)) {
-				if (temp.getUsername().equals(f.getUsername())) {
+			// ログインページから読み込んだ時
+			// ユーザー名を受け取っているか確認
+			if (!(mailaddress == null)) {
+				if (temp.getMailaddress().equals(mailaddress)) {
 					newlist.add(temp);
 				}
 			}
-			// ヘッダーのログインページから読み込んだ時、セッションにあるユーザー名を受け取っているか確認
-			if (!(this.session.getAttribute("username") == null)) {
-				if (temp.getUsername().equals(this.session.getAttribute("username"))) {
-					newlist.add(temp);
-				}
-			}
+			// ヘッダーのログインページから読み込んだ時
+			// セッションにあるユーザー名を受け取っているか確認
+			//			if (!(this.session.getAttribute("mailaddress") == null)) {
+			//				if (temp.getMailaddress().equals(mailaddress)) {
+			//					newlist.add(temp);
+			//				}
+			//			}
 		}
 
+		// 若松：セッションの保存
+		this.session.setAttribute("mailaddress", mailaddress);
+		
 		//表示用「Model」への格納
 		model.addAttribute("list", newlist);
-		// ユーザーネームをセッションに保存
-		this.session.setAttribute("username", f.getUsername());
+
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
+	}
+	
+	@GetMapping("/AAA")
+	public String show() {
+		return "AAA";
 	}
 
 }

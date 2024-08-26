@@ -25,7 +25,7 @@ public class Calendar {
 	
 	@Id
 	private Integer id;
-	private String username;
+	private String mailaddress;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate date;
 	private String shopname;

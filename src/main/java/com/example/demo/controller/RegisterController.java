@@ -17,6 +17,7 @@ import com.example.demo.service.userdetails.RegisterService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class RegisterController {
@@ -24,13 +25,25 @@ public class RegisterController {
 	@Autowired
 	RegisterService service;
 
+	// 若松：セッション準備 HttpSession型のフィールドを定義する
+	private HttpSession session;
+
+	// 若松：クラスの自動生成
+	@Autowired
+	public void SessionController(HttpSession session) {
+		// フィールドに代入する
+		this.session = session;
+	}
+
 	@GetMapping("/register")
 	public String register(RegisterForm registerForm) {
+
 		return "register";
 	}
 
 	@PostMapping("/register")
 	public String showRegisterForm(RegisterForm registerForm) {
+
 		return "register";
 	}
 
@@ -43,12 +56,11 @@ public class RegisterController {
 		if (bindingResult.hasErrors()) {
 			return "register";
 		}
-		
+
 		String password = registerForm.getPassword();
 		String passwordMasked = getMaskedPassword(password);
 		model.addAttribute("passwordMasked", passwordMasked);
 
-		
 		return "confirm";//html file
 	}
 
@@ -70,6 +82,9 @@ public class RegisterController {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+
+		// 若松：セッションの保存
+		this.session.setAttribute("mailaddress", registerForm.getMailAddress());
 
 		return "redirect:/calendar";//el nombre del archivo html
 	}

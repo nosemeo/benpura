@@ -20,6 +20,6 @@ public class Form {
 	private LocalDate orderdate;
 	private String ordertime;
 	private String dayofweek;
-	private String username;
+	private String mailaddress;
 	
 }
