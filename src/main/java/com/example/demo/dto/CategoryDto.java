@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
 import org.springframework.data.annotation.Id;
 
@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CookCategory {
-	
+public class CategoryDto {
+
 	@Id
 	private Integer id;
 	private Integer shopId;
 	private String item;
 	private String introductions;
-	private byte[] image;
+	private String image;
 	private String recommend;
 	private String comments1;
 	private String comments2;
@@ -24,5 +24,5 @@ public class CookCategory {
 	private String typeComments;
 	private Integer priceS;
 	private Integer priceM;
-	
+
 }
