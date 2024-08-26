@@ -33,7 +33,7 @@ public class CookController {
 		this.session = session;
 	}
 	@GetMapping
-	public String showList(@RequestParam("shopName") String shopName, Model model) {
+	public String showList(@RequestParam("shopName") String shopName, @RequestParam("id") Integer id, Model model) {
 		String osusumeSPrice = null;
 		String osusumeMPrice = null;
 		String higawariSPrice = null;
@@ -47,7 +47,12 @@ public class CookController {
 		String higawariName = "";
 		String omakaseName = "";
 		String shopnameId = null;
+		
+		/*-----------------------------------*/
+		
+		this.session.setAttribute("shopId", id);
 		this.session.setAttribute("shopName", shopName);
+		/*-----------------------------------*/
 
 		Iterable<CookCategory> imageData = repository.findAll();
 		List<String> list = new ArrayList<>();

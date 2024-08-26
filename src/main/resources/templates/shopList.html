@@ -29,7 +29,7 @@
 	<div id="content1" th:each="shop : ${shopLists}">
 		<br>
 		<!--		target="_blank"は別タブでリンク開く-->
-		<a th:href="@{/cookCategory(shopName=${shop.shopName})}" target="_blank">
+		<a th:href="@{/cookCategory(shopName=${shop.shopName},id=${shop.id})}" target="_blank">
 			<img class="shopimg" th:src="'data:image/png;base64,'+${shop.image}" alt="picture" />
 		</a>
 
