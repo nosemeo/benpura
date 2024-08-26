@@ -24,5 +24,6 @@ public class CookCategory {
 	private String typeComments;
 	private Integer priceS;
 	private Integer priceM;
+	private String comments1Color;
 	
 }

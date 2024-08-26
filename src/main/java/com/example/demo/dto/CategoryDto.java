@@ -24,5 +24,6 @@ public class CategoryDto {
 	private String typeComments;
 	private Integer priceS;
 	private Integer priceM;
+	private String comments1Color;
 
 }
