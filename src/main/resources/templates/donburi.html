@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{commons/layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>丼ぶり</title>
+	<link rel="stylesheet" th:href="@{/css/donburi.css}">
+</head>
+
+<body>
+	<div class="menu-section">
+		<h1>DONBURI 丼ぶり</h1>
+
+		<div th:each="obj,s:${donburiList}">
+			<div class="box1">
+				<div class="menu-items">
+					<div class="menu-item">
+						<img th:src="'data:image/png;base64,'+${obj.image}" alt="丼ぶり">
+						<div class="item-description">
+							<p th:text="${obj.introductions}"></p>
+						</div>
+						<div class="text-wrapper">
+							<p class="item-name" th:text="${obj.item}"></p>
+						</div>
+						<div class="size-wrapper">
+							<form th:action="@{/settlement}" method="post">
+								<label th:for="katsudonS+${s.index}">
+									<input type="radio" th:id="katsudonS+${s.index}" th:name="price+${s.index}" th:value="${obj.priceS}"
+										checked=" ${obj.defaultSize == 'S' }">
+									<span th:id="katsudonS+${s.index}" class="item-size">Sサイズ </span>
+									<span th:id="katsudonS+${s.index}" class="item-price" th:text="${obj.priceS} + '円'"></span>
+								</label>
+								<label th:for="katsudonM+${s.index}">
+									<input type="radio" th:id="katsudonM+${s.index}" th:name="price+${s.index}" th:value="${obj.priceM}">
+									<span th:id="katsudonM+${s.index}" class="item-size">Mサイズ </span>
+									<span th:id="katsudonM+${s.index}" class="item-price" th:text="${obj.priceM} + '円'"></span>
+								</label>
+								<div class="button-style">
+									<input type="hidden" name="image" th:value="${obj.image}">
+									<input type="hidden" name="name" th:value="${obj.item}">
+									<button type="submit" class="select-button">選択</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form th:action="@{/cookCategory}" method="get">
+			<div class="box4">
+				<input type="hidden" name="id" th:value="${shopId}">
+				<input type="hidden" name="shopName" th:value="${shopName}">
+				<button type="submit" class="category-button">カテゴリへ戻る</button>
+			</div>
+		</form>
+		<div class="cursor"></div>
+		<script>
+			document.addEventListener('mousemove', function (event) {
+				const cursor = document.querySelector('.cursor');
+				cursor.style.left = `${event.pageX}px`;
+				cursor.style.top = `${event.pageY}px`;
+			});
+		</script>
+</body>
+
+</html>

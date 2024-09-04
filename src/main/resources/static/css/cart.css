@@ -1,0 +1,266 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=RocknRoll+One&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+.empty{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	background-color:rgba(166,255,128,0.7);
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 20px;
+    margin:auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.empty p{
+	font-family: 'RocknRoll One', sans-serif;
+	font-size: 1.2rem;
+	color: red;
+	
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-image: url(../image/背景のたまごちゃん.png);
+    background-size: cover;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.font-logo::first-letter {
+	color: rgb(255, 128, 64);
+	/* Change this to your desired color */
+	font-size: 4rem;
+}
+
+.font-logo {
+	margin-bottom: 0rem;
+	color: #333;
+	text-align: center;
+	font-family: 'Arial', sans-serif;
+	font-size: 3.5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 1.5rem;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	padding-bottom: 0rem;
+	/* Ensure no padding is affecting it */
+	line-height: 1;
+	/* Reduce line height if needed */
+}
+
+.highlight {
+	color: rgb(0, 128, 128);
+	/* Change this to your desired color */
+}
+
+.subtitle {
+	text-align: center;
+	/* Center the subtitle */
+	font-family: 'Gochi Hand', cursive;
+	/* Match font family */
+	font-size: 3rem;
+	/* Adjust font size as needed */
+	color: #666;
+	/* Subtitle color */
+	margin-bottom: 1.5rem;
+	/* Space below the subtitle */
+	letter-spacing: 1px;
+	/* Optional: Adjust letter spacing */
+	margin-top: 0;
+	margin-bottom: 2%;
+	/* Already set */
+	padding-top: 0;
+	/* Ensure no padding is affecting it */
+	line-height: 0;
+	/* Reduce line height if needed */
+}
+
+.underlined-text {
+  position: relative;
+  display: inline-block;
+  color: #ff9800;
+  text-shadow: #FC0 1px 0 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.underlined-text::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff9;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  animation: underlineDelay 0.5s 1 0.5s ease-in-out forwards; /* 遅延とアニメーションの設定 */
+}
+
+@keyframes underlineDelay {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#cart {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color:rgba(166,255,128,0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product header img {
+    width: 100px;
+    height: auto;
+}
+
+.content {
+    flex: 1;
+    padding-left: 5%;
+}
+.content table{
+	padding-right: 5%;
+}
+.item-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.shop-name {
+    font-size: 1.2rem;
+}
+
+.time {
+    font-size: 1.1rem;
+    color: #888;
+}
+
+footer.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+footer.content table {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.5rem;
+    text-align: right;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.remove {
+    margin-top: 10px;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid rgb(255, 122, 119);
+    border-radius: 7px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+}
+
+.order {
+    margin-top: 10px;
+    background-color: rgb(0, 170, 0);
+    border: 1px solid rgb(0, 128, 0);
+    border-radius: 7px;
+    padding: 0.6rem 2.5rem;
+    cursor: pointer;
+}
+
+.remove h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.order h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.remove:hover {
+    background-color: rgb(255, 128, 128);
+}
+
+.order:hover {
+    background-color: rgb(131, 220, 135);
+}
+.return {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2%;
+}
+.return a{
+	
+	background-color: #8bc34a; /* 黄緑 */
+    border: none;
+    color: white;
+    padding: 1.2rem 3.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.return a:hover {
+	background-color: #7cb342; /* 黄緑の暗い色 */
+	transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 30%), 0 0 5px rgb(0 0 0 / 30%);
+}
+.anim-box.slide-skew.is-animated {
+  animation: slide-skew 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+ 
+@keyframes slide-skew {
+  0% {
+    transform: translate(180px,30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0,0);
+  }
+  20%,100% {
+    opacity: 1;
+  }
+}
+@media (max-width: 100%) {
+    .product {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    footer.content {
+        align-items: flex-start;
+    }
+}
